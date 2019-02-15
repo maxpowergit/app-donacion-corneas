@@ -1,21 +1,28 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import { createStackNavigator, createAppContainer } from 'react-navigation'
 
-export default class App extends React.Component {
+class Prueba extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+      <View>
+        <Text>Componente de Prueba.</Text>
       </View>
-    );
+    )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Navegador = createStackNavigator({
+  Ingreso: { screen: Prueba },
+  Requisitos: { screen: Prueba },
+  Contraindicaciones: { screen: Prueba },
+  Contacto: { screen: Prueba }
+  }, {
+    //TODO initialRouteName debería cambiar según haya ingresado un número telefónico.
+    initialRouteName: "Ingreso",
+    defaultNavigationOptions: {
+      header: null
+    }
+  })
+
+export default createAppContainer(Navegador)
