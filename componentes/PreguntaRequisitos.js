@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid'
 import { Card, CardItem, Body, Button } from 'native-base';
 
@@ -17,10 +17,10 @@ export default class PreguntaRequisitos extends Component {
           </Body>
         </CardItem>
         <CardItem footer style= { estilos.contenedorBotones }> 
-          <Button danger flex= { 1 } style= { estilos.boton }>
+          <Button full danger flex= { 1 }>
             <Text style= { estilos.textoBoton }>NO</Text>
           </Button>
-          <Button success flex= { 1 } style= { estilos.boton }>
+          <Button full success flex= { 1 }>
             <Text style= { estilos.textoBoton }>SI</Text>
           </Button>
         </CardItem>
@@ -31,11 +31,11 @@ export default class PreguntaRequisitos extends Component {
 
 const estilos = StyleSheet.create({
   contenedorBotones: {
-    justifyContent: 'space-between',
+    paddingTop: 0,
+    paddingBottom: 0,
+    paddingLeft: 0,
+    paddingRight: 0
   }, 
-  boton: {
-    justifyContent: 'center',
-  },
   textoBoton: {
     color: 'white',
     fontSize: 16
