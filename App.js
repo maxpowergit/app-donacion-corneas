@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, UIManager } from 'react-native'
 import { createStackNavigator, createAppContainer } from 'react-navigation'
 
 import EscenaIngreso from './escenas/EscenaIngreso.js'
+import EscenaRequisitos from './escenas/EscenaRequisitos.js'
 
 // Necesario para que funcione en la App LayoutAnimation.
 UIManager.setLayoutAnimationEnabledExperimental &&
@@ -21,12 +22,12 @@ class Prueba extends Component {
 
 const Navegador = createStackNavigator({
   Ingreso: { screen: EscenaIngreso },
-  Requisitos: { screen: Prueba },
+  Requisitos: { screen: EscenaRequisitos },
   Contraindicaciones: { screen: Prueba },
   Contacto: { screen: Prueba }
   }, {
     //TODO initialRouteName debería cambiar según haya ingresado un número telefónico.
-    initialRouteName: "Ingreso",
+    initialRouteName: "Requisitos",
     defaultNavigationOptions: {
       header: null
     }
