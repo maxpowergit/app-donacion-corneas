@@ -1,21 +1,29 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid'
-import { Card, CardItem, Body, Button, ActionSheet, Root } from 'native-base';
-
-
-var DESTRUCTIVE_INDEX = 3;
-var CANCEL_INDEX = 4;
+import { Card, CardItem, Body, Button, ActionSheet, Root } from 'native-base'
 
 export default class PreguntaContraindicaciones extends Component {
   constructor(props) {
-    super(props);
-    this.state = {};
+    super(props)
+    this.state = {
+      opcionesVisibles: false,
+      clickeadoSi: false,
+      clickeadoNo: false
+    }
   }
-  
+
+  renderIf(condicion, contenido) {
+    if (condicion) {
+        return contenido
+    } else {
+        return null
+    }
+  }
+
   render() {
-    const { pregunta } = this.props
-    
+    const { pregunta, opciones } = this.props
+
     return (
       <Root>
         <Card>
@@ -34,22 +42,21 @@ export default class PreguntaContraindicaciones extends Component {
               full 
               success 
               flex= { 1 }
-              onPress={() =>
-                ActionSheet.show(
-                  {
-                    options: this.props.opciones,
-                    cancelButtonIndex: CANCEL_INDEX,
-                    destructiveButtonIndex: DESTRUCTIVE_INDEX,
-                    title: "Testing ActionSheet"
-                  },
-                  buttonIndex => {
-                  this.setState({ clicked: BUTTONS[buttonIndex] });
+              onPress={ () => this.setState({ opcionesVisibles: true })
                 }
-                )}
             >
               <Text style= { estilos.textoBoton }>SI</Text>
             </Button>
           </CardItem>
+          { this.renderIf(this.state.opcionesVisibles,
+            <CardItem>
+              <Body>
+                <Text style= { estilos.textoPregunta }>
+                  { this.props.opciones }
+                </Text>
+              </Body>
+            </CardItem>
+          )}
         </Card>
       </Root>
     )
