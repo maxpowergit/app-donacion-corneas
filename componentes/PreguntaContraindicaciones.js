@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, LayoutAnimation } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid'
-import { Card, CardItem, Body, Button, ActionSheet, Root } from 'native-base'
+import { Card, CardItem, Body, Button, ListItem, List } from 'native-base'
 
 export default class PreguntaContraindicaciones extends Component {
+
   constructor(props) {
     super(props)
     this.state = {
@@ -13,52 +14,55 @@ export default class PreguntaContraindicaciones extends Component {
     }
   }
 
-  renderIf(condicion, contenido) {
-    if (condicion) {
-        return contenido
-    } else {
-        return null
-    }
+  componentWillUpdate() {
+    LayoutAnimation.easeInEaseOut()
+  }
+
+  listaDeOpciones() {
+    return this.props.opciones.map((opcion) => {
+      return (
+        <ListItem>
+          <Text style= { estilos.textoPregunta }> { opcion } </Text>
+        </ListItem>
+      )
+    })
   }
 
   render() {
     const { pregunta, opciones } = this.props
 
     return (
-      <Root>
-        <Card>
+      <Card>
+        <CardItem>
+          <Body>
+            <Text style= { estilos.textoPregunta }>
+              { this.props.pregunta }
+            </Text>
+          </Body>
+        </CardItem>
+        <CardItem footer style= { estilos.contenedorBotones }>
+          <Button full danger flex= { 1 }>
+            <Text style= { estilos.textoBoton }>NO</Text>
+          </Button>
+          <Button
+            full
+            success
+            flex= { 1 }
+            onPress={ () => this.setState({ opcionesVisibles: true }) }
+          >
+            <Text style= { estilos.textoBoton }>SI</Text>
+          </Button>
+        </CardItem>
+        { this.state.opcionesVisibles &&
           <CardItem>
             <Body>
-              <Text style= { estilos.textoPregunta }>
-                { this.props.pregunta }
-              </Text> 
+              <List>
+                { this.listaDeOpciones() }
+              </List>
             </Body>
           </CardItem>
-          <CardItem footer style= { estilos.contenedorBotones }> 
-            <Button full danger flex= { 1 }>
-              <Text style= { estilos.textoBoton }>NO</Text>
-            </Button>
-            <Button 
-              full 
-              success 
-              flex= { 1 }
-              onPress={ () => this.setState({ opcionesVisibles: true })
-                }
-            >
-              <Text style= { estilos.textoBoton }>SI</Text>
-            </Button>
-          </CardItem>
-          { this.renderIf(this.state.opcionesVisibles,
-            <CardItem>
-              <Body>
-                <Text style= { estilos.textoPregunta }>
-                  { this.props.opciones }
-                </Text>
-              </Body>
-            </CardItem>
-          )}
-        </Card>
-      </Root>
+        }
+      </Card>
     )
   }
 }
