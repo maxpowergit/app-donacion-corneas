@@ -19,9 +19,9 @@ export default class PreguntaContraindicaciones extends Component {
   }
 
   listaDeOpciones() {
-    return this.props.opciones.map((opcion) => {
+    return this.props.opciones.map((opcion, llave) => {
       return (
-        <ListItem>
+        <ListItem  key= { llave }>
           <Text style= { estilos.textoPregunta }> { opcion } </Text>
         </ListItem>
       )
