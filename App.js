@@ -1,37 +1,17 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, UIManager } from 'react-native'
-import { createStackNavigator, createAppContainer } from 'react-navigation'
+import { UIManager } from 'react-native'
 
-import EscenaIngreso from './escenas/EscenaIngreso.js'
-import EscenaRequisitos from './escenas/EscenaRequisitos.js'
-import EscenaContraindicaciones from './escenas/EscenaContraindicaciones.js'
+import DonacionApp from './src/DonacionApp.js'
 
 // Necesario para que funcione en la App LayoutAnimation.
 UIManager.setLayoutAnimationEnabledExperimental &&
 UIManager.setLayoutAnimationEnabledExperimental(true)
 
-// Componente temporal, hasta que etén todos hechos.
-class Prueba extends Component {
+export default class App extends Component {
   render() {
     return (
-      <View>
-        <Text>Componente de Prueba.</Text>
-      </View>
+      <DonacionApp />    
     )
   }
 }
 
-const Navegador = createStackNavigator({
-  Ingreso: { screen: EscenaIngreso },
-  Requisitos: { screen: EscenaRequisitos },
-  Contraindicaciones: { screen: EscenaContraindicaciones },
-  Contacto: { screen: Prueba }
-  }, {
-    //TODO initialRouteName debería cambiar según haya ingresado un número telefónico.
-    initialRouteName: "Contraindicaciones",
-    defaultNavigationOptions: {
-      header: null
-    }
-  })
-
-export default createAppContainer(Navegador)
