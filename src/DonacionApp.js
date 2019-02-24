@@ -14,7 +14,7 @@ const Navegador = createStackNavigator({
   Contacto: { screen: EscenaRequisitos }
   }, {
     //TODO initialRouteName debería cambiar según haya ingresado un número telefónico.
-    initialRouteName: "Contraindicaciones",
+    initialRouteName: 'Ingreso',
     defaultNavigationOptions: {
       header: null
     }
