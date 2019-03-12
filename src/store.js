@@ -1,7 +1,7 @@
 import { createStore } from 'redux'
 
 const estadoInicial = {
-    telefono: 555
+  telefono: 555
 }
 
 const reducer = (state = estadoInicial)=> {

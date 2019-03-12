@@ -22,7 +22,7 @@ export default class LogoFadeIn extends Component {
         duration: this.props.duracion,
         easing: Easing.elastic(1)
       }
-      ).start()
+      ).start(this.props.callback)
   }
 
   render() {
