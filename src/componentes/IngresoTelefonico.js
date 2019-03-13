@@ -10,10 +10,15 @@ export default class IngresoTelefonico extends Component {
   }
 
   render() {
+    const { guardarTelefono } = this.props
+
     return (
       <Item floatingLabel >
         <Label>Ingresá el número de contacto</Label>
-        <Input keyboardType={'number-pad'} />
+        <Input
+          keyboardType={ 'number-pad' }
+          onSubmitEditing={ (event) => guardarTelefono(event.nativeEvent.text) }
+        />
       </Item>
     )
   }

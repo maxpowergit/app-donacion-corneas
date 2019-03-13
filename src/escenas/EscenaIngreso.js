@@ -10,23 +10,26 @@ import IngresoTelefonico from '../componentes/IngresoTelefonico.js'
 class EscenaIngreso extends Component {
   constructor(props) {
     super(props)
-    this.state = { tiempoTranscurrido: false }
   }
 
   navegarSiHayTelefono() {
-		if (this.props.telefono) {
+    const { telefono, cambiarTiempoTranscurrido } = this.props
+
+		if (telefono) {
       return (
         this.props.navigation.navigate('Requisitos')
       )
     } else {
-      this.setState({ tiempoTranscurrido: true })
+      cambiarTiempoTranscurrido(true)
     }
   }
 
   mostrarTelefono() {
-    if (!this.props.telefono && this.state.tiempoTranscurrido) {
+    const { telefono, guardarTelefono, tiempoTranscurrido } = this.props
+
+    if (!telefono && tiempoTranscurrido) {
       return (
-        <IngresoTelefonico texto= {this.props.telefono}/>
+        <IngresoTelefonico texto={ telefono } guardarTelefono= { guardarTelefono } />
       )
     }
   }
@@ -60,8 +63,18 @@ const estilos = StyleSheet.create({
   }
 })
 
-const mapStateToProps = ({ telefono }) => ({
-  telefono
+const mapStateToProps = ({ telefono, tiempoTranscurrido }) => ({
+  telefono,
+  tiempoTranscurrido
 })
 
-export default connect(mapStateToProps)(EscenaIngreso)
+const mapDispatchToProps = dispatch => ({
+  guardarTelefono: (telefono) => {
+    dispatch({ type: 'GUARDAR_TELEFONO', telefono })
+  },
+  cambiarTiempoTranscurrido: (tiempoTranscurrido) => {
+    dispatch({ type: 'TIEMPO_TRANSCURRIDO', tiempoTranscurrido })
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(EscenaIngreso)
