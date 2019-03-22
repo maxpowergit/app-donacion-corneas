@@ -1,4 +1,6 @@
 import { createStore, compose, applyMiddleware } from 'redux'
+import { persistStore, persistReducer } from 'redux-persist'
+import { AsyncStorage } from 'react-native'
 import logger from 'redux-logger'
 
 // Reducers
@@ -20,15 +22,24 @@ const reducer = (state = estadoInicial, action)=> {
 // Configuración del Store
 const middlewares = []
 
+const persistConfig = {
+    key: 'root',
+    AsyncStorage,
+}
+
+const persistedReducer = persistReducer(persistConfig, reducer)
+
 if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger)
 }
 
 const store = createStore(
-  reducer,
+  persistedReducer,
   compose(
     applyMiddleware(...middlewares)
   )
 )
 
-export { store }
+const persistor = persistStore(store)
+
+export { store, persistor }
