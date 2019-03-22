@@ -22,9 +22,11 @@ const reducer = (state = estadoInicial, action)=> {
 // Configuración del Store
 const middlewares = []
 
+// Sólo persistir la key 'telefono'
 const persistConfig = {
     key: 'root',
     AsyncStorage,
+    whitelist: ['telefono']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducer)
