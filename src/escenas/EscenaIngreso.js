@@ -5,7 +5,8 @@ import { Col, Row, Grid } from 'react-native-easy-grid'
 import { connect } from 'react-redux'
 
 import LogoFadeIn from '../componentes/LogoFadeIn.js'
-import IngresoTelefonico from '../componentes/IngresoTelefonico.js'
+import IngresarTelefono from '../componentes/IngresarTelefono.js'
+import ConfirmarTelefono from '../componentes/ConfirmarTelefono.js'
 
 class EscenaIngreso extends Component {
   constructor(props) {
@@ -27,10 +28,16 @@ class EscenaIngreso extends Component {
   mostrarTelefono() {
     const { telefono, guardarTelefono, tiempoTranscurrido } = this.props
 
-    if (!telefono && tiempoTranscurrido) {
-      return (
-        <IngresoTelefonico texto={ telefono } guardarTelefono= { guardarTelefono } />
-      )
+    if (tiempoTranscurrido) {
+      if (!telefono) {
+        return (
+          <IngresarTelefono texto={ telefono } guardarTelefono= { guardarTelefono } />
+        )
+      } else {
+        return (
+          <ConfirmarTelefono texto={ telefono } confirmar= { () => this.props.navigation.navigate('Requisitos') } />
+        )
+      }
     }
   }
 

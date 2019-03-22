@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { LayoutAnimation } from 'react-native'
 import { Item, Input, Label } from 'native-base'
 
-export default class IngresoTelefonico extends Component {
+export default class IngresarTelefono extends Component {
 
   componentWillMount() {
     LayoutAnimation.easeInEaseOut()
