@@ -29,15 +29,12 @@ class EscenaIngreso extends Component {
     const { telefono, guardarTelefono, tiempoTranscurrido } = this.props
 
     if (tiempoTranscurrido) {
-      if (!telefono) {
-        return (
-          <IngresarTelefono texto={ telefono } guardarTelefono= { guardarTelefono } />
-        )
-      } else {
-        return (
-          <ConfirmarTelefono texto={ telefono } confirmar= { () => this.props.navigation.navigate('Requisitos') } />
-        )
-      }
+      return (
+        <>
+          <IngresarTelefono guardarTelefono={ guardarTelefono } />
+          <ConfirmarTelefono telefono={ telefono } confirmar= { () => this.props.navigation.navigate('Requisitos') } />
+        </>
+      )
     }
   }
 

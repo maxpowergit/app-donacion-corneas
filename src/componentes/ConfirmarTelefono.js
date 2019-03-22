@@ -10,13 +10,18 @@ export default class ConfirmarTelefono extends Component {
   }
 
   render() {
-    const { confirmar } = this.props 
-    return (
-      <Item>
-        <Button onPress={ confirmar } >
-          <Text> Ingresar </Text>
-        </Button>
-      </Item>
-    )
+    const { confirmar, telefono } = this.props
+
+    if (telefono) {
+      return (
+        <Item>
+          <Button onPress={ confirmar } >
+            <Text>Confirmar</Text>
+          </Button>
+       </Item>
+      )
+    } else {
+      return null
+    }
   }
 }
