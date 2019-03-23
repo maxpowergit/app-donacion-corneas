@@ -1,6 +1,6 @@
 import { createStore, compose, applyMiddleware } from 'redux'
 import { persistStore, persistReducer } from 'redux-persist'
-import { AsyncStorage } from 'react-native'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web and AsyncStorage for react-native
 import logger from 'redux-logger'
 
 // Reducers
@@ -25,7 +25,7 @@ const middlewares = []
 // Sólo persistir la key 'telefono'
 const persistConfig = {
     key: 'root',
-    AsyncStorage,
+    storage,
     whitelist: ['telefono']
 }
 
