@@ -1,6 +1,6 @@
 // Listado de referencia con las preguntas de requisitos.
 
-const PreguntasRequisitos = [
+const PreguntasRequisitos = {
   edad: {
     llave: 'edad',
     pregunta: '¿La edad es entre los 2 y los 80 años?'
@@ -17,6 +17,6 @@ const PreguntasRequisitos = [
     llave: 'refrigerado',
     pregunta: '¿El PCR es hace menos de 6 horas, o 12 horas si el cadáver fue refrigerado dentro de la primera hora?'
   }
-]
+}
 
 export default PreguntasRequisitos
