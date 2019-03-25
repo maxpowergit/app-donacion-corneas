@@ -16,14 +16,14 @@ export default class PreguntaRequisitos extends Component {
   }
  
   render() {
-    const { pregunta } = this.props
+    const { texto } = this.props
     
     return (
       <Card>
         <CardItem>
           <Body>
             <Text style= { estilos.textoPregunta }>
-              { this.props.pregunta }
+              { this.props.texto }
             </Text> 
             <Text style= { estilos.textoPregunta }>
               { this.state.text }
