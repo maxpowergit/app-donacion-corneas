@@ -14,6 +14,11 @@ const reducer = (state = estadoInicial, action)=> {
       return { ...state, telefono: action.telefono }
     case 'TIEMPO_TRANSCURRIDO':
       return { ...state, tiempoTranscurrido: action.tiempoTranscurrido }
+    case 'REQUISITO_CUMPLIDO':
+      return { ...state, t: action.requisitos }
+   case 'REQUISITO_INCUMPLIDO':
+      return { ...state, t: action.requisitos }
+
     default:
       return state
   }
