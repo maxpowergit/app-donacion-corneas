@@ -8,14 +8,16 @@ import PreguntaRequisitos from '../componentes/PreguntaRequisitos.js'
 
 class EscenaRequisitos extends Component {
   render() {
+    const { cumplirRequisito, requisitos } = this.props
+
     const preguntas = Object.keys(mapaRequisitos).map(llave => (
       <PreguntaRequisitos
         key={ llave }
         llave={ llave }
         texto={ mapaRequisitos[llave] }
-        cumplir={ () => this.props.cumplirRequisito(llave, true) }
-        incumplir={ () => this.props.cumplirRequisito(llave, false) }
-        cumplido = { true }
+        cumplir={ () => cumplirRequisito(llave, true) }
+        incumplir={ () => cumplirRequisito(llave, false) }
+        cumplido = { requisitos[llave] }
       />
     ))
 
