@@ -16,7 +16,7 @@ class EscenaIngreso extends Component {
   navegarSiHayTelefono() {
     const { telefono, cambiarTiempoTranscurrido } = this.props
 
-		if (telefono) {
+    if (telefono) {
       return (
         this.props.navigation.navigate('Requisitos')
       )

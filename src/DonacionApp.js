@@ -6,12 +6,13 @@ import HeaderDefault from './componentes/HeaderDefault.js'
 import EscenaIngreso from './escenas/EscenaIngreso.js'
 import EscenaRequisitos from './escenas/EscenaRequisitos.js'
 import EscenaContraindicaciones from './escenas/EscenaContraindicaciones.js'
+import EscenaContacto from './escenas/EscenaContacto.js'
 
 const Navegador = createStackNavigator({
   Ingreso: { screen: EscenaIngreso, navigationOptions: { header: null } },
   Requisitos: { screen: EscenaRequisitos },
   Contraindicaciones: { screen: EscenaContraindicaciones },
-  Contacto: { screen: EscenaRequisitos }
+  Contacto: { screen: EscenaContacto },
   }, {
     initialRouteName: 'Ingreso'
   }
