@@ -4,26 +4,7 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import logger from 'redux-logger'
 
-// Reducers
-const estadoInicial = {
-  tiempoTranscurrido: false,
-}
-
-const reducer = (state = estadoInicial, action)=> {
-  switch (action.type) {
-    case 'GUARDAR_TELEFONO':
-      return { ...state, telefono: action.telefono }
-    case 'TIEMPO_TRANSCURRIDO':
-      return { ...state, tiempoTranscurrido: action.tiempoTranscurrido }
-    case 'REQUISITO_CUMPLIDO':
-      return { ...state, valor: true }
-   case 'REQUISITO_INCUMPLIDO':
-      return { ...state, action }
-
-    default:
-      return state
-  }
-}
+import reducer from './reducers'
 
 // Configuración del Store
 const middlewares = []

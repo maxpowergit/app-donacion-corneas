@@ -8,13 +8,13 @@ import PreguntaRequisitos from '../componentes/PreguntaRequisitos.js'
 
 class EscenaRequisitos extends Component {
   render() {
-    const preguntas = Object.keys(mapaRequisitos).map( pregunta => (
+    const preguntas = Object.keys(mapaRequisitos).map(llave => (
       <PreguntaRequisitos
-        key={ mapaRequisitos[pregunta].llave }
-        llave={ mapaRequisitos[pregunta].llave }
-        texto={ mapaRequisitos[pregunta].texto }
-        cumplir={ () => this.props.cumplirRequisito(mapaRequisitos[pregunta].llave) }
-        incumplir={ () => this.props.incumplirRequisito(mapaRequisitos[pregunta].llave) }
+        key={ llave }
+        llave={ llave }
+        texto={ mapaRequisitos[llave] }
+        cumplir={ () => this.props.cumplirRequisito(llave, true) }
+        incumplir={ () => this.props.cumplirRequisito(llave, false) }
         cumplido = { true }
       />
     ))
@@ -41,11 +41,9 @@ const mapStateToProps = ({ requisitos }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  //TODO Convertir a JS del futuro.
   cumplirRequisito: (llave, valor) => {
-    dispatch({ type: 'REQUISITO_CUMPLIDO', llave: valor })
-  },
-  incumplirRequisito: (valor) => {
-    dispatch({ type: 'REQUISITO_INCUMPLIDO', valor })
+    dispatch({ type: 'REQUISITO_CUMPLIDO', llave: llave, valor: valor })
   }
 })
 
