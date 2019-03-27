@@ -1,6 +1,6 @@
 // Listado de referencia con las preguntas de requisitos.
 
-const PreguntasRequisitos = {
+const mapaRequisitos = {
   edad: {
     llave: 'edad',
     texto: '¿La edad es entre los 2 y los 80 años?'
@@ -19,4 +19,4 @@ const PreguntasRequisitos = {
   }
 }
 
-export default PreguntasRequisitos
+export default mapaRequisitos

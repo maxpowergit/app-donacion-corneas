@@ -1,11 +1,12 @@
 import { createStore, compose, applyMiddleware } from 'redux'
 import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage' // defaults to localStorage for web and AsyncStorage for react-native
+// defaults to localStorage for web and AsyncStorage for react-native
+import storage from 'redux-persist/lib/storage'
 import logger from 'redux-logger'
 
 // Reducers
 const estadoInicial = {
-  tiempoTranscurrido: false
+  tiempoTranscurrido: false,
 }
 
 const reducer = (state = estadoInicial, action)=> {
@@ -15,9 +16,9 @@ const reducer = (state = estadoInicial, action)=> {
     case 'TIEMPO_TRANSCURRIDO':
       return { ...state, tiempoTranscurrido: action.tiempoTranscurrido }
     case 'REQUISITO_CUMPLIDO':
-      return { ...state, t: action.requisitos }
+      return { ...state, valor: true }
    case 'REQUISITO_INCUMPLIDO':
-      return { ...state, t: action.requisitos }
+      return { ...state, action }
 
     default:
       return state

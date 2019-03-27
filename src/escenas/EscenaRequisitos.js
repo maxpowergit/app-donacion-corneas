@@ -3,18 +3,19 @@ import { StyleSheet, View } from 'react-native'
 import { Container, Content } from 'native-base'
 import { connect } from 'react-redux'
 
-import PreguntasRequisitos from '../lib/PreguntasRequisitos.js'
+import mapaRequisitos from '../lib/mapaRequisitos.js'
 import PreguntaRequisitos from '../componentes/PreguntaRequisitos.js'
 
 class EscenaRequisitos extends Component {
   render() {
-    const preguntas = Object.keys(PreguntasRequisitos).map( pregunta => (
+    const preguntas = Object.keys(mapaRequisitos).map( pregunta => (
       <PreguntaRequisitos
-        key={ PreguntasRequisitos[pregunta].llave }
-        llave={ PreguntasRequisitos[pregunta].llave }
-        texto={ PreguntasRequisitos[pregunta].texto }
-        cumplir={ () => this.props.cumplirRequisito(PreguntasRequisitos[pregunta].llave) }
-        incumplir={ () => this.props.incumplirRequisito(PreguntasRequisitos[pregunta].llave) }
+        key={ mapaRequisitos[pregunta].llave }
+        llave={ mapaRequisitos[pregunta].llave }
+        texto={ mapaRequisitos[pregunta].texto }
+        cumplir={ () => this.props.cumplirRequisito(mapaRequisitos[pregunta].llave) }
+        incumplir={ () => this.props.incumplirRequisito(mapaRequisitos[pregunta].llave) }
+        cumplido = { true }
       />
     ))
 
@@ -41,7 +42,7 @@ const mapStateToProps = ({ requisitos }) => ({
 
 const mapDispatchToProps = dispatch => ({
   cumplirRequisito: (llave, valor) => {
-    dispatch({ type: 'REQUISITO_CUMPLIDO', valor })
+    dispatch({ type: 'REQUISITO_CUMPLIDO', llave: valor })
   },
   incumplirRequisito: (valor) => {
     dispatch({ type: 'REQUISITO_INCUMPLIDO', valor })

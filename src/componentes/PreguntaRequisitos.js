@@ -5,8 +5,7 @@ import { Card, CardItem, Body, Button } from 'native-base';
 
 export default class PreguntaRequisitos extends Component {
   render() {
-    const { texto, cumplir, incumplir, llave
-    } = this.props
+    const { texto, cumplir, incumplir, llave, cumplido } = this.props
     
     return (
       <Card>
@@ -18,10 +17,20 @@ export default class PreguntaRequisitos extends Component {
           </Body>
         </CardItem>
         <CardItem footer style= { estilos.contenedorBotones }> 
-          <Button full danger flex= { 1 } onPress={ () => incumplir() }>
+          <Button
+            full
+            danger= { cumplido == null | cumplido == false ? true : null }
+            flex= { 1 }
+            onPress={ () => incumplir() }
+          >
             <Text style= { estilos.textoBoton }>NO</Text>
           </Button>
-          <Button full success flex= { 1 } onPress={ () => cumplir() }>
+          <Button
+            full
+            success= { cumplido == null | cumplido == true ? true : null }
+            flex= { 1 }
+            onPress={ () => cumplir() }
+          >
             <Text style= { estilos.textoBoton }>SI</Text>
           </Button>
         </CardItem>
