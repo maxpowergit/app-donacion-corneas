@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Alert } from 'react-native'
 import { Container, Content } from 'native-base'
 import { connect } from 'react-redux'
 
@@ -7,6 +7,28 @@ import mapaRequisitos from '../lib/mapaRequisitos.js'
 import PreguntaRequisitos from '../componentes/PreguntaRequisitos.js'
 
 class EscenaRequisitos extends Component {
+  componentDidUpdate() {
+    const { requisitosCumplidos, donacionImposible, navigation } = this.props
+    const { navigate } = navigation
+
+    if (donacionImposible) {
+      Alert.alert(
+        'Requisitos',
+        'Todos los requisitos son necesarios. La donación no es viable.',
+      )
+    }
+
+    if (requisitosCumplidos) {
+      Alert.alert(
+        'Requisitos',
+        'Todos los requisitos fueron cumplidos.',
+        [
+          { text: 'CONTINUAR', onPress: () => navigate('Contraindicaciones') }
+        ]
+      )
+    }
+  }
+
   render() {
     const { cumplirRequisito, requisitos } = this.props
 
@@ -38,9 +60,17 @@ const estilos = StyleSheet.create({
   },
 })
 
-const mapStateToProps = ({ requisitos }) => ({
-  requisitos
-})
+const mapStateToProps = ({ requisitos }) => {
+  const donacionImposible = Object.values(requisitos).some((requisito) => !requisito)
+  const requisitosCumplidos = Object.values(requisitos).length >= 4 &&
+    Object.values(requisitos).every((requisito) => requisito)
+
+  return ({
+    requisitos,
+    donacionImposible,
+    requisitosCumplidos
+  })
+}
 
 const mapDispatchToProps = dispatch => ({
   //TODO Convertir a JS del futuro.
