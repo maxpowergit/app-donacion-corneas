@@ -7,6 +7,29 @@ import PreguntaContraindicaciones from '../componentes/PreguntaContraindicacione
 import mapaContraindicaciones from '../lib/mapaContraindicaciones.js'
 
 class EscenaContraindicaciones extends Component {
+  componentDidUpdate() {
+    const { indicacionesCumplidas, donacionImposible, navigation } = this.props
+    const { navigate } = navigation
+
+    if (donacionImposible) {
+      Alert.alert(
+        'Contraindicacionesa',
+        'Debido a esta contraindicación, la donación no es viable.',
+      )
+    }
+
+    if (indicacionesCumplidas) {
+      Alert.alert(
+        'Contraindicaciones',
+        'El paciente no tiene contraindicaciones',
+        [
+          { text: 'CONTINUAR', onPress: () => navigate('Requisitos') }
+        ]
+      )
+    }
+  }
+
+
 
 
   render() {
