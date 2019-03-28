@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid'
-import { Card, CardItem, Body, Button } from 'native-base';
+import { Card, CardItem, Body, Button } from 'native-base'
 
 export default class PreguntaRequisitos extends Component {
   render() {

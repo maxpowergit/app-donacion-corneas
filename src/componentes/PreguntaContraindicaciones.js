@@ -4,24 +4,14 @@ import { Col, Row, Grid } from 'react-native-easy-grid'
 import { Card, CardItem, Body, Button, ListItem, List } from 'native-base'
 
 export default class PreguntaContraindicaciones extends Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      opcionesVisibles: false,
-      clickeadoSi: false,
-      clickeadoNo: false
-    }
-  }
-
   componentWillUpdate() {
     LayoutAnimation.easeInEaseOut()
   }
 
   listaDeOpciones() {
-    return this.props.opciones.map((opcion, llave) => {
+    this.props.opciones.map((opcion, llave) => {
       return (
-        <ListItem  key= { llave }>
+        <ListItem key= { llave }>
           <Text style= { estilos.textoPregunta }> { opcion } </Text>
         </ListItem>
       )
@@ -29,31 +19,39 @@ export default class PreguntaContraindicaciones extends Component {
   }
 
   render() {
-    const { pregunta, opciones } = this.props
+    const { texto, opciones, indicar, contraindicar, llave, contraindicado, opcionesVisibles } = this.props
 
     return (
       <Card>
         <CardItem>
           <Body>
             <Text style= { estilos.textoPregunta }>
-              { this.props.pregunta }
+              { this.props.texto }
             </Text>
           </Body>
         </CardItem>
         <CardItem footer style= { estilos.contenedorBotones }>
-          <Button full danger flex= { 1 }>
+          <Button
+          full
+          success= { contraindicado == false | contraindicado == null ? true : null }
+          flex= { 1 }
+          onPress={ () => indicar() }
+          >
             <Text style= { estilos.textoBoton }>NO</Text>
           </Button>
           <Button
             full
-            success
+            danger= { contraindicado == true | contraindicado == null ? true : null }
             flex= { 1 }
-            onPress={ () => this.setState({ opcionesVisibles: true }) }
+            onPress={ () => contraindicar() }
           >
             <Text style= { estilos.textoBoton }>SI</Text>
           </Button>
         </CardItem>
-        { this.state.opcionesVisibles &&
+
+        {
+          //TODO Queda pendiente que hacer con las opcionesVisibles.
+          opcionesVisibles &&
           <CardItem>
             <Body>
               <List>
@@ -62,6 +60,7 @@ export default class PreguntaContraindicaciones extends Component {
             </Body>
           </CardItem>
         }
+
       </Card>
     )
   }

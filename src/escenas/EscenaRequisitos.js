@@ -62,7 +62,7 @@ const estilos = StyleSheet.create({
 
 const mapStateToProps = ({ requisitos }) => {
   const donacionImposible = Object.values(requisitos).some((requisito) => !requisito)
-  const requisitosCumplidos = Object.values(requisitos).length >= 4 &&
+  const requisitosCumplidos = Object.values(requisitos).length == 4 &&
     Object.values(requisitos).every((requisito) => requisito)
 
   return ({
