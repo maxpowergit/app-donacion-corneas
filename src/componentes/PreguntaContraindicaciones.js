@@ -13,7 +13,7 @@ export default class PreguntaContraindicaciones extends Component {
         options: items,
         title: '¿Es alguno de estos?'
       },
-      buttonIndex => { buttonIndex == opciones.length - 1 ? this.props.indicar() : this.props.contraindicar()
+      buttonIndex => { isNaN(buttonIndex) ? null : buttonIndex == items.length - 1 ? this.props.indicar() : this.props.contraindicar()
       }
     )}
 
