@@ -1,25 +1,24 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, LayoutAnimation } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid'
-import { Card, CardItem, Body, Button, ListItem, List } from 'native-base'
+import { Card, CardItem, Body, Button, ListItem, List, ActionSheet } from 'native-base'
 
 export default class PreguntaContraindicaciones extends Component {
-  componentWillUpdate() {
-    LayoutAnimation.easeInEaseOut()
-  }
-
   listaDeOpciones() {
-    this.props.opciones.map((opcion, llave) => {
-      return (
-        <ListItem key= { llave }>
-          <Text style= { estilos.textoPregunta }> { opcion } </Text>
-        </ListItem>
-      )
-    })
-  }
+    const { indicar, contraindicar, opciones } = this.props
+    const items = opciones.concat('Ninguno')
+
+    ActionSheet.show(
+      {
+        options: items,
+        title: '¿Es alguno de estos?'
+      },
+      buttonIndex => { buttonIndex == opciones.length - 1 ? this.props.indicar() : this.props.contraindicar()
+      }
+    )}
 
   render() {
-    const { texto, opciones, indicar, contraindicar, llave, contraindicado, opcionesVisibles } = this.props
+    const { texto, opciones, indicar, llave, contraindicado, opcionesVisibles } = this.props
 
     return (
       <Card>
@@ -43,24 +42,11 @@ export default class PreguntaContraindicaciones extends Component {
             full
             danger= { contraindicado == true | contraindicado == null ? true : null }
             flex= { 1 }
-            onPress={ () => contraindicar() }
+            onPress={ () => this.listaDeOpciones() }
           >
             <Text style= { estilos.textoBoton }>SI</Text>
           </Button>
         </CardItem>
-
-        {
-          //TODO Queda pendiente que hacer con las opcionesVisibles.
-          opcionesVisibles &&
-          <CardItem>
-            <Body>
-              <List>
-                { this.listaDeOpciones() }
-              </List>
-            </Body>
-          </CardItem>
-        }
-
       </Card>
     )
   }
