@@ -9,8 +9,23 @@ import { connect } from 'react-redux'
 import { SMS } from 'expo';
 
 class EscenaContacto extends Component {
-  async enviarSMS(telefono) {
-    const { result } = await SMS.sendSMSAsync(telefono, 'Se murió alguien');
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      nombre: '',
+      apellido: '',
+      dni: '',
+      fechaNacimiento: '',
+      fechaIngreso: '',
+      horaPCR: '',
+      causaMuerte: '',
+      servicio: ''
+    }
+  }
+
+  async enviarSMS(telefono, mensaje) {
+    const { result } = await SMS.sendSMSAsync(telefono, mensaje);
 
     // TODO Cuando terminamos de esperar, result es 'unknown' debido a
     // políticas de Google Play. Podemos asumir que al volver del async/await
@@ -18,17 +33,48 @@ class EscenaContacto extends Component {
     // algo así.
   }
 
+  mensaje() {
+    const { nombre, apellido } = this.state
+
+    const campos = [
+      `Nombre: ${nombre}`
+      `Nombre: ${apellido}`
+    ]
+
+    console.log campos.join("\n")
+    return campos.join("\n")
+  }
+
   render() {
     const { telefono } = this.props
+    const { nombre, apellido } = this.state
 
     return (
       <Container>
         <Grid>
           <Row style={ estilos.centrado }>
             <Content>
-              <Button onPress={ () => this.enviarSMS(telefono) }>
-                <Text>Preparar notificación</Text>
-              </Button>
+              <Form>
+                <Item floatingLabel>
+                  <Label>Nombre</Label>
+                  <Input
+                    onSubmitEditing={ (event) => this.setState({ nombre: event.nativeEvent.text }) }
+                    value={ nombre }
+                  />
+                </Item>
+
+                <Item floatingLabel>
+                  <Label>Apellido</Label>
+                  <Input
+                    onSubmitEditing={ (event) => this.setState({ apellido: event.nativeEvent.text }) }
+                    value={ apellido }
+                  />
+                </Item>
+
+                <Button onPress={ () => this.enviarSMS(telefono, this.mensaje()) }>
+                  <Text>Preparar notificación</Text>
+                </Button>
+              </Form>
             </Content>
           </Row>
         </Grid>
