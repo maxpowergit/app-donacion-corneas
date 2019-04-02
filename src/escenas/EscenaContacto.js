@@ -27,16 +27,14 @@ class EscenaContacto extends Component {
   }
 
   async enviarSMS(telefono, mensaje) {
+    const { navigate } = this.props.navigation
     const { result } = await SMS.sendSMSAsync(telefono, mensaje);
 
     // Cuando terminamos de esperar, en Android result es 'unknown' debido a
     // políticas de Google Play. En iOS puede ser 'sent' o 'cancelled'.
     if (result && result != 'cancelled') {
       // Podemos asumir que al volver del async/await el mensaje fue enviado.
-      Alert.alert(
-        'Listo!',
-        'El Coordinador Hospitalario ha sido notificado'
-      )
+      navigate('Indicaciones')
     }
   }
 
