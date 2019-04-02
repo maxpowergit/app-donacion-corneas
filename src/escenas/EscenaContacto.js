@@ -4,7 +4,7 @@
 // teléfono.
 import React, { Component } from 'react'
 import { StyleSheet, Text } from 'react-native'
-import { Container, Grid, Row, Content, Item, Label, Button } from 'native-base'
+import { Container, Grid, Row, Content, Form, Item, Label, Input, Button } from 'native-base'
 import { connect } from 'react-redux'
 import { SMS } from 'expo';
 
@@ -37,11 +37,11 @@ class EscenaContacto extends Component {
     const { nombre, apellido } = this.state
 
     const campos = [
-      `Nombre: ${nombre}`
+      `Nombre: ${nombre}`,
       `Nombre: ${apellido}`
     ]
 
-    console.log campos.join("\n")
+    console.log(campos.join("\n"))
     return campos.join("\n")
   }
 
@@ -58,7 +58,7 @@ class EscenaContacto extends Component {
                 <Item floatingLabel>
                   <Label>Nombre</Label>
                   <Input
-                    onSubmitEditing={ (event) => this.setState({ nombre: event.nativeEvent.text }) }
+                    onChangeText={ (text) => this.setState({ nombre: text }) }
                     value={ nombre }
                   />
                 </Item>
@@ -66,7 +66,7 @@ class EscenaContacto extends Component {
                 <Item floatingLabel>
                   <Label>Apellido</Label>
                   <Input
-                    onSubmitEditing={ (event) => this.setState({ apellido: event.nativeEvent.text }) }
+                    onChangeText={ (text) => this.setState({ apellido: text }) }
                     value={ apellido }
                   />
                 </Item>

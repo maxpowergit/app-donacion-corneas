@@ -31,7 +31,7 @@ class EscenaContraindicaciones extends Component {
         'Contraindicaciones',
         'El paciente no tiene contraindicaciones',
         [
-          { text: 'CONTINUAR', onPress: () => navigate('Requisitos') }
+          { text: 'CONTINUAR', onPress: () => navigate('Contacto') }
         ]
       )
     }
