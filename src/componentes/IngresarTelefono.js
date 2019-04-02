@@ -14,7 +14,7 @@ export default class IngresarTelefono extends Component {
 
     return (
       <Item floatingLabel >
-        <Label>Ingresá el número de contacto</Label>
+        <Label>TELÉFONO DEL COORDINADOR HOSPITALARIO</Label>
         <Input
           keyboardType={ 'number-pad' }
           onSubmitEditing={ (event) => guardarTelefono(event.nativeEvent.text) }

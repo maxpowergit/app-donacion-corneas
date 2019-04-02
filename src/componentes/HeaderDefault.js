@@ -10,7 +10,7 @@ export default class HeaderDefault extends Component {
       <Header style= { estilos.header } >
         <Left style={{flex:1}} />
         <Body style={{flex:1, alignItems:'center'}} >
-          <Text style= { estilos.textoHeader } > { texto } </Text>
+          <Text style= { estilos.textoHeader } > { texto.toUpperCase() } </Text>
         </Body>
         <Right  style={{flex:1}} >
           <Button transparent>
@@ -22,6 +22,7 @@ export default class HeaderDefault extends Component {
   }
 }
 
+//TODO Cuando actualizemos a react-native >= 0.59, hay que sacar .toUpperCase
 const estilos = StyleSheet.create({
   header: {
     backgroundColor: '#08263C',
