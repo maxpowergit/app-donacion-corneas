@@ -3,10 +3,18 @@ import { StyleSheet, ScrollView, Alert } from 'react-native'
 import { Container, Content } from 'native-base'
 import { connect } from 'react-redux'
 
+import HeaderDefault from '../componentes/HeaderDefault.js'
 import PreguntaContraindicaciones from '../componentes/PreguntaContraindicaciones.js'
 import mapaContraindicaciones from '../lib/mapaContraindicaciones.js'
 
 class EscenaContraindicaciones extends Component {
+
+  static navigationOptions = ({ navigation }) => {
+    return ({
+      header: <HeaderDefault texto={ navigation.state.routeName } />
+    })
+  }
+
   componentDidUpdate() {
     const { indicacionesCumplidas, donacionImposible, navigation } = this.props
     const { navigate } = navigation

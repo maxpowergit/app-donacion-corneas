@@ -4,9 +4,17 @@ import { Container, Content } from 'native-base'
 import { connect } from 'react-redux'
 
 import mapaRequisitos from '../lib/mapaRequisitos.js'
+import HeaderDefault from '../componentes/HeaderDefault.js'
 import PreguntaRequisitos from '../componentes/PreguntaRequisitos.js'
 
 class EscenaRequisitos extends Component {
+
+  static navigationOptions = ({ navigation }) => {
+    return ({
+      header: <HeaderDefault texto={ navigation.state.routeName } />
+    })
+  }
+
   componentDidUpdate() {
     const { requisitosCumplidos, donacionImposible, navigation } = this.props
     const { navigate } = navigation
