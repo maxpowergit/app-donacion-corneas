@@ -3,10 +3,12 @@
 // tiene que terminar de enviar usando la aplicación default de SMSs del
 // teléfono.
 import React, { Component } from 'react'
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet, Text, Alert } from 'react-native'
 import { Container, Grid, Row, Content, Form, Item, Label, Input, Button } from 'native-base'
 import { connect } from 'react-redux'
 import { SMS } from 'expo';
+
+import DatoDonante from '../componentes/DatoDonante'
 
 class EscenaContacto extends Component {
   constructor(props) {
@@ -18,7 +20,7 @@ class EscenaContacto extends Component {
       dni: '',
       fechaNacimiento: '',
       fechaIngreso: '',
-      horaPCR: '',
+      fechaHoraPCR: '',
       causaMuerte: '',
       servicio: ''
     }
@@ -27,27 +29,41 @@ class EscenaContacto extends Component {
   async enviarSMS(telefono, mensaje) {
     const { result } = await SMS.sendSMSAsync(telefono, mensaje);
 
-    // TODO Cuando terminamos de esperar, result es 'unknown' debido a
-    // políticas de Google Play. Podemos asumir que al volver del async/await
-    // el mensaje fue enviado, y acá guardar en el store 'notificado: true' o
-    // algo así.
+    // Cuando terminamos de esperar, en Android result es 'unknown' debido a
+    // políticas de Google Play. En iOS puede ser 'sent' o 'cancelled'.
+    if (result && result != 'cancelled') {
+      // Podemos asumir que al volver del async/await el mensaje fue enviado.
+      Alert.alert(
+        'Listo!',
+        'El Coordinador Hospitalario ha sido notificado'
+      )
+    }
   }
 
   mensaje() {
-    const { nombre, apellido } = this.state
+    const {
+      nombre, apellido, dni, fechaNacimiento, fechaIngreso, fechaHoraPCR, causaMuerte, servicio
+    } = this.state
 
     const campos = [
       `Nombre: ${nombre}`,
-      `Nombre: ${apellido}`
+      `Apellido: ${apellido}`,
+      `Documento: ${dni}`,
+      `Fecha de Nacimiento: ${fechaNacimiento}`,
+      `Fecha de Ingreso: ${fechaIngreso}`,
+      `Fecha y hora del PCR: ${fechaHoraPCR}`,
+      `Causa de Muerte: ${causaMuerte}`,
+      `Servicio: ${servicio}`,
     ]
 
-    console.log(campos.join("\n"))
     return campos.join("\n")
   }
 
   render() {
     const { telefono } = this.props
-    const { nombre, apellido } = this.state
+    const {
+      nombre, apellido, dni, fechaNacimiento, fechaIngreso, fechaHoraPCR, causaMuerte, servicio
+    } = this.state
 
     return (
       <Container>
@@ -55,21 +71,47 @@ class EscenaContacto extends Component {
           <Row style={ estilos.centrado }>
             <Content>
               <Form>
-                <Item floatingLabel>
-                  <Label>Nombre</Label>
-                  <Input
-                    onChangeText={ (text) => this.setState({ nombre: text }) }
-                    value={ nombre }
-                  />
-                </Item>
-
-                <Item floatingLabel>
-                  <Label>Apellido</Label>
-                  <Input
-                    onChangeText={ (text) => this.setState({ apellido: text }) }
-                    value={ apellido }
-                  />
-                </Item>
+                <DatoDonante
+                  label='nombre'
+                  value={ nombre }
+                  onChange={ (text) => this.setState({ nombre: text }) }
+                  autoFocus={ true }
+                />
+                <DatoDonante
+                  label='apellido'
+                  value={ apellido }
+                  onChange={ (text) => this.setState({ apellido: text }) }
+                />
+                <DatoDonante
+                  label='tipo y nro de documento'
+                  value={ dni }
+                  onChange={ (text) => this.setState({ dni: text }) }
+                />
+                <DatoDonante
+                  label='fecha de nacimiento'
+                  value={ fechaNacimiento }
+                  onChange={ (text) => this.setState({ fechaNacimiento: text }) }
+                />
+                <DatoDonante
+                  label='fecha de ingreso'
+                  value={ fechaIngreso }
+                  onChange={ (text) => this.setState({ fechaIngreso: text }) }
+                />
+                <DatoDonante
+                  label='fecha y hora del pcr'
+                  value={ fechaHoraPCR }
+                  onChange={ (text) => this.setState({ fechaHoraPCR: text }) }
+                />
+                <DatoDonante
+                  label='causa de muerte'
+                  value={ causaMuerte }
+                  onChange={ (text) => this.setState({ causaMuerte: text }) }
+                />
+                <DatoDonante
+                  label='servicio'
+                  value={ servicio }
+                  onChange={ (text) => this.setState({ servicio: text }) }
+                />
 
                 <Button onPress={ () => this.enviarSMS(telefono, this.mensaje()) }>
                   <Text>Preparar notificación</Text>
