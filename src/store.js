@@ -11,9 +11,9 @@ const middlewares = []
 
 // Sólo persistir la key 'telefono'
 const persistConfig = {
-    key: 'root',
-    storage,
-    whitelist: ['telefono']
+  key: 'root',
+  storage,
+  whitelist: ['telefono']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducer)

@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { StyleSheet, View, Alert } from 'react-native'
-import { Container, Content } from 'native-base'
+import { Container } from 'native-base'
 import { connect } from 'react-redux'
 
-import mapaRequisitos from '../lib/mapaRequisitos.js'
-import HeaderDefault from '../componentes/HeaderDefault.js'
-import PreguntaRequisitos from '../componentes/PreguntaRequisitos.js'
+import mapaRequisitos from '../lib/mapaRequisitos'
+import HeaderDefault from '../componentes/HeaderDefault'
+import PreguntaRequisitos from '../componentes/PreguntaRequisitos'
 
 class EscenaRequisitos extends Component {
-
-  static navigationOptions = ({ navigation }) => {
-    return ({
-      header: <HeaderDefault texto={ navigation.state.routeName } />
-    })
-  }
+  static navigationOptions = ({ navigation }) => ({
+    header: <HeaderDefault texto={ navigation.state.routeName } />
+  })
 
   componentDidUpdate() {
     const { requisitosCumplidos, donacionImposible, navigation } = this.props
@@ -47,13 +45,13 @@ class EscenaRequisitos extends Component {
         texto={ mapaRequisitos[llave] }
         cumplir={ () => cumplirRequisito(llave, true) }
         incumplir={ () => cumplirRequisito(llave, false) }
-        cumplido = { requisitos[llave] }
+        cumplido={ requisitos[llave] }
       />
     ))
 
     return (
       <Container>
-        <View flex= { 1 } style= {estilos.contenedorPreguntas}>
+        <View flex={ 1 } style={ estilos.contenedorPreguntas }>
           { preguntas }
         </View>
       </Container>
@@ -61,17 +59,27 @@ class EscenaRequisitos extends Component {
   }
 }
 
+EscenaRequisitos.propTypes = {
+  requisitosCumplidos: PropTypes.bool.isRequired,
+  donacionImposible: PropTypes.bool.isRequired,
+  requisitos: PropTypes.shape.isRequired,
+  cumplirRequisito: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired
+  }).isRequired
+}
+
 const estilos = StyleSheet.create({
   contenedorPreguntas: {
     justifyContent: 'space-around',
-    padding: 8,
-  },
+    padding: 8
+  }
 })
 
 const mapStateToProps = ({ requisitos }) => {
-  const donacionImposible = Object.values(requisitos).some((requisito) => !requisito)
-  const requisitosCumplidos = Object.values(requisitos).length == 4 &&
-    Object.values(requisitos).every((requisito) => requisito)
+  const donacionImposible = Object.values(requisitos).some(requisito => !requisito)
+  const requisitosCumplidos = Object.values(requisitos).length === 4
+    && Object.values(requisitos).every(requisito => requisito)
 
   return ({
     requisitos,
@@ -81,9 +89,8 @@ const mapStateToProps = ({ requisitos }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  //TODO Convertir a JS del futuro.
   cumplirRequisito: (llave, valor) => {
-    dispatch({ type: 'REQUISITO_CUMPLIDO', llave: llave, valor: valor })
+    dispatch({ type: 'REQUISITO_CUMPLIDO', llave, valor })
   }
 })
 

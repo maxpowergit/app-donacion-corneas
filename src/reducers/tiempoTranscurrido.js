@@ -1,10 +1,10 @@
 const estadoInicial = ''
 
-const tiempoTranscurrido = (state = estadoInicial, action)=> {
+const tiempoTranscurrido = (state = estadoInicial, action) => {
   switch (action.type) {
     case 'TIEMPO_TRANSCURRIDO':
       return action.tiempoTranscurrido
-   default:
+    default:
       return state
   }
 }

@@ -17,7 +17,7 @@ const mapaContraindicaciones = {
       'Infecciones virales específicas: Hepatítis viral, Rabia, Infección activa por herpes simple o zoster, HIV, Sme. De Reye (virus varicela, gripe, etc.)',
       'Sme. febril prolongado de causa desconocida'
     ],
-  'Inmunodeficiencia':
+  Inmunodeficiencia:
     [
       'HIV / SIDA',
       'Déficit inmunitario primario o secundario (ataxia telangiectasia- S.de WiscottAldrich, etc.)'
@@ -25,7 +25,7 @@ const mapaContraindicaciones = {
   'Enfermedades Onco-hematológicos':
     [
       'Leucemias, Aplasia medular, Hemoglobinuria paroxística nocturna, Policetemia vera, Mielofibrosis, Trombocitemia esencial',
-      'Enf. de Hodking, Linfoma no Hodkin, Linfoma de Burkitt, Micosis fungoide, Mieloma múltiple, microglobulinemia, Enf. de la cadena pesada, Linfosarcomas.',
+      'Enf. de Hodking, Linfoma no Hodkin, Linfoma de Burkitt, Micosis fungoide, Mieloma múltiple, microglobulinemia, Enf. de la cadena pesada, Linfosarcomas.'
     ],
   'Enfermedad intrínsecas al ojo':
     [
@@ -36,7 +36,7 @@ const mapaContraindicaciones = {
     [
       'Tumores del SNC que afecten la estructura ósea y/o el contenido orbitario'
     ],
-  'Intoxicación':
+  Intoxicación:
     [
       'Plaguicidas, fármacos, nafta, kerosene',
       'Alimentos con bacterias patógenas, microtoxinas.',

@@ -2,7 +2,9 @@
 // después de haber notificado al Coordinador Hospitalario.
 import React, { Component } from 'react'
 import { Text } from 'react-native'
-import { Container, Grid, Row, Content } from 'native-base'
+import {
+  Container, Grid, Row, Content
+} from 'native-base'
 
 class EscenaIndicaciones extends Component {
   render() {

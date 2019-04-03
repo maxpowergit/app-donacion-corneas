@@ -1,52 +1,54 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { Container, Content, Form } from 'native-base'
-import { Col, Row, Grid } from 'react-native-easy-grid'
+import { Row, Grid } from 'react-native-easy-grid'
 import { connect } from 'react-redux'
 
-import LogoFadeIn from '../componentes/LogoFadeIn.js'
-import IngresarTelefono from '../componentes/IngresarTelefono.js'
-import ConfirmarTelefono from '../componentes/ConfirmarTelefono.js'
+import LogoFadeIn from '../componentes/LogoFadeIn'
+import IngresarTelefono from '../componentes/IngresarTelefono'
+import ConfirmarTelefono from '../componentes/ConfirmarTelefono'
 
 class EscenaIngreso extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   navegarSiHayTelefono() {
-    const { telefono, cambiarTiempoTranscurrido } = this.props
+    const { telefono, cambiarTiempoTranscurrido, navigation } = this.props
 
     if (telefono) {
-      return (
-        this.props.navigation.navigate('Requisitos')
-      )
+      navigation.navigate('Requisitos')
     } else {
       cambiarTiempoTranscurrido(true)
     }
   }
 
   mostrarTelefono() {
-    const { telefono, guardarTelefono, tiempoTranscurrido } = this.props
+    const {
+      telefono, guardarTelefono, tiempoTranscurrido, navigation
+    } = this.props
 
     if (tiempoTranscurrido) {
       return (
         <>
           <IngresarTelefono guardarTelefono={ guardarTelefono } />
-          <ConfirmarTelefono telefono={ telefono } confirmar= { () => this.props.navigation.navigate('Requisitos') } />
+          <ConfirmarTelefono telefono={ telefono } confirmar={ () => navigation.navigate('Requisitos') } />
         </>
       )
     }
+
+    return null
   }
 
   render() {
     return (
       <Container>
         <Grid>
-          <KeyboardAvoidingView behavior="padding" flex= { 1 } >
-            <Row style={ estilos.centrado } >
+          <KeyboardAvoidingView behavior="padding" flex={ 1 }>
+            <Row style={ estilos.centrado }>
               <Content>
-                <Form style={ estilos.centrado } >
-                  <LogoFadeIn duracion={ 3500 } callback ={ () => { this.navegarSiHayTelefono() }}/>
+                <Form style={ estilos.centrado }>
+                  <LogoFadeIn
+                    duracion={ 3500 }
+                    callback={ () => { this.navegarSiHayTelefono() } }
+                  />
 
                   { this.mostrarTelefono() }
                 </Form>
@@ -59,11 +61,21 @@ class EscenaIngreso extends Component {
   }
 }
 
+EscenaIngreso.propTypes = {
+  telefono: PropTypes.string.isRequired,
+  tiempoTranscurrido: PropTypes.bool.isRequired,
+  guardarTelefono: PropTypes.func.isRequired,
+  cambiarTiempoTranscurrido: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired
+  }).isRequired
+}
+
 const estilos = StyleSheet.create({
   centrado: {
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#00CE9F'
+    backgroundColor: '#00CE9F',
+    justifyContent: 'center'
   }
 })
 

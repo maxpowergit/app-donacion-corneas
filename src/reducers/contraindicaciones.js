@@ -1,6 +1,6 @@
 const estadoInicial = {}
 
-const contraindicaciones = (state = estadoInicial, action)=> {
+const contraindicaciones = (state = estadoInicial, action) => {
   switch (action.type) {
     case 'CONTRAINDICACION_ASIGNADA':
       return { ...state, [action.llave]: action.valor }
