@@ -62,7 +62,8 @@ class EscenaRequisitos extends Component {
 EscenaRequisitos.propTypes = {
   requisitosCumplidos: PropTypes.bool.isRequired,
   donacionImposible: PropTypes.bool.isRequired,
-  requisitos: PropTypes.shape.isRequired,
+  //FIX en requisitos isRequired tiraba error, ya que los va creando
+  //requisitos: PropTypes.shape.isRequired,
   cumplirRequisito: PropTypes.func.isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired

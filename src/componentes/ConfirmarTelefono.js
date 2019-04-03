@@ -1,10 +1,10 @@
 // Componente para confirmar la correctitud del número telfónico ingresado.
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { LayoutAnimation, Text } from 'react-native'
 import { Item, Button } from 'native-base'
 
 export default class ConfirmarTelefono extends Component {
-
   componentWillMount() {
     LayoutAnimation.easeInEaseOut()
   }
@@ -15,13 +15,17 @@ export default class ConfirmarTelefono extends Component {
     if (telefono) {
       return (
         <Item>
-          <Button onPress={ confirmar } >
+          <Button onPress={ confirmar }>
             <Text>Confirmar</Text>
           </Button>
-       </Item>
+        </Item>
       )
-    } else {
-      return null
     }
+    return null
   }
+}
+
+ConfirmarTelefono.propTypes = {
+  telefono: PropTypes.string.isRequired,
+  confirmar: PropTypes.func.isRequired
 }

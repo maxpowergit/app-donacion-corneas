@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Animated, Easing } from 'react-native'
 import { Icon } from 'native-base'
 
@@ -13,16 +14,17 @@ export default class LogoFadeIn extends Component {
   }
 
   animar() {
+    const { retraso, duracion, callback } = this.props
     this.valorAnimacion.setValue(0)
     Animated.timing(
-        this.valorAnimacion,
+      this.valorAnimacion,
       {
         toValue: 1,
-        delay: this.props.retraso,
-        duration: this.props.duracion,
+        delay: retraso,
+        duration: duracion,
         easing: Easing.elastic(1)
       }
-      ).start(this.props.callback)
+    ).start(callback)
   }
 
   render() {
@@ -39,18 +41,24 @@ export default class LogoFadeIn extends Component {
     return (
       <Animated.View style={ {
         opacity,
-        marginTop: desdeArriba,
+        marginTop: desdeArriba
       } }
       >
-        <Icon 
-          name='home' 
-          style= { {
+        <Icon
+          name="home"
+          style={ {
             padding: '10%',
             fontSize: 150,
             color: '#3F51B5'
-          }}
+          } }
         />
       </Animated.View>
     )
   }
+}
+
+LogoFadeIn.propTypes = {
+  retraso: PropTypes.number,
+  duracion: PropTypes.number.isRequired,
+  callback: PropTypes.func.isRequired
 }

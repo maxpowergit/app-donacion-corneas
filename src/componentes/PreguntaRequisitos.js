@@ -1,51 +1,53 @@
-import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { Col, Row, Grid } from 'react-native-easy-grid'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { StyleSheet, Text } from 'react-native'
 import { Card, CardItem, Body, Button } from 'native-base'
 
-export default class PreguntaRequisitos extends Component {
-  render() {
-    const { texto, cumplir, incumplir, llave, cumplido } = this.props
-    
-    return (
-      <Card>
-        <CardItem>
-          <Body>
-            <Text style= { estilos.textoPregunta }>
-              { this.props.texto }
-            </Text> 
-          </Body>
-        </CardItem>
-        <CardItem footer style= { estilos.contenedorBotones }> 
-          <Button
-            full
-            danger= { cumplido == null | cumplido == false ? true : null }
-            flex= { 1 }
-            onPress={ () => incumplir() }
-          >
-            <Text style= { estilos.textoBoton }>NO</Text>
-          </Button>
-          <Button
-            full
-            success= { cumplido == null | cumplido == true ? true : null }
-            flex= { 1 }
-            onPress={ () => cumplir() }
-          >
-            <Text style= { estilos.textoBoton }>SI</Text>
-          </Button>
-        </CardItem>
-      </Card>
-    )
-  }
+const PreguntaRequisitos = ({ texto, cumplir, incumplir, cumplido }) => (
+  <Card>
+    <CardItem>
+      <Body>
+        <Text style={ estilos.textoPregunta }>
+          { texto }
+        </Text>
+      </Body>
+    </CardItem>
+    <CardItem footer style={ estilos.contenedorBotones }>
+      <Button
+        full
+        danger={ cumplido == null || cumplido == false ? true : null }
+        flex={ 1 }
+        onPress={ () => incumplir() }
+      >
+        <Text style={ estilos.textoBoton }>NO</Text>
+      </Button>
+      <Button
+        full
+        success={ cumplido == null || cumplido == true ? true : null }
+        flex={ 1 }
+        onPress={ () => cumplir() }
+      >
+        <Text style={ estilos.textoBoton }>SI</Text>
+      </Button>
+    </CardItem>
+  </Card>
+)
+
+PreguntaRequisitos.propTypes = {
+  texto: PropTypes.string.isRequired,
+  cumplir: PropTypes.func.isRequired,
+  incumplir: PropTypes.func.isRequired,
+  //FIX como está armado cumplido dispara error.
+  //cumplido: PropTypes.bool.isRequired
 }
 
 const estilos = StyleSheet.create({
   contenedorBotones: {
-    paddingTop: 0,
     paddingBottom: 0,
     paddingLeft: 0,
-    paddingRight: 0
-  }, 
+    paddingRight: 0,
+    paddingTop: 0
+  },
   textoBoton: {
     color: 'white',
     fontSize: 16
@@ -55,3 +57,5 @@ const estilos = StyleSheet.create({
     fontSize: 18
   }
 })
+
+export default PreguntaRequisitos

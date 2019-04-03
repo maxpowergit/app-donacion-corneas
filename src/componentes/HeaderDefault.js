@@ -1,33 +1,34 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { Text, StatusBar, StyleSheet } from 'react-native'
-import { Container, Header, Left, Body, Right, Button, Icon, Title } from 'native-base'
+import { Header, Left, Body, Right, Button, Icon } from 'native-base'
 
-export default class HeaderDefault extends Component {
-  render() {
-    const { texto } = this.props
+// TODO Cuando actualizemos a react-native >= 0.59, hay que sacar .toUpperCase
+const HeaderDefault = ({ texto }) => (
+  <Header style={ estilos.header }>
+    <Left style={ { flex: 1 } } />
+    <Body style={ { flex: 1, alignItems: 'center' } }>
+      <Text style={ estilos.textoHeader }>
+        { texto.toUpperCase() }
+      </Text>
+    </Body>
+    <Right style={ { flex: 1 } }>
+      <Button transparent>
+        <Icon name="more" style={ estilos.iconoHeader } />
+      </Button>
+    </Right>
+  </Header>
+)
 
-    return (
-      <Header style= { estilos.header } >
-        <Left style={{flex:1}} />
-        <Body style={{flex:1, alignItems:'center'}} >
-          <Text style= { estilos.textoHeader } > { texto.toUpperCase() } </Text>
-        </Body>
-        <Right  style={{flex:1}} >
-          <Button transparent>
-            <Icon name='more' style={ estilos.iconoHeader} />
-          </Button>
-        </Right>
-      </Header>
-    )
-  }
+HeaderDefault.propTypes = {
+  texto: PropTypes.string.isRequired
 }
 
-//TODO Cuando actualizemos a react-native >= 0.59, hay que sacar .toUpperCase
 const estilos = StyleSheet.create({
   header: {
     backgroundColor: '#08263C',
-    paddingTop: StatusBar.currentHeight,
-    height: StatusBar.currentHeight + 56
+    height: StatusBar.currentHeight + 56,
+    paddingTop: StatusBar.currentHeight
   },
   iconoHeader: {
     color: 'white',
@@ -39,3 +40,5 @@ const estilos = StyleSheet.create({
     textTransform: 'uppercase'
   }
 })
+
+export default HeaderDefault

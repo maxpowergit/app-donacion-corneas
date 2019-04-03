@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, LayoutAnimation } from 'react-native'
-import { Col, Row, Grid } from 'react-native-easy-grid'
-import { Card, CardItem, Body, Button, ListItem, List, ActionSheet } from 'native-base'
+import PropTypes from 'prop-types'
+import { StyleSheet, Text } from 'react-native'
+import { Card, CardItem, Body, Button, ActionSheet } from 'native-base'
 
 export default class PreguntaContraindicaciones extends Component {
   listaDeOpciones() {
@@ -13,38 +13,40 @@ export default class PreguntaContraindicaciones extends Component {
         options: items,
         title: '¿Es alguno de estos?'
       },
-      buttonIndex => { isNaN(buttonIndex) ? null : buttonIndex == items.length - 1 ? this.props.indicar() : this.props.contraindicar()
+      (buttonIndex) => {
+        isNaN(buttonIndex) ? null : buttonIndex == items.length - 1 ? indicar() : contraindicar()
       }
-    )}
+    )
+  }
 
   render() {
-    const { texto, opciones, indicar, llave, contraindicado, opcionesVisibles } = this.props
+    const { texto, indicar, contraindicado } = this.props
 
     return (
       <Card>
         <CardItem>
           <Body>
-            <Text style= { estilos.textoPregunta }>
-              { this.props.texto }
+            <Text style={ estilos.textoPregunta }>
+              { texto }
             </Text>
           </Body>
         </CardItem>
-        <CardItem footer style= { estilos.contenedorBotones }>
+        <CardItem footer style={ estilos.contenedorBotones }>
           <Button
-          full
-          success= { contraindicado == false | contraindicado == null ? true : null }
-          flex= { 1 }
-          onPress={ () => indicar() }
+            full
+            success={ contraindicado == false || contraindicado == null ? true : null }
+            flex={ 1 }
+            onPress={ () => indicar() }
           >
-            <Text style= { estilos.textoBoton }>NO</Text>
+            <Text style={ estilos.textoBoton }>NO</Text>
           </Button>
           <Button
             full
-            danger= { contraindicado == true | contraindicado == null ? true : null }
-            flex= { 1 }
+            danger={ contraindicado == true || contraindicado == null ? true : null }
+            flex={ 1 }
             onPress={ () => this.listaDeOpciones() }
           >
-            <Text style= { estilos.textoBoton }>SI</Text>
+            <Text style={ estilos.textoBoton }>SI</Text>
           </Button>
         </CardItem>
       </Card>
@@ -52,13 +54,23 @@ export default class PreguntaContraindicaciones extends Component {
   }
 }
 
+PreguntaContraindicaciones.propTypes = {
+  // FIX array es prohibido.
+  opciones: PropTypes.array.isRequired,
+  texto: PropTypes.string.isRequired,
+  // FIX contraindicado dispara error
+  // contraindicado: PropTypes.bool.isRequired,
+  indicar: PropTypes.func.isRequired,
+  contraindicar: PropTypes.func.isRequired
+}
+
 const estilos = StyleSheet.create({
   contenedorBotones: {
-    paddingTop: 0,
     paddingBottom: 0,
     paddingLeft: 0,
-    paddingRight: 0
-  }, 
+    paddingRight: 0,
+    paddingTop: 0
+  },
   textoBoton: {
     color: 'white',
     fontSize: 16

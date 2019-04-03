@@ -1,4 +1,4 @@
-const estadoInicial = ''
+const estadoInicial = false
 
 const tiempoTranscurrido = (state = estadoInicial, action) => {
   switch (action.type) {
