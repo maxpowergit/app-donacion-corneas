@@ -29,6 +29,8 @@ module.exports = {
 
     // La primer prop debe ir en una nueva línea si hay varias props y líneas
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-first-prop-new-line.md
-    "react/jsx-first-prop-new-line": [2, "multiline-multiprop"]
+    "react/jsx-first-prop-new-line": [2, "multiline-multiprop"],
+
+    "object-curly-newline": "off"
   }
 }
