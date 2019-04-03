@@ -12,6 +12,7 @@ import { connect } from 'react-redux'
 import { SMS } from 'expo'
 
 import DatoDonante from '../componentes/DatoDonante'
+import DatoFechaDonante from '../componentes/DatoFechaDonante'
 
 class EscenaContacto extends Component {
   constructor(props) {
@@ -75,8 +76,7 @@ class EscenaContacto extends Component {
                 <DatoDonante
                   label="nombre"
                   value={ nombre }
-                  onChange={ text => this.setState({ nombre: text }) }
-                  autoFocus
+                  onChange={ (text) => this.setState({ nombre: text }) }
                 />
                 <DatoDonante
                   label="apellido"
@@ -88,15 +88,15 @@ class EscenaContacto extends Component {
                   value={ dni }
                   onChange={ text => this.setState({ dni: text }) }
                 />
-                <DatoDonante
-                  label="fecha de nacimiento"
+                <DatoFechaDonante
+                  label='fecha de nacimiento'
                   value={ fechaNacimiento }
-                  onChange={ text => this.setState({ fechaNacimiento: text }) }
+                  onChange={ (fecha) => this.setState({ fechaNacimiento: fecha.toLocaleDateString() }) }
                 />
-                <DatoDonante
-                  label="fecha de ingreso"
+                <DatoFechaDonante
+                  label='fecha de ingreso'
                   value={ fechaIngreso }
-                  onChange={ text => this.setState({ fechaIngreso: text }) }
+                  onChange={ (fecha) => this.setState({ fechaIngreso: fecha.toLocaleDateString() }) }
                 />
                 <DatoDonante
                   label="fecha y hora del pcr"
