@@ -5,7 +5,8 @@ import { Item, Label, Input } from 'native-base'
 // TODO Cuando actualizemos a react-native >= 0.59, hay que sacar .toUpperCase
 const DatoDonante = ({ label, onChange, value, ...props }) => (
   <Item floatingLabel>
-    <Label style={ { textTransform: 'uppercase'} }>{ label.toUpperCase() }</Label>
+    <Label style={ { textTransform: 'uppercase' } }>{ label.toUpperCase() }</Label>
+
     <Input
       { ...props }
 

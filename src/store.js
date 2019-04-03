@@ -6,8 +6,12 @@ import logger from 'redux-logger'
 
 import reducer from './reducers'
 
-// Configuración del Store
 const middlewares = []
+
+// Agregar middlewares en desarrollo
+if (process.env.NODE_ENV === 'development') {
+  middlewares.push(logger)
+}
 
 // Sólo persistir la key 'telefono'
 const persistConfig = {
@@ -17,10 +21,6 @@ const persistConfig = {
 }
 
 const persistedReducer = persistReducer(persistConfig, reducer)
-
-if (process.env.NODE_ENV === 'development') {
-  middlewares.push(logger)
-}
 
 const store = createStore(
   persistedReducer,

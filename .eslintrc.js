@@ -31,6 +31,10 @@ module.exports = {
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-first-prop-new-line.md
     "react/jsx-first-prop-new-line": [2, "multiline-multiprop"],
 
-    "object-curly-newline": "off"
+    // Ninguna regla venía bien
+    "object-curly-newline": "off",
+
+    // Label es un reemplazo de native-base para Text
+    "react-native/no-raw-text": ["error", { "skip": ["Label"] } ]
   }
 }

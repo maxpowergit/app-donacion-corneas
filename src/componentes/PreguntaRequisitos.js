@@ -15,7 +15,7 @@ const PreguntaRequisitos = ({ texto, cumplir, incumplir, cumplido }) => (
     <CardItem footer style={ estilos.contenedorBotones }>
       <Button
         full
-        danger={ cumplido == null || cumplido == false ? true : null }
+        danger={ cumplido === null || cumplido === false ? true : null }
         flex={ 1 }
         onPress={ () => incumplir() }
       >
@@ -23,7 +23,7 @@ const PreguntaRequisitos = ({ texto, cumplir, incumplir, cumplido }) => (
       </Button>
       <Button
         full
-        success={ cumplido == null || cumplido == true ? true : null }
+        success={ cumplido === null || cumplido === true ? true : null }
         flex={ 1 }
         onPress={ () => cumplir() }
       >
@@ -37,8 +37,11 @@ PreguntaRequisitos.propTypes = {
   texto: PropTypes.string.isRequired,
   cumplir: PropTypes.func.isRequired,
   incumplir: PropTypes.func.isRequired,
-  //FIX como está armado cumplido dispara error.
-  //cumplido: PropTypes.bool.isRequired
+  cumplido: PropTypes.bool
+}
+
+PreguntaRequisitos.defaultProps = {
+  cumplido: null
 }
 
 const estilos = StyleSheet.create({

@@ -6,6 +6,7 @@ import { Icon } from 'native-base'
 export default class LogoFadeIn extends Component {
   constructor() {
     super()
+
     this.valorAnimacion = new Animated.Value(0)
   }
 
@@ -14,13 +15,14 @@ export default class LogoFadeIn extends Component {
   }
 
   animar() {
-    const { retraso, duracion, callback } = this.props
+    const { duracion, callback } = this.props
+
     this.valorAnimacion.setValue(0)
+
     Animated.timing(
       this.valorAnimacion,
       {
         toValue: 1,
-        delay: retraso,
         duration: duracion,
         easing: Easing.elastic(1)
       }
@@ -58,7 +60,6 @@ export default class LogoFadeIn extends Component {
 }
 
 LogoFadeIn.propTypes = {
-  retraso: PropTypes.number,
   duracion: PropTypes.number.isRequired,
   callback: PropTypes.func.isRequired
 }

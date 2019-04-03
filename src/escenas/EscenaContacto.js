@@ -5,9 +5,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, Text } from 'react-native'
-import {
-  Container, Grid, Row, Content, Form, Button
-} from 'native-base'
+import { Container, Grid, Row, Content, Form, Button } from 'native-base'
 import { connect } from 'react-redux'
 import { SMS } from 'expo'
 
@@ -76,7 +74,7 @@ class EscenaContacto extends Component {
                 <DatoDonante
                   label="nombre"
                   value={ nombre }
-                  onChange={ (text) => this.setState({ nombre: text }) }
+                  onChange={ text => this.setState({ nombre: text }) }
                 />
                 <DatoDonante
                   label="apellido"
@@ -89,14 +87,14 @@ class EscenaContacto extends Component {
                   onChange={ text => this.setState({ dni: text }) }
                 />
                 <DatoFechaDonante
-                  label='fecha de nacimiento'
+                  label="fecha de nacimiento"
                   value={ fechaNacimiento }
-                  onChange={ (fecha) => this.setState({ fechaNacimiento: fecha.toLocaleDateString() }) }
+                  onChange={ date => this.setState({ fechaNacimiento: date.toLocaleDateString() }) }
                 />
                 <DatoFechaDonante
-                  label='fecha de ingreso'
+                  label="fecha de ingreso"
                   value={ fechaIngreso }
-                  onChange={ (fecha) => this.setState({ fechaIngreso: fecha.toLocaleDateString() }) }
+                  onChange={ date => this.setState({ fechaIngreso: date.toLocaleDateString() }) }
                 />
                 <DatoDonante
                   label="fecha y hora del pcr"

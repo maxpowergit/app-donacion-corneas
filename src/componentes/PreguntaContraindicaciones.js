@@ -14,7 +14,11 @@ export default class PreguntaContraindicaciones extends Component {
         title: '¿Es alguno de estos?'
       },
       (buttonIndex) => {
-        isNaN(buttonIndex) ? null : buttonIndex == items.length - 1 ? indicar() : contraindicar()
+        if (buttonIndex === items.length - 1) {
+          return indicar()
+        }
+
+        return contraindicar()
       }
     )
   }
@@ -34,7 +38,7 @@ export default class PreguntaContraindicaciones extends Component {
         <CardItem footer style={ estilos.contenedorBotones }>
           <Button
             full
-            success={ contraindicado == false || contraindicado == null ? true : null }
+            success={ contraindicado === false || contraindicado === null ? true : null }
             flex={ 1 }
             onPress={ () => indicar() }
           >
@@ -42,7 +46,7 @@ export default class PreguntaContraindicaciones extends Component {
           </Button>
           <Button
             full
-            danger={ contraindicado == true || contraindicado == null ? true : null }
+            danger={ contraindicado === true || contraindicado === null ? true : null }
             flex={ 1 }
             onPress={ () => this.listaDeOpciones() }
           >
@@ -55,13 +59,17 @@ export default class PreguntaContraindicaciones extends Component {
 }
 
 PreguntaContraindicaciones.propTypes = {
-  // FIX array es prohibido.
-  opciones: PropTypes.array.isRequired,
+  opciones: PropTypes.arrayOf(
+    PropTypes.string
+  ).isRequired,
   texto: PropTypes.string.isRequired,
-  // FIX contraindicado dispara error
-  // contraindicado: PropTypes.bool.isRequired,
+  contraindicado: PropTypes.bool,
   indicar: PropTypes.func.isRequired,
   contraindicar: PropTypes.func.isRequired
+}
+
+PreguntaContraindicaciones.defaultProps = {
+  contraindicado: null
 }
 
 const estilos = StyleSheet.create({
