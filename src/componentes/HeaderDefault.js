@@ -7,7 +7,7 @@ import { Header, Left, Body, Right, Button, Icon } from 'native-base'
 const HeaderDefault = ({ texto }) => (
   <Header style={ estilos.header }>
     <Left style={ { flex: 1 } } />
-    <Body style={ { flex: 1, alignItems: 'center' } }>
+    <Body style={ { flex: 3, alignItems: 'center' } }>
       <Text style={ estilos.textoHeader }>
         { texto.toUpperCase() }
       </Text>
