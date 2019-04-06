@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, Text } from 'react-native'
-import { Card, CardItem, Body, Button, ActionSheet } from 'native-base'
+import { StyleSheet } from 'react-native'
+import { Card, CardItem, Body, Button, ActionSheet, Text } from 'native-base'
 
 export default class PreguntaContraindicaciones extends Component {
   listaDeOpciones() {

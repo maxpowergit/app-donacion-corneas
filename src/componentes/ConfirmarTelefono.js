@@ -1,8 +1,8 @@
 // Componente para confirmar la correctitud del número telfónico ingresado.
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { LayoutAnimation, Text } from 'react-native'
-import { Item, Button } from 'native-base'
+import { LayoutAnimation } from 'react-native'
+import { Item, Button, Text } from 'native-base'
 
 export default class ConfirmarTelefono extends Component {
   componentWillMount() {

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Text, StatusBar, StyleSheet } from 'react-native'
-import { Header, Left, Body, Right, Button, Icon } from 'native-base'
+import { StatusBar, StyleSheet } from 'react-native'
+import { Header, Left, Body, Right, Button, Icon, Text } from 'native-base'
 
 // TODO Cuando actualizemos a react-native >= 0.59, hay que sacar .toUpperCase
 const HeaderDefault = ({ texto }) => (

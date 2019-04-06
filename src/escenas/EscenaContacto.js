@@ -4,8 +4,7 @@
 // teléfono.
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Text } from 'react-native'
-import { Form, Button } from 'native-base'
+import { Form, Button, Text } from 'native-base'
 import { connect } from 'react-redux'
 import { SMS } from 'expo'
 

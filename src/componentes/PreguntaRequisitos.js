@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, Text } from 'react-native'
-import { Card, CardItem, Body, Button } from 'native-base'
+import { StyleSheet } from 'react-native'
+import { Card, CardItem, Body, Button, Text } from 'native-base'
 
 const PreguntaRequisitos = ({ texto, cumplir, incumplir, cumplido }) => (
   <Card>
