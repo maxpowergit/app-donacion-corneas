@@ -62,7 +62,7 @@ class EscenaContraindicaciones extends Component {
 EscenaContraindicaciones.propTypes = {
   indicacionesCumplidas: PropTypes.bool.isRequired,
   donacionImposible: PropTypes.bool.isRequired,
-  contraindicaciones: PropTypes.shape.isRequired,
+  contraindicaciones: PropTypes.shape().isRequired,
   asignarContraindicacion: PropTypes.func.isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired
