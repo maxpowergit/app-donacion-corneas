@@ -1,19 +1,17 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation'
+// Layout principal y estructura de las escenas requeridas por native-base.
+import React from 'react'
+import { StatusBar } from 'react-native'
+import { Root } from 'native-base'
 
-import EscenaIngreso from './escenas/EscenaIngreso'
-import EscenaRequisitos from './escenas/EscenaRequisitos'
-import EscenaContraindicaciones from './escenas/EscenaContraindicaciones'
-import EscenaContacto from './escenas/EscenaContacto'
-import EscenaIndicaciones from './escenas/EscenaIndicaciones'
+import Navegador from './Navegador'
 
-const Navegador = createStackNavigator({
-  Ingreso: { screen: EscenaIngreso, navigationOptions: { header: null } },
-  Requisitos: { screen: EscenaRequisitos },
-  Contraindicaciones: { screen: EscenaContraindicaciones },
-  Contacto: { screen: EscenaContacto },
-  Indicaciones: { screen: EscenaIndicaciones }
-}, {
-  initialRouteName: 'Ingreso'
-})
+// Root es necesario para que funcione Action Sheet.
+// Navegador es nuestro navegador principal.
+const DonacionApp = () => (
+  <Root>
+    <StatusBar translucent backgroundColor="rgba(0, 0, 0, 0.20)" />
+    <Navegador />
+  </Root>
+)
 
-export default createAppContainer(Navegador)
+export default DonacionApp
