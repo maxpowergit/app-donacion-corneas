@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, View, Alert } from 'react-native'
-import { Container } from 'native-base'
 import { connect } from 'react-redux'
 
 import mapaRequisitos from '../lib/mapaRequisitos'
-import HeaderDefault from '../componentes/HeaderDefault'
+import Escena from '../componentes/Escena'
 import PreguntaRequisitos from '../componentes/PreguntaRequisitos'
 
 class EscenaRequisitos extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    header: <HeaderDefault texto={ navigation.state.routeName } />
-  })
-
   componentDidUpdate() {
     const { requisitosCumplidos, donacionImposible, navigation } = this.props
     const { navigate } = navigation
@@ -36,7 +31,7 @@ class EscenaRequisitos extends Component {
   }
 
   render() {
-    const { cumplirRequisito, requisitos } = this.props
+    const { cumplirRequisito, requisitos, navigation } = this.props
 
     const preguntas = Object.keys(mapaRequisitos).map(llave => (
       <PreguntaRequisitos
@@ -50,11 +45,11 @@ class EscenaRequisitos extends Component {
     ))
 
     return (
-      <Container>
+      <Escena navigation={ navigation }>
         <View flex={ 1 } style={ estilos.contenedorPreguntas }>
           { preguntas }
         </View>
-      </Container>
+      </Escena>
     )
   }
 }

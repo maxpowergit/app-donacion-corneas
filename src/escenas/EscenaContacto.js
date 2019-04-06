@@ -4,11 +4,12 @@
 // teléfono.
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, Text } from 'react-native'
-import { Container, Grid, Row, Content, Form, Button } from 'native-base'
+import { Text } from 'react-native'
+import { Form, Button } from 'native-base'
 import { connect } from 'react-redux'
 import { SMS } from 'expo'
 
+import Escena from '../componentes/Escena'
 import DatoDonante from '../componentes/DatoDonante'
 import DatoFechaDonante from '../componentes/DatoFechaDonante'
 
@@ -60,66 +61,60 @@ class EscenaContacto extends Component {
   }
 
   render() {
-    const { telefono } = this.props
+    const { telefono, navigation } = this.props
     const {
       nombre, apellido, dni, fechaNacimiento, fechaIngreso, fechaHoraPCR, causaMuerte, servicio
     } = this.state
 
     return (
-      <Container>
-        <Grid>
-          <Row style={ estilos.centrado }>
-            <Content>
-              <Form>
-                <DatoDonante
-                  label="nombre"
-                  value={ nombre }
-                  onChange={ text => this.setState({ nombre: text }) }
-                />
-                <DatoDonante
-                  label="apellido"
-                  value={ apellido }
-                  onChange={ text => this.setState({ apellido: text }) }
-                />
-                <DatoDonante
-                  label="tipo y nro de documento"
-                  value={ dni }
-                  onChange={ text => this.setState({ dni: text }) }
-                />
-                <DatoFechaDonante
-                  label="fecha de nacimiento"
-                  value={ fechaNacimiento }
-                  onChange={ date => this.setState({ fechaNacimiento: date.toLocaleDateString() }) }
-                />
-                <DatoFechaDonante
-                  label="fecha de ingreso"
-                  value={ fechaIngreso }
-                  onChange={ date => this.setState({ fechaIngreso: date.toLocaleDateString() }) }
-                />
-                <DatoDonante
-                  label="fecha y hora del pcr"
-                  value={ fechaHoraPCR }
-                  onChange={ text => this.setState({ fechaHoraPCR: text }) }
-                />
-                <DatoDonante
-                  label="causa de muerte"
-                  value={ causaMuerte }
-                  onChange={ text => this.setState({ causaMuerte: text }) }
-                />
-                <DatoDonante
-                  label="servicio"
-                  value={ servicio }
-                  onChange={ text => this.setState({ servicio: text }) }
-                />
+      <Escena navigation={ navigation }>
+        <Form>
+          <DatoDonante
+            label="nombre"
+            value={ nombre }
+            onChange={ text => this.setState({ nombre: text }) }
+          />
+          <DatoDonante
+            label="apellido"
+            value={ apellido }
+            onChange={ text => this.setState({ apellido: text }) }
+          />
+          <DatoDonante
+            label="tipo y nro de documento"
+            value={ dni }
+            onChange={ text => this.setState({ dni: text }) }
+          />
+          <DatoFechaDonante
+            label="fecha de nacimiento"
+            value={ fechaNacimiento }
+            onChange={ date => this.setState({ fechaNacimiento: date.toLocaleDateString() }) }
+          />
+          <DatoFechaDonante
+            label="fecha de ingreso"
+            value={ fechaIngreso }
+            onChange={ date => this.setState({ fechaIngreso: date.toLocaleDateString() }) }
+          />
+          <DatoDonante
+            label="fecha y hora del pcr"
+            value={ fechaHoraPCR }
+            onChange={ text => this.setState({ fechaHoraPCR: text }) }
+          />
+          <DatoDonante
+            label="causa de muerte"
+            value={ causaMuerte }
+            onChange={ text => this.setState({ causaMuerte: text }) }
+          />
+          <DatoDonante
+            label="servicio"
+            value={ servicio }
+            onChange={ text => this.setState({ servicio: text }) }
+          />
 
-                <Button onPress={ () => this.enviarSMS(telefono, this.mensaje()) }>
-                  <Text>Preparar notificación</Text>
-                </Button>
-              </Form>
-            </Content>
-          </Row>
-        </Grid>
-      </Container>
+          <Button full onPress={ () => this.enviarSMS(telefono, this.mensaje()) }>
+            <Text>Preparar notificación</Text>
+          </Button>
+        </Form>
+      </Escena>
     )
   }
 }
@@ -130,14 +125,6 @@ EscenaContacto.propTypes = {
     navigate: PropTypes.func.isRequired
   }).isRequired
 }
-
-const estilos = StyleSheet.create({
-  centrado: {
-    alignItems: 'center',
-    backgroundColor: '#00CE9F',
-    justifyContent: 'center'
-  }
-})
 
 const mapStateToProps = ({ telefono }) => ({
   telefono

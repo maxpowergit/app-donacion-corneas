@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { StyleSheet, ScrollView, Alert } from 'react-native'
-import { Container } from 'native-base'
 import { connect } from 'react-redux'
 
-import HeaderDefault from '../componentes/HeaderDefault'
-import PreguntaContraindicaciones from '../componentes/PreguntaContraindicaciones'
 import mapaContraindicaciones from '../lib/mapaContraindicaciones'
+import Escena from '../componentes/Escena'
+import PreguntaContraindicaciones from '../componentes/PreguntaContraindicaciones'
 
 class EscenaContraindicaciones extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    header: <HeaderDefault texto={ navigation.state.routeName } />
-  })
-
   componentDidUpdate() {
     const { indicacionesCumplidas, donacionImposible, navigation } = this.props
     const { navigate } = navigation
@@ -36,7 +31,8 @@ class EscenaContraindicaciones extends Component {
   }
 
   render() {
-    const { asignarContraindicacion, contraindicaciones } = this.props
+    const { asignarContraindicacion, contraindicaciones, navigation } = this.props
+
     const preguntas = Object.keys(mapaContraindicaciones).map(llave => (
       <PreguntaContraindicaciones
         key={ llave }
@@ -50,11 +46,11 @@ class EscenaContraindicaciones extends Component {
     ))
 
     return (
-      <Container>
+      <Escena navigation={ navigation }>
         <ScrollView flex={ 1 } style={ estilos.contenedorPreguntas }>
           { preguntas }
         </ScrollView>
-      </Container>
+      </Escena>
     )
   }
 }

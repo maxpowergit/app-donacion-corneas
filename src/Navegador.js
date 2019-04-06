@@ -8,13 +8,16 @@ import EscenaContacto from './escenas/EscenaContacto'
 import EscenaIndicaciones from './escenas/EscenaIndicaciones'
 
 const Navegador = createStackNavigator({
-  Ingreso: { screen: EscenaIngreso, navigationOptions: { header: null } },
+  Ingreso: { screen: EscenaIngreso },
   Requisitos: { screen: EscenaRequisitos },
   Contraindicaciones: { screen: EscenaContraindicaciones },
   Contacto: { screen: EscenaContacto },
   Indicaciones: { screen: EscenaIndicaciones }
 }, {
-  initialRouteName: 'Ingreso'
+  initialRouteName: 'Ingreso',
+  defaultNavigationOptions: {
+    header: null
+  }
 })
 
 export default createAppContainer(Navegador)

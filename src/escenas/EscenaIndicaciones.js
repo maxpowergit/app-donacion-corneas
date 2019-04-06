@@ -1,25 +1,21 @@
 // En esta escena hacemos recomendaciones sobre qué hacer con el Donante
 // después de haber notificado al Coordinador Hospitalario.
-import React, { Component } from 'react'
-import { Text } from 'react-native'
-import {
-  Container, Grid, Row, Content
-} from 'native-base'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Text } from 'native-base'
 
-class EscenaIndicaciones extends Component {
-  render() {
-    return (
-      <Container>
-        <Grid>
-          <Row>
-            <Content>
-              <Text>Alguna recomendación</Text>
-            </Content>
-          </Row>
-        </Grid>
-      </Container>
-    )
-  }
+import Escena from '../componentes/Escena'
+
+const EscenaIndicaciones = ({ navigation }) => (
+  <Escena navigation={ navigation }>
+    <Text>Alguna recomendación</Text>
+  </Escena>
+)
+
+EscenaIndicaciones.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired
+  }).isRequired
 }
 
 export default EscenaIndicaciones
