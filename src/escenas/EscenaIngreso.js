@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { KeyboardAvoidingView, StyleSheet } from 'react-native'
+import { KeyboardAvoidingView } from 'react-native'
 import { Container, Content, Form } from 'native-base'
 import { Row, Grid } from 'react-native-easy-grid'
 import { connect } from 'react-redux'
@@ -8,6 +8,8 @@ import { connect } from 'react-redux'
 import LogoFadeIn from '../componentes/LogoFadeIn'
 import IngresarTelefono from '../componentes/IngresarTelefono'
 import ConfirmarTelefono from '../componentes/ConfirmarTelefono'
+
+import estilos from '../estilos/escenas/EscenaIngreso'
 
 class EscenaIngreso extends Component {
   navegarSiHayTelefono() {
@@ -70,14 +72,6 @@ EscenaIngreso.propTypes = {
     navigate: PropTypes.func.isRequired
   }).isRequired
 }
-
-const estilos = StyleSheet.create({
-  centrado: {
-    alignItems: 'center',
-    backgroundColor: '#00CE9F',
-    justifyContent: 'center'
-  }
-})
 
 const mapStateToProps = ({ telefono, tiempoTranscurrido }) => ({
   telefono,

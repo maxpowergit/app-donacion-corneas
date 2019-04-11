@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet } from 'react-native'
 import { Card, CardItem, Body, Button, ActionSheet, Text } from 'native-base'
+
+import estilos from '../estilos/componentes/PreguntaContraindicaciones'
 
 export default class PreguntaContraindicaciones extends Component {
   listaDeOpciones() {
@@ -71,20 +72,3 @@ PreguntaContraindicaciones.propTypes = {
 PreguntaContraindicaciones.defaultProps = {
   contraindicado: null
 }
-
-const estilos = StyleSheet.create({
-  contenedorBotones: {
-    paddingBottom: 0,
-    paddingLeft: 0,
-    paddingRight: 0,
-    paddingTop: 0
-  },
-  textoBoton: {
-    color: 'white',
-    fontSize: 16
-  },
-  textoPregunta: {
-    color: 'black',
-    fontSize: 18
-  }
-})

@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, View, Alert } from 'react-native'
+import { View, Alert } from 'react-native'
 import { connect } from 'react-redux'
 
 import mapaRequisitos from '../lib/mapaRequisitos'
 import Escena from '../componentes/Escena'
 import PreguntaRequisitos from '../componentes/PreguntaRequisitos'
+
+import estilos from '../estilos/escenas/EscenaRequisitos'
 
 class EscenaRequisitos extends Component {
   componentDidUpdate() {
@@ -63,13 +65,6 @@ EscenaRequisitos.propTypes = {
     navigate: PropTypes.func.isRequired
   }).isRequired
 }
-
-const estilos = StyleSheet.create({
-  contenedorPreguntas: {
-    justifyContent: 'space-around',
-    padding: 8
-  }
-})
 
 const mapStateToProps = ({ requisitos }) => {
   const donacionImposible = Object.values(requisitos).some(requisito => !requisito)

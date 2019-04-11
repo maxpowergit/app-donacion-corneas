@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, ScrollView, Alert } from 'react-native'
+import { ScrollView, Alert } from 'react-native'
 import { connect } from 'react-redux'
 
 import mapaContraindicaciones from '../lib/mapaContraindicaciones'
 import Escena from '../componentes/Escena'
 import PreguntaContraindicaciones from '../componentes/PreguntaContraindicaciones'
+
+import estilos from '../estilos/escenas/EscenaContraindicaciones'
 
 class EscenaContraindicaciones extends Component {
   componentDidUpdate() {
@@ -64,12 +66,6 @@ EscenaContraindicaciones.propTypes = {
     navigate: PropTypes.func.isRequired
   }).isRequired
 }
-
-const estilos = StyleSheet.create({
-  contenedorPreguntas: {
-    padding: 8
-  }
-})
 
 const mapStateToProps = ({ contraindicaciones }) => {
   const donacionImposible = Object.values(contraindicaciones).some(
