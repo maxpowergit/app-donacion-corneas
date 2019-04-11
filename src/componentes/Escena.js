@@ -3,16 +3,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Container, Content } from 'native-base'
+import { KeyboardAvoidingView } from 'react-native'
 
 import HeaderDefault from './HeaderDefault'
 
 const Escena = ({ children, navigation }) => (
   <Container>
     <HeaderDefault texto={ navigation.state.routeName } />
-
-    <Content>
-      { children }
-    </Content>
+    <KeyboardAvoidingView behavior="padding" flex={ 1 }>
+      <Content>
+        { children }
+      </Content>
+    </KeyboardAvoidingView>
   </Container>
 )
 
