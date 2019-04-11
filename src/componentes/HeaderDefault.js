@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Header, Left, Body, Right, Button, Icon, Text } from 'native-base'
+import { Menu, MenuOptions, MenuOption, MenuTrigger, renderers } from 'react-native-popup-menu'
 
 import estilos from '../estilos/componentes/HeaderDefault'
 
@@ -13,10 +14,27 @@ const HeaderDefault = ({ texto }) => (
         { texto.toUpperCase() }
       </Text>
     </Body>
+
     <Right style={ { flex: 1 } }>
-      <Button transparent>
-        <Icon name="more" style={ estilos.iconoHeader } />
-      </Button>
+      <Menu renderer={renderers.Popover} rendererProps={{ placement: 'bottom' }} >
+        <MenuTrigger>
+          <Icon name="more" style={ estilos.iconoHeader } />
+        </MenuTrigger>
+
+        <MenuOptions>
+          <MenuOption onSelect={() => alert(`Delete`)} >
+            <Text>Cambiar teléfono</Text>
+          </MenuOption>
+
+          <MenuOption onSelect={() => alert(`Delete`)} >
+            <Text>Cambiar teléfono</Text>
+          </MenuOption>
+
+          <MenuOption onSelect={() => alert(`Delete`)} >
+            <Text>Cambiar teléfono</Text>
+          </MenuOption>
+        </MenuOptions>
+      </Menu>
     </Right>
   </Header>
 )

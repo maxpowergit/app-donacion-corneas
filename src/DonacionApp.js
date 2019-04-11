@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { StatusBar } from 'react-native'
 import { Root } from 'native-base'
+import { MenuProvider } from 'react-native-popup-menu'
 import { Font } from 'expo'
 
 import Navegador from './Navegador'
@@ -24,8 +25,10 @@ class DonacionApp extends Component {
   render() {
     return (
       <Root>
-        <StatusBar translucent backgroundColor="rgba(0, 0, 0, 0.20)" />
-        <Navegador />
+        <MenuProvider>
+          <StatusBar translucent backgroundColor="rgba(0, 0, 0, 0.20)" />
+          <Navegador />
+        </MenuProvider>
       </Root>
     )
   }
