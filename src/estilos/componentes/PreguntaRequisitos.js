@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
 
+import { colores, tamaño } from '../Base'
+
 export default StyleSheet.create({
   contenedorBotones: {
     paddingBottom: 0,
@@ -8,11 +10,11 @@ export default StyleSheet.create({
     paddingTop: 0
   },
   textoBoton: {
-    color: 'white',
-    fontSize: 16
+    color: colores.texto,
+    fontSize: tamaño.item
   },
   textoPregunta: {
-    color: 'black',
-    fontSize: 18
+    color: colores.texto,
+    fontSize: tamaño.item
   }
 })

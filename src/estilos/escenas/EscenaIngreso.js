@@ -1,9 +1,11 @@
 import { StyleSheet } from 'react-native'
 
+import { colores } from '../Base'
+
 export default StyleSheet.create({
   centrado: {
     alignItems: 'center',
-    backgroundColor: '#00CE9F',
+    backgroundColor: colores.secundario,
     justifyContent: 'center'
   }
 })

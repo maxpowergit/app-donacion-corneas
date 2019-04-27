@@ -1,18 +1,20 @@
 import { StatusBar, StyleSheet } from 'react-native'
 
+import { colores, tamaño } from '../Base'
+
 export default StyleSheet.create({
   header: {
-    backgroundColor: '#08263C',
+    backgroundColor: colores.primario,
     height: StatusBar.currentHeight + 56,
     paddingTop: StatusBar.currentHeight
   },
   iconoHeader: {
-    color: 'white',
-    fontSize: 30
+    color: colores.texto,
+    fontSize: tamaño.titulo
   },
   textoHeader: {
-    color: 'white',
-    fontSize: 20,
+    color: colores.texto,
+    fontSize: tamaño.titulo,
     textTransform: 'uppercase'
   }
 })
