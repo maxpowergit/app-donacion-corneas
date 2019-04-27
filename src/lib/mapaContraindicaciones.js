@@ -1,7 +1,7 @@
 // Listado de referencia con las preguntas de contraindicaciones.
 
 const mapaContraindicaciones = {
-  'Enfermedades Neurodegenerativas o Desmielinizantes':
+  'Enf. Neurodegenerativas o Desmielinizantes':
     [
       'Parkinson, Alzheimer, Ela',
       'Esclerosis múltiple',
@@ -50,9 +50,9 @@ const mapaContraindicaciones = {
       'Tatuajes, body piercing o acupuntura en los últimos 6 meses en lugares sin condiciones higénicas adecuadas o no habilitados para tal fin.',
       'Persistente diarrea inexplicable / Antecedentes de pérdida de peso inexplicable. Síndrome de impregnación, Síndrome de Wasting'
     ],
-  'Recibió hormonas derivadas del crecimiento de pituitaria humana entre los años 1963 y 1985':
+  'Recibió hormonación entre los años 1963 y 1985':
     [
-      'Personas que recibieron hormonas derivadas del crecimiento de pituitaria humana entre los años 1963 y 1985, devido al riesgo potencial de transmitir la enfermedad de Creutzfeld-Jacob'
+      'Personas que recibieron hormonas derivadas del crecimiento de pituitaria humana entre los años 1963 y 1985, debido al riesgo potencial de transmitir la enfermedad de Creutzfeld-Jacob'
     ]
 }
 

@@ -3,11 +3,11 @@ import { StyleSheet } from 'react-native'
 import { colores, tamaño } from '../Base'
 
 export default StyleSheet.create({
-  contenedorBotones: {
-    paddingBottom: 0,
-    paddingLeft: 0,
-    paddingRight: 0,
-    paddingTop: 0
+  contenedorCheckBox: {
+    flex: 1
+  },
+  contenedorTexto: {
+    flex: 2
   },
   textoBoton: {
     color: colores.texto,
@@ -16,5 +16,16 @@ export default StyleSheet.create({
   textoPregunta: {
     color: colores.texto,
     fontSize: tamaño.item
+  },
+  fondo: {
+    backgroundColor: colores.secundario
+  },
+  iconoMarcado: {
+    color: colores.texto,
+    fontSize: 40
+  },
+  iconoDesmarcado: {
+    color: colores.secundario,
+    fontSize: 40
   }
 })
