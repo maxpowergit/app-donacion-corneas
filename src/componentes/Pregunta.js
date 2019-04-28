@@ -31,7 +31,7 @@ Pregunta.propTypes = {
 }
 
 Pregunta.defaultProps = {
-  cumplido: null
+  marcada: null
 }
 
 export default Pregunta

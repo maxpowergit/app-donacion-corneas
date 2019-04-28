@@ -5,12 +5,14 @@ import telefono from './telefono'
 import tiempoTranscurrido from './tiempoTranscurrido'
 import requisitos from './requisitos'
 import contraindicaciones from './contraindicaciones'
+import modalVisible from './modalVisible'
 
 const reducer = combineReducers({
   telefono,
   tiempoTranscurrido,
   requisitos,
-  contraindicaciones
+  contraindicaciones,
+  modalVisible
 })
 
 export default reducer
