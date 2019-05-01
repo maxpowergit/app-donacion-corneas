@@ -6,13 +6,15 @@ import Requisitos from './escenas/Requisitos'
 import Contraindicaciones from './escenas/Contraindicaciones'
 import Contacto from './escenas/Contacto'
 import Indicaciones from './escenas/Indicaciones'
+import Telefono from './escenas/Telefono.js'
 
 const Navegador = createStackNavigator({
   ingreso: { screen: Ingreso },
   requisitos: { screen: Requisitos },
   contraindicaciones: { screen: Contraindicaciones },
   contacto: { screen: Contacto },
-  indicaciones: { screen: Indicaciones }
+  indicaciones: { screen: Indicaciones },
+  telefono: { screen: Telefono }
 }, {
   initialRouteName: 'ingreso',
   defaultNavigationOptions: {

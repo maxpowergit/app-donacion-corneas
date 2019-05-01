@@ -6,44 +6,48 @@ import { Menu, MenuOptions, MenuOption, MenuTrigger } from 'react-native-popup-m
 import estilos from '../estilos/componentes/HeaderDefault'
 
 // TODO Cuando actualizemos a react-native >= 0.59, hay que sacar .toUpperCase
-const HeaderDefault = ({ texto }) => (
-  <Header style={ estilos.header }>
-    <Left style={ { flex: 1 } } />
-    <Body style={ { flex: 3, alignItems: 'center' } }>
-      <Text style={ estilos.textoHeader }>
-        { texto.toUpperCase() }
-      </Text>
-    </Body>
+const HeaderDefault = ({ texto, navigation }) => {
+  const { navigate } = navigation
 
-    <Right style={ { flex: 1 } }>
-      <Menu>
-        <MenuTrigger>
-          { /* Botón deshabilitado porque el manejo del touch lo hace MenuTrigger */ }
-          <Button transparent disabled>
-            <Icon name="more" style={ estilos.iconoHeader } />
-          </Button>
-        </MenuTrigger>
+  return (
+    <Header style={ estilos.header }>
+      <Left style={ estilos.left } />
 
-        <MenuOptions>
-          <MenuOption onSelect={ () => alert('Delete') }>
-            <Text>Cambiar teléfono</Text>
-          </MenuOption>
+      <Body style={ estilos.body }>
+        <Text style={ estilos.textoHeader }>
+          { texto.toUpperCase() }
+        </Text>
+      </Body>
 
-          <MenuOption onSelect={ () => alert('Delete') }>
-            <Text>Cambiar teléfono</Text>
-          </MenuOption>
+      <Right style={ estilos.right }>
+        <Menu>
+          <MenuTrigger>
+            { /* Botón deshabilitado porque el manejo del touch lo hace MenuTrigger */ }
+            <Button transparent disabled>
+              <Icon name="more" style={ estilos.iconoHeader } />
+            </Button>
+          </MenuTrigger>
 
-          <MenuOption onSelect={ () => alert('Delete') }>
-            <Text>Cambiar teléfono</Text>
-          </MenuOption>
-        </MenuOptions>
-      </Menu>
-    </Right>
-  </Header>
-)
+          <MenuOptions>
+            <MenuOption onSelect={ () => navigate('telefono') }>
+              <Text>Cambiar teléfono</Text>
+            </MenuOption>
+
+            <MenuOption onSelect={ () => navigate('telefono') }>
+              <Text>Acerca de...</Text>
+            </MenuOption>
+          </MenuOptions>
+        </Menu>
+      </Right>
+    </Header>
+  )
+}
 
 HeaderDefault.propTypes = {
-  texto: PropTypes.string.isRequired
+  texto: PropTypes.string.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired
+  }).isRequired
 }
 
 export default HeaderDefault

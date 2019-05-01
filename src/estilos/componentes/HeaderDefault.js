@@ -8,6 +8,16 @@ export default StyleSheet.create({
     height: StatusBar.currentHeight + 56,
     paddingTop: StatusBar.currentHeight
   },
+  left: {
+    flex: 1
+  },
+  body: {
+    flex: 3,
+    alignItems: 'center'
+  },
+  right: {
+    flex: 1
+  },
   iconoHeader: {
     color: colores.texto,
     fontSize: tamaño.titulo

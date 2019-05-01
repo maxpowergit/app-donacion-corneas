@@ -11,13 +11,17 @@ export default class IngresarTelefono extends Component {
   }
 
   render() {
-    const { guardarTelefono } = this.props
+    const { guardarTelefono, autoFocus, telefono } = this.props
 
     return (
       <Item floatingLabel>
         <Label>TELÉFONO DEL COORDINADOR HOSPITALARIO</Label>
         <Input
+          value={ telefono }
+          selectTextOnFocus
+          onChange={ text => guardarTelefono(text.nativeEvent.text) }
           keyboardType="number-pad"
+          autoFocus={ autoFocus }
           onSubmitEditing={ event => guardarTelefono(event.nativeEvent.text) }
         />
       </Item>
@@ -26,5 +30,11 @@ export default class IngresarTelefono extends Component {
 }
 
 IngresarTelefono.propTypes = {
-  guardarTelefono: PropTypes.func.isRequired
+  guardarTelefono: PropTypes.func.isRequired,
+  autoFocus: PropTypes.bool,
+  telefono: PropTypes.string.isRequired
+}
+
+IngresarTelefono.defaultProps = {
+  autoFocus: false
 }

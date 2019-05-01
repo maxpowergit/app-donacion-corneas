@@ -30,7 +30,7 @@ class Ingreso extends Component {
     if (tiempoTranscurrido) {
       return (
         <>
-          <IngresarTelefono guardarTelefono={ guardarTelefono } />
+          <IngresarTelefono telefono={ telefono } guardarTelefono={ guardarTelefono } />
           <ConfirmarTelefono telefono={ telefono } confirmar={ () => navigation.navigate('requisitos') } />
         </>
       )
