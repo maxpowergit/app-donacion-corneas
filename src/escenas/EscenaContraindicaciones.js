@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Alert } from 'react-native'
 import { connect } from 'react-redux'
-import { Button, Text } from 'native-base'
 
 import mapaContraindicaciones from '../lib/mapaContraindicaciones'
 import Escena from '../componentes/Escena'
 import Pregunta from '../componentes/Pregunta'
 import ModalOpciones from '../componentes/ModalOpciones'
-
-import estilos from '../estilos/escenas/EscenaContraindicaciones'
+import BotonFooter from '../componentes/BotonFooter'
 
 class EscenaContraindicaciones extends Component {
   constructor(props) {
@@ -34,31 +31,9 @@ class EscenaContraindicaciones extends Component {
     cambiarModalVisible(true)
   }
 
-  verificar(sinContraindicaciones) {
-    const { navigation } = this.props
-    const { navigate } = navigation
-
-    if (!sinContraindicaciones) {
-      return (
-        Alert.alert(
-          'Contraindicaciones',
-          'Hay contraindicaciones marcadas, la donación no es viable.',
-        )
-      )
-    }
-    return (
-      Alert.alert(
-        'Contraindicaciones',
-        'El paciente no tiene contraindicaciones',
-        [
-          { text: 'CONTINUAR', onPress: () => navigate('Contacto') }
-        ]
-      )
-    )
-  }
-
   render() {
     const { asignarContraindicacion, contraindicaciones, sinContraindicaciones, navigation, modalVisible, cambiarModalVisible } = this.props
+    const { navigate } = navigation
     const { opcionesModal } = this.state
 
     const preguntas = Object.keys(mapaContraindicaciones).map(llave => (
@@ -73,20 +48,27 @@ class EscenaContraindicaciones extends Component {
       />
     ))
 
+    let boton = 'Continuar protocolo'
+    if (!sinContraindicaciones) {
+      boton = 'Tiene contraindicaciones'
+    }
+
+    const botonFooter = (
+      <BotonFooter
+        onPress={ () => navigate('Contacto') }
+        texto={ boton }
+        disabled={ !sinContraindicaciones }
+      />
+    )
+
     return (
-      <Escena navigation={ navigation }>
+      <Escena navigation={ navigation } footer={ botonFooter }>
         <ModalOpciones
           visible={ modalVisible }
           onRequestClose={ () => { cambiarModalVisible(false) } }
           opciones={ opcionesModal }
         />
         { preguntas }
-        <Button
-          onPress={ () => this.verificar(sinContraindicaciones) }
-          style={ estilos.boton }
-        >
-          <Text style={ estilos.textoBoton }>CONTINUAR</Text>
-        </Button>
       </Escena>
     )
   }
@@ -104,7 +86,10 @@ EscenaContraindicaciones.propTypes = {
 }
 
 const mapStateToProps = ({ contraindicaciones, modalVisible }) => {
-  const sinContraindicaciones = Object.values(contraindicaciones).every(contraindicacion => !contraindicacion)
+  const sinContraindicaciones = Object.values(contraindicaciones).every(
+    contraindicacion => !contraindicacion
+  )
+
   return ({
     contraindicaciones,
     modalVisible,

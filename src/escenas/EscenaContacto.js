@@ -4,13 +4,14 @@
 // teléfono.
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Form, Button, Text } from 'native-base'
+import { Form } from 'native-base'
 import { connect } from 'react-redux'
 import { SMS } from 'expo'
 
 import Escena from '../componentes/Escena'
 import DatoDonante from '../componentes/DatoDonante'
 import DatoFechaDonante from '../componentes/DatoFechaDonante'
+import BotonFooter from '../componentes/BotonFooter'
 
 class EscenaContacto extends Component {
   constructor(props) {
@@ -65,8 +66,15 @@ class EscenaContacto extends Component {
       nombre, apellido, dni, fechaNacimiento, fechaIngreso, fechaHoraPCR, causaMuerte, servicio
     } = this.state
 
+    const botonFooter = (
+      <BotonFooter
+        onPress={ () => this.enviarSMS(telefono, this.mensaje()) }
+        texto="Preparar notificación"
+      />
+    )
+
     return (
-      <Escena navigation={ navigation }>
+      <Escena navigation={ navigation } footer={ botonFooter }>
         <Form>
           <DatoDonante
             label="nombre"
@@ -108,10 +116,6 @@ class EscenaContacto extends Component {
             value={ servicio }
             onChange={ text => this.setState({ servicio: text }) }
           />
-
-          <Button full onPress={ () => this.enviarSMS(telefono, this.mensaje()) }>
-            <Text>Preparar notificación</Text>
-          </Button>
         </Form>
       </Escena>
     )

@@ -5,14 +5,15 @@ import PropTypes from 'prop-types'
 import { Container, Content, Footer, FooterTab } from 'native-base'
 import { KeyboardAvoidingView } from 'react-native'
 
-import { colores } from '../estilos/Base'
 import HeaderDefault from './HeaderDefault'
+
+import estilos from '../estilos/componentes/Escena'
 
 const Escena = ({ children, navigation, footer }) => (
   <Container>
     <KeyboardAvoidingView behavior="padding" flex={ 1 }>
       <HeaderDefault texto={ navigation.state.routeName } />
-      <Content style={ { backgroundColor: colores.secundario } }>
+      <Content style={ estilos.contenido }>
         { children }
       </Content>
       <Footer>

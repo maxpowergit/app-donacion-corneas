@@ -1,40 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Button, Text } from 'native-base'
 
 import mapaRequisitos from '../lib/mapaRequisitos'
 import Escena from '../componentes/Escena'
 import Pregunta from '../componentes/Pregunta'
-
-import estilos from '../estilos/escenas/EscenaRequisitos'
+import BotonFooter from '../componentes/BotonFooter'
 
 class EscenaRequisitos extends Component {
-  botonFooter() {
-    const { navigation, requisitosCumplidos } = this.props
-    const { navigate } = navigation
-
-    let boton = 'No cumple los requisitos'
-    if (requisitosCumplidos) {
-      boton = 'Continuar protocolo'
-    }
-
-    return (
-      <Button
-        full
-        onPress={ () => navigate('Contraindicaciones') }
-        style={ estilos.boton }
-        disabled={ !requisitosCumplidos }
-      >
-        <Text style={ estilos.textoBoton }>
-          { boton.toUpperCase() }
-        </Text>
-      </Button>
-    )
-  }
-
   render() {
-    const { cumplirRequisito, requisitos, navigation } = this.props
+    const { cumplirRequisito, requisitos, requisitosCumplidos, navigation } = this.props
+    const { navigate } = navigation
 
     const preguntas = Object.keys(mapaRequisitos).map(llave => (
       <Pregunta
@@ -47,8 +23,21 @@ class EscenaRequisitos extends Component {
       />
     ))
 
+    let boton = 'No cumple los requisitos'
+    if (requisitosCumplidos) {
+      boton = 'Continuar protocolo'
+    }
+
+    const botonFooter = (
+      <BotonFooter
+        onPress={ () => navigate('Contraindicaciones') }
+        texto={ boton }
+        disabled={ !requisitosCumplidos }
+      />
+    )
+
     return (
-      <Escena navigation={ navigation } footer={ this.botonFooter() }>
+      <Escena navigation={ navigation } footer={ botonFooter }>
         { preguntas }
       </Escena>
     )
