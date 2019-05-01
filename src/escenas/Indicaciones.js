@@ -8,7 +8,7 @@ import { Text } from 'native-base'
 import Escena from '../componentes/Escena'
 import BotonFooter from '../componentes/BotonFooter'
 
-const EscenaIndicaciones = ({ navigation }) => {
+const Indicaciones = ({ navigation }) => {
   const botonFooter = (
     <BotonFooter
       onPress={ () => BackHandler.exitApp() }
@@ -23,10 +23,10 @@ const EscenaIndicaciones = ({ navigation }) => {
   )
 }
 
-EscenaIndicaciones.propTypes = {
+Indicaciones.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired
   }).isRequired
 }
 
-export default EscenaIndicaciones
+export default Indicaciones

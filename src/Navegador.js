@@ -1,20 +1,20 @@
 // Navegación principal, definición de escenas y rutas.
 import { createStackNavigator, createAppContainer } from 'react-navigation'
 
-import EscenaIngreso from './escenas/EscenaIngreso'
+import Ingreso from './escenas/Ingreso'
 import Requisitos from './escenas/Requisitos'
-import EscenaContraindicaciones from './escenas/EscenaContraindicaciones'
-import EscenaContacto from './escenas/EscenaContacto'
-import EscenaIndicaciones from './escenas/EscenaIndicaciones'
+import Contraindicaciones from './escenas/Contraindicaciones'
+import Contacto from './escenas/Contacto'
+import Indicaciones from './escenas/Indicaciones'
 
 const Navegador = createStackNavigator({
-  Ingreso: { screen: EscenaIngreso },
-  Requisitos: { screen: Requisitos },
-  Contraindicaciones: { screen: EscenaContraindicaciones },
-  Contacto: { screen: EscenaContacto },
-  Indicaciones: { screen: EscenaIndicaciones }
+  ingreso: { screen: Ingreso },
+  requisitos: { screen: Requisitos },
+  contraindicaciones: { screen: Contraindicaciones },
+  contacto: { screen: Contacto },
+  indicaciones: { screen: Indicaciones }
 }, {
-  initialRouteName: 'Ingreso',
+  initialRouteName: 'ingreso',
   defaultNavigationOptions: {
     header: null
   }

@@ -9,14 +9,14 @@ import LogoFadeIn from '../componentes/LogoFadeIn'
 import IngresarTelefono from '../componentes/IngresarTelefono'
 import ConfirmarTelefono from '../componentes/ConfirmarTelefono'
 
-import estilos from '../estilos/escenas/EscenaIngreso'
+import estilos from '../estilos/escenas/Ingreso'
 
-class EscenaIngreso extends Component {
+class Ingreso extends Component {
   navegarSiHayTelefono() {
     const { telefono, cambiarTiempoTranscurrido, navigation } = this.props
 
     if (telefono) {
-      navigation.navigate('Requisitos')
+      navigation.navigate('requisitos')
     } else {
       cambiarTiempoTranscurrido(true)
     }
@@ -31,7 +31,7 @@ class EscenaIngreso extends Component {
       return (
         <>
           <IngresarTelefono guardarTelefono={ guardarTelefono } />
-          <ConfirmarTelefono telefono={ telefono } confirmar={ () => navigation.navigate('Requisitos') } />
+          <ConfirmarTelefono telefono={ telefono } confirmar={ () => navigation.navigate('requisitos') } />
         </>
       )
     }
@@ -63,7 +63,7 @@ class EscenaIngreso extends Component {
   }
 }
 
-EscenaIngreso.propTypes = {
+Ingreso.propTypes = {
   telefono: PropTypes.string.isRequired,
   tiempoTranscurrido: PropTypes.bool.isRequired,
   guardarTelefono: PropTypes.func.isRequired,
@@ -87,4 +87,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(EscenaIngreso)
+export default connect(mapStateToProps, mapDispatchToProps)(Ingreso)

@@ -8,7 +8,7 @@ import Pregunta from '../componentes/Pregunta'
 import ModalOpciones from '../componentes/ModalOpciones'
 import BotonFooter from '../componentes/BotonFooter'
 
-class EscenaContraindicaciones extends Component {
+class Contraindicaciones extends Component {
   constructor(props) {
     super(props)
     this.state = { opcionesModal: [] }
@@ -55,7 +55,7 @@ class EscenaContraindicaciones extends Component {
 
     const botonFooter = (
       <BotonFooter
-        onPress={ () => navigate('Contacto') }
+        onPress={ () => navigate('contacto') }
         texto={ boton }
         disabled={ !sinContraindicaciones }
       />
@@ -74,7 +74,7 @@ class EscenaContraindicaciones extends Component {
   }
 }
 
-EscenaContraindicaciones.propTypes = {
+Contraindicaciones.propTypes = {
   sinContraindicaciones: PropTypes.bool.isRequired,
   contraindicaciones: PropTypes.shape().isRequired,
   asignarContraindicacion: PropTypes.func.isRequired,
@@ -106,4 +106,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(EscenaContraindicaciones)
+export default connect(mapStateToProps, mapDispatchToProps)(Contraindicaciones)

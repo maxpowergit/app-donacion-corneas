@@ -13,7 +13,7 @@ import DatoDonante from '../componentes/DatoDonante'
 import DatoFechaDonante from '../componentes/DatoFechaDonante'
 import BotonFooter from '../componentes/BotonFooter'
 
-class EscenaContacto extends Component {
+class Contacto extends Component {
   constructor(props) {
     super(props)
 
@@ -37,7 +37,7 @@ class EscenaContacto extends Component {
     // políticas de Google Play. En iOS puede ser 'sent' o 'cancelled'.
     if (result && result !== 'cancelled') {
       // Podemos asumir que al volver del async/await el mensaje fue enviado.
-      navigation.navigate('Indicaciones')
+      navigation.navigate('indicaciones')
     }
   }
 
@@ -122,7 +122,7 @@ class EscenaContacto extends Component {
   }
 }
 
-EscenaContacto.propTypes = {
+Contacto.propTypes = {
   telefono: PropTypes.string.isRequired,
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired
@@ -133,4 +133,4 @@ const mapStateToProps = ({ telefono }) => ({
   telefono
 })
 
-export default connect(mapStateToProps)(EscenaContacto)
+export default connect(mapStateToProps)(Contacto)

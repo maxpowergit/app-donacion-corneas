@@ -28,7 +28,7 @@ const Requisitos = ({ cumplirRequisito, requisitos, requisitosCumplidos, navigat
 
   const botonFooter = (
     <BotonFooter
-      onPress={ () => navigate('Contraindicaciones') }
+      onPress={ () => navigate('contraindicaciones') }
       texto={ boton }
       disabled={ !requisitosCumplidos }
     />
