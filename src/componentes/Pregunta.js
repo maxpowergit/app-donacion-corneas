@@ -16,7 +16,7 @@ const Pregunta = ({ texto, marcar, desmarcar, marcada }) => (
       </Left>
       <Right style={ estilos.contenedorTexto }>
         <Text style={ estilos.textoPregunta }>
-          { texto }
+          { texto.toUpperCase() }
         </Text>
       </Right>
     </CardItem>

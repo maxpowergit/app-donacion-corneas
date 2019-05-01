@@ -7,7 +7,7 @@ export default StyleSheet.create({
     flex: 1
   },
   contenedorTexto: {
-    flex: 2
+    flex: 3
   },
   textoBoton: {
     color: colores.texto,
@@ -15,7 +15,8 @@ export default StyleSheet.create({
   },
   textoPregunta: {
     color: colores.texto,
-    fontSize: tamaño.item
+    fontSize: tamaño.item,
+    fontFamily: 'Roboto_medium'
   },
   fondo: {
     backgroundColor: colores.secundario

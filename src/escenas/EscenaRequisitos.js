@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Alert } from 'react-native'
 import { connect } from 'react-redux'
 import { Button, Text } from 'native-base'
 
@@ -11,31 +10,31 @@ import Pregunta from '../componentes/Pregunta'
 import estilos from '../estilos/escenas/EscenaRequisitos'
 
 class EscenaRequisitos extends Component {
-  verificar(requisitosCumplidos) {
-    const { navigation } = this.props
+  botonFooter() {
+    const { navigation, requisitosCumplidos } = this.props
     const { navigate } = navigation
 
-    if (!requisitosCumplidos) {
-      return (
-        Alert.alert(
-          'Requisitos',
-          'Todos los requisitos son necesarios. La donación no es viable.',
-        )
-      )
+    let boton = 'No cumple los requisitos'
+    if (requisitosCumplidos) {
+      boton = 'Continuar protocolo'
     }
+
     return (
-      Alert.alert(
-        'Requisitos',
-        'Todos los requisitos fueron cumplidos.',
-        [
-          { text: 'CONTINUAR', onPress: () => navigate('Contraindicaciones') }
-        ]
-      )
+      <Button
+        full
+        onPress={ () => navigate('Contraindicaciones') }
+        style={ estilos.boton }
+        disabled={ !requisitosCumplidos }
+      >
+        <Text style={ estilos.textoBoton }>
+          { boton.toUpperCase() }
+        </Text>
+      </Button>
     )
   }
 
   render() {
-    const { cumplirRequisito, requisitos, requisitosCumplidos, navigation } = this.props
+    const { cumplirRequisito, requisitos, navigation } = this.props
 
     const preguntas = Object.keys(mapaRequisitos).map(llave => (
       <Pregunta
@@ -49,14 +48,8 @@ class EscenaRequisitos extends Component {
     ))
 
     return (
-      <Escena navigation={ navigation }>
+      <Escena navigation={ navigation } footer={ this.botonFooter() }>
         { preguntas }
-        <Button
-          onPress={ () => this.verificar(requisitosCumplidos) }
-          style={ estilos.boton }
-        >
-          <Text style={ estilos.textoBoton }>CONTINUAR</Text>
-        </Button>
       </Escena>
     )
   }

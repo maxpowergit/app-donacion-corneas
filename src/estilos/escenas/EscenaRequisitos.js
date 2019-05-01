@@ -1,17 +1,13 @@
 import { StyleSheet } from 'react-native'
 
-import { colores } from '../Base'
+import { colores, tamaño } from '../Base'
 
 export default StyleSheet.create({
   contenedorPreguntas: {
-    backgroundColor: colores.secundario,
-    justifyContent: 'space-around',
-    padding: 8
-  },
-  boton: {
-    alignSelf: 'center'
+    backgroundColor: colores.secundario
   },
   textoBoton: {
-    color: colores.texto
+    color: colores.texto,
+    fontSize: tamaño.item
   }
 })
