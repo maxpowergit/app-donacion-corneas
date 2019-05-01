@@ -1,13 +1,12 @@
 // Layout principal y estructura de las escenas requeridas por native-base.
 import React, { Component } from 'react'
 import { StatusBar } from 'react-native'
-import { Root } from 'native-base'
 import { MenuProvider } from 'react-native-popup-menu'
 import { Font } from 'expo'
 
+import { colores } from './estilos/Base.js'
 import Navegador from './Navegador'
 
-// Root es necesario para que funcione Action Sheet.
 // Navegador es nuestro navegador principal.
 class DonacionApp extends Component {
   // Cargar las fuentes que usamos en la app.
@@ -24,12 +23,10 @@ class DonacionApp extends Component {
 
   render() {
     return (
-      <Root>
-        <MenuProvider>
-          <StatusBar translucent backgroundColor="rgba(0, 0, 0, 0.20)" />
-          <Navegador />
-        </MenuProvider>
-      </Root>
+      <MenuProvider>
+        <StatusBar translucent backgroundColor={ colores.transparencia } />
+        <Navegador />
+      </MenuProvider>
     )
   }
 }
