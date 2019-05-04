@@ -13,7 +13,6 @@ const Requisitos = ({ cumplirRequisito, requisitos, requisitosCumplidos, navigat
   const preguntas = Object.keys(mapaRequisitos).map(llave => (
     <Pregunta
       key={ llave }
-      llave={ llave }
       texto={ mapaRequisitos[llave] }
       marcar={ () => cumplirRequisito(llave, true) }
       desmarcar={ () => cumplirRequisito(llave, false) }

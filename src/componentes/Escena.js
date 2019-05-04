@@ -13,9 +13,11 @@ const Escena = ({ children, navigation, footer, estilosContent }) => (
   <Container>
     <KeyboardAvoidingView behavior="padding" flex={ 1 }>
       <HeaderDefault texto={ navigation.state.routeName } navigation={ navigation } />
+
       <Content style={ [estilos.contenido, estilosContent] }>
         { children }
       </Content>
+
       <Footer>
         <FooterTab>
           { footer }
