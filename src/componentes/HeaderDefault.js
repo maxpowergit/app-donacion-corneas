@@ -2,45 +2,60 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Header, Left, Body, Right, Button, Icon, Text } from 'native-base'
 import { Menu, MenuOptions, MenuOption, MenuTrigger } from 'react-native-popup-menu'
+import { connect } from 'react-redux'
+
+import AcercaDe from './AcercaDe'
 
 import estilos from '../estilos/componentes/HeaderDefault'
 
 // TODO Cuando actualizemos a react-native >= 0.59, hay que sacar .toUpperCase
-const HeaderDefault = ({ texto, navigation }) => {
+const HeaderDefault = ({ texto, navigation, acercaDeVisible, mostarAcercaDe }) => {
   const { navigate } = navigation
 
   return (
-    <Header style={ estilos.header }>
-      <Left style={ estilos.left } />
+    <>
+      <AcercaDe
+        visible={ acercaDeVisible }
+        onRequestClose={ () => { mostarAcercaDe(false) } }
+      />
 
-      <Body style={ estilos.body }>
-        <Text style={ estilos.textoHeader }>
-          { texto.toUpperCase() }
-        </Text>
-      </Body>
+      <Header style={ estilos.header }>
+        <Left style={ estilos.left } />
 
-      <Right style={ estilos.right }>
-        <Menu>
-          <MenuTrigger>
-            { /* Botón deshabilitado porque el manejo del touch lo hace MenuTrigger */ }
-            <Button transparent disabled>
-              <Icon name="more" style={ estilos.iconoHeader } />
-            </Button>
-          </MenuTrigger>
+        <Body style={ estilos.body }>
+          <Text style={ estilos.textoHeader }>
+            { texto.toUpperCase() }
+          </Text>
+        </Body>
 
-          <MenuOptions>
-            <MenuOption onSelect={ () => navigate('telefono') }>
-              <Text>Cambiar teléfono</Text>
-            </MenuOption>
+        <Right style={ estilos.right }>
+          <Menu>
+            <MenuTrigger>
+              { /* Botón deshabilitado porque el manejo del touch lo hace MenuTrigger */ }
+              <Button transparent disabled>
+                <Icon name="more" style={ estilos.iconoHeader } />
+              </Button>
+            </MenuTrigger>
 
-            <MenuOption onSelect={ () => navigate('telefono') }>
-              <Text>Acerca de...</Text>
-            </MenuOption>
-          </MenuOptions>
-        </Menu>
-      </Right>
-    </Header>
+            <MenuOptions>
+              <MenuOption onSelect={ () => navigate('telefono') }>
+                <Text>Cambiar teléfono</Text>
+              </MenuOption>
+
+              <MenuOption onSelect={ () => mostarAcercaDe(true) }>
+                <Text>Acerca de...</Text>
+              </MenuOption>
+            </MenuOptions>
+          </Menu>
+        </Right>
+      </Header>
+    </>
   )
+}
+
+HeaderDefault.propTypes = {
+  mostarAcercaDe: PropTypes.func.isRequired,
+  acercaDeVisible: PropTypes.bool.isRequired
 }
 
 HeaderDefault.propTypes = {
@@ -50,4 +65,14 @@ HeaderDefault.propTypes = {
   }).isRequired
 }
 
-export default HeaderDefault
+const mapStateToProps = ({ acercaDeVisible }) => ({
+  acercaDeVisible
+})
+
+const mapDispatchToProps = dispatch => ({
+  mostarAcercaDe: (valor) => {
+    dispatch({ type: 'ACERCA_DE_VISIBLE', valor })
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderDefault)
