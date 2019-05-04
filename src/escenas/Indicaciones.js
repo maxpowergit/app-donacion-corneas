@@ -3,10 +3,12 @@
 import React from 'react'
 import { BackHandler } from 'react-native'
 import PropTypes from 'prop-types'
-import { Text } from 'native-base'
 
 import Escena from '../componentes/Escena'
 import BotonFooter from '../componentes/BotonFooter'
+import Indicacion from '../componentes/Indicacion'
+
+import mapaIndicaciones from '../lib/mapaIndicaciones'
 
 const Indicaciones = ({ navigation }) => {
   const botonFooter = (
@@ -16,9 +18,15 @@ const Indicaciones = ({ navigation }) => {
     />
   )
 
+  const listaIndicaciones = mapaIndicaciones.map(indicacion => (
+    <Indicacion key={ indicacion }>
+      { indicacion }
+    </Indicacion>
+  ))
+
   return (
     <Escena navigation={ navigation } footer={ botonFooter }>
-      <Text>Alguna recomendación</Text>
+      { listaIndicaciones }
     </Escena>
   )
 }
