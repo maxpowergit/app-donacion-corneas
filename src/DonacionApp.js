@@ -4,7 +4,7 @@ import { StatusBar } from 'react-native'
 import { MenuProvider } from 'react-native-popup-menu'
 import { Font } from 'expo'
 
-import { colores } from './estilos/Base.js'
+import { colores } from './estilos/Base'
 import Navegador from './Navegador'
 
 // Navegador es nuestro navegador principal.

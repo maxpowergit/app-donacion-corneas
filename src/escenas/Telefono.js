@@ -19,7 +19,11 @@ const Telefono = ({ navigation, telefono, guardarTelefono }) => {
   )
 
   return (
-    <Escena navigation={ navigation } footer={ botonFooter } estilosContent= {{ backgroundColor: colores.terciario }} >
+    <Escena
+      navigation={ navigation }
+      footer={ botonFooter }
+      estilosContent={ { backgroundColor: colores.terciario } }
+    >
       <Form style={ estilos.centrado }>
         <IngresarTelefono guardarTelefono={ guardarTelefono } autoFocus telefono={ telefono } />
       </Form>

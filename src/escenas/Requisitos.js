@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -7,7 +7,7 @@ import Escena from '../componentes/Escena'
 import Pregunta from '../componentes/Pregunta'
 import BotonFooter from '../componentes/BotonFooter'
 
-const Requisitos = ({ cumplirRequisito, requisitos, requisitosCumplidos, navigation }) => { 
+const Requisitos = ({ cumplirRequisito, requisitos, requisitosCumplidos, navigation }) => {
   const { navigate } = navigation
 
   const preguntas = Object.keys(mapaRequisitos).map(llave => (

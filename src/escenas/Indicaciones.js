@@ -17,9 +17,9 @@ const Indicaciones = ({ navigation }) => {
   )
 
   return (
-  <Escena navigation={ navigation } footer={ botonFooter }>
-    <Text>Alguna recomendación</Text>
-  </Escena>
+    <Escena navigation={ navigation } footer={ botonFooter }>
+      <Text>Alguna recomendación</Text>
+    </Escena>
   )
 }
 

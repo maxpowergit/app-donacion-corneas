@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { Animated, Easing } from 'react-native'
 import { Icon } from 'native-base'
 
+import estilos from '../estilos/componentes/LogoFadeIn'
+
 export default class LogoFadeIn extends Component {
   constructor() {
     super()
@@ -48,11 +50,7 @@ export default class LogoFadeIn extends Component {
       >
         <Icon
           name="home"
-          style={ {
-            padding: '10%',
-            fontSize: 150,
-            color: '#3F51B5'
-          } }
+          style={ estilos.icono }
         />
       </Animated.View>
     )
