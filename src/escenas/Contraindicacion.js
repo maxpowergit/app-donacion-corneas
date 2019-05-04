@@ -4,14 +4,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Container, Header, Content, H2 } from 'native-base'
+import { H2 } from 'native-base'
 
 import mapaContraindicaciones from '../lib/mapaContraindicaciones'
 import Escena from '../componentes/Escena'
 import Pregunta from '../componentes/Pregunta'
 import BotonFooter from '../componentes/BotonFooter'
-
-import estilos from '../estilos/componentes/Pregunta'
 
 const Contraindicacion = ({ contraindicaciones, asignarContraindicacion, navigation }) => {
   const { llave } = navigation.state.params

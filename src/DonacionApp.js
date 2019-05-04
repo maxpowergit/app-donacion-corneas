@@ -9,6 +9,11 @@ import Navegador from './Navegador'
 
 // Navegador es nuestro navegador principal.
 class DonacionApp extends Component {
+  // No cargar la app hasta que las fuentes hayan cargado completamente.
+  state = {
+    loaded: false
+  }
+
   // Cargar las fuentes que usamos en la app.
   async componentDidMount() {
     // Deshabilitamos eslint porque esta es la forma recomendada de cargar
@@ -19,15 +24,26 @@ class DonacionApp extends Component {
       // eslint-disable-next-line global-require
       Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf')
     })
+
+    this.setState({ loaded: true })
   }
 
   render() {
-    return (
-      <MenuProvider>
-        <StatusBar translucent backgroundColor={ colores.transparencia } />
-        <Navegador />
-      </MenuProvider>
-    )
+    const { loaded } = this.state
+
+    let app = null
+
+    // Si las fuentes están cargadas, cargar la app normalmente.
+    if (loaded) {
+      app = (
+        <MenuProvider>
+          <StatusBar translucent backgroundColor={ colores.transparencia } />
+          <Navegador />
+        </MenuProvider>
+      )
+    }
+
+    return app
   }
 }
 
