@@ -16,7 +16,8 @@ export default StyleSheet.create({
   textoPregunta: {
     color: colores.texto,
     fontSize: tamaño.item,
-    fontFamily: 'Roboto_medium'
+    fontFamily: 'Roboto_medium',
+    alignSelf: 'flex-start'
   },
   fondo: {
     backgroundColor: colores.secundario
