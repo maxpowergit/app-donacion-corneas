@@ -2,26 +2,36 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Item, Label, Input } from 'native-base'
 import DateTimePicker from 'react-native-modal-datetime-picker'
+import moment from 'moment'
+import 'moment/locale/es'
 
 import estilos from '../estilos/componentes/DatoTemporalDonante'
 
 // TODO Cuando actualizemos a react-native >= 0.59, hay que sacar .toUpperCase
 // deshabilitar keyboard onPress
-const DatoTemporalDonante = ({ label, value, visible, onPress, onChange, onCancel, ...props }) => (
-  <Item stackedLabel onPress={ onPress }>
-    <Label style={ estilos.label }>{ label.toUpperCase() }</Label>
+const DatoTemporalDonante = ({ label, value, visible, onPress, onChange, onCancel, ...props }) => {
+  // Parseamos la fecha según los posibles formatos.
+  const parsedDate = moment(value, [
+    moment.localeData().longDateFormat('LL'),
+    moment.localeData().longDateFormat('LLL')
+  ]).toDate()
 
-    <Input style={ estilos.input } disabled value={ value } />
-    <DateTimePicker
-      onConfirm={ onChange }
-      onCancel={ onCancel }
-      date={ new Date(value) }
-      isVisible={ visible }
+  return (
+    <Item stackedLabel onPress={ onPress }>
+      <Label style={ estilos.label }>{ label.toUpperCase() }</Label>
 
-      { ...props }
-    />
-  </Item>
-)
+      <Input style={ estilos.input } disabled value={ value } />
+      <DateTimePicker
+        onConfirm={ onChange }
+        onCancel={ onCancel }
+        date={ parsedDate }
+        isVisible={ visible }
+
+        { ...props }
+      />
+    </Item>
+  )
+}
 
 DatoTemporalDonante.propTypes = {
   label: PropTypes.string.isRequired,
