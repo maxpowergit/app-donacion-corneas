@@ -7,10 +7,12 @@ import PropTypes from 'prop-types'
 import { Form } from 'native-base'
 import { connect } from 'react-redux'
 import { SMS } from 'expo'
+import moment from 'moment'
+import 'moment/locale/es'
 
 import Escena from '../componentes/Escena'
 import DatoDonante from '../componentes/DatoDonante'
-import DatoFechaDonante from '../componentes/DatoFechaDonante'
+import DatoTemporalDonante from '../componentes/DatoTemporalDonante'
 import BotonFooter from '../componentes/BotonFooter'
 
 class Contacto extends Component {
@@ -25,7 +27,10 @@ class Contacto extends Component {
       fechaIngreso: '',
       fechaHoraPCR: '',
       causaMuerte: '',
-      servicio: ''
+      servicio: '',
+      fechaHoraPCRVisible: false,
+      fechaIngresoVisible: false,
+      fechaNacimientoVisible: false
     }
   }
 
@@ -63,7 +68,8 @@ class Contacto extends Component {
   render() {
     const { telefono, navigation } = this.props
     const {
-      nombre, apellido, dni, fechaNacimiento, fechaIngreso, fechaHoraPCR, causaMuerte, servicio
+      nombre, apellido, dni, fechaNacimiento, fechaIngreso, fechaHoraPCR, causaMuerte, servicio,
+      fechaHoraPCRVisible, fechaIngresoVisible, fechaNacimientoVisible
     } = this.state
 
     const botonFooter = (
@@ -81,39 +87,57 @@ class Contacto extends Component {
             value={ nombre }
             onChange={ text => this.setState({ nombre: text }) }
           />
+
           <DatoDonante
             label="apellido"
             value={ apellido }
             onChange={ text => this.setState({ apellido: text }) }
           />
+
           <DatoDonante
             label="tipo y nro de documento"
             value={ dni }
             onChange={ text => this.setState({ dni: text }) }
           />
-          <DatoFechaDonante
+
+          <DatoTemporalDonante
             label="fecha de nacimiento"
             value={ fechaNacimiento }
-            onChange={ date => this.setState({ fechaNacimiento: date.toLocaleDateString() }) }
+            visible={ fechaNacimientoVisible }
+            onPress={ () => this.setState({ fechaNacimientoVisible: true }) }
+            onChange={ date => this.setState({ fechaNacimiento: moment(date).format('LL'), fechaNacimientoVisible: false }) }
+            onCancel={ () => this.setState({ fechaNacimientoVisible: false }) }
           />
-          <DatoFechaDonante
+
+          <DatoTemporalDonante
             label="fecha de ingreso"
             value={ fechaIngreso }
-            onChange={ date => this.setState({ fechaIngreso: date.toLocaleDateString() }) }
+            visible={ fechaIngresoVisible }
+            onPress={ () => this.setState({ fechaIngresoVisible: true }) }
+            onChange={ date => this.setState({ fechaIngreso: moment(date).format('LL'), fechaIngresoVisible: false }) }
+            onCancel={ () => this.setState({ fechaIngresoVisible: false }) }
           />
-          <DatoDonante
+
+          <DatoTemporalDonante
             label="fecha y hora del pcr"
             value={ fechaHoraPCR }
-            onChange={ text => this.setState({ fechaHoraPCR: text }) }
+            visible={ fechaHoraPCRVisible }
+            mode="datetime"
+            onPress={ () => this.setState({ fechaHoraPCRVisible: true }) }
+            onChange={ date => this.setState({ fechaHoraPCR: moment(date).format('LLL'), fechaHoraPCRVisible: false }) }
+            onCancel={ () => this.setState({ fechaHoraPCRVisible: false }) }
           />
+
           <DatoDonante
             label="causa de muerte"
             value={ causaMuerte }
             onChange={ text => this.setState({ causaMuerte: text }) }
           />
+
           <DatoDonante
             label="servicio"
             value={ servicio }
+            returnKeyType="done"
             onChange={ text => this.setState({ servicio: text }) }
           />
         </Form>
