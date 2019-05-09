@@ -1,6 +1,8 @@
 import React from 'react'
+import { BackHandler } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { AndroidBackHandler } from 'react-navigation-backhandler'
 
 import mapaRequisitos from '../lib/mapaRequisitos'
 import Escena from '../componentes/Escena'
@@ -9,6 +11,11 @@ import BotonFooter from '../componentes/BotonFooter'
 
 const Requisitos = ({ cumplirRequisito, requisitos, requisitosCumplidos, navigation }) => {
   const { navigate } = navigation
+
+  const onBackButtonPressAndroid = () => {
+    BackHandler.exitApp()
+    return true
+  }
 
   const preguntas = Object.keys(mapaRequisitos).map(llave => (
     <Pregunta
@@ -34,9 +41,11 @@ const Requisitos = ({ cumplirRequisito, requisitos, requisitosCumplidos, navigat
   )
 
   return (
-    <Escena navigation={ navigation } footer={ botonFooter }>
-      { preguntas }
-    </Escena>
+    <AndroidBackHandler onBackPress={ onBackButtonPressAndroid }>
+      <Escena navigation={ navigation } footer={ botonFooter }>
+        { preguntas }
+      </Escena>
+    </AndroidBackHandler>
   )
 }
 
