@@ -1,36 +1,46 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Item, Label, Input } from 'native-base'
 
 import estilos from '../estilos/componentes/DatoDonante'
 
 // TODO Cuando actualizemos a react-native >= 0.59, hay que sacar .toUpperCase
-const DatoDonante = ({ label, onChange, value, ...props }) => (
-  <Item stackedLabel>
-    <Label style={ estilos.label }>{ label.toUpperCase() }</Label>
+class DatoDonante extends Component {
+  render() {
+    const { label, onChange, value, inputRef, ...props } = this.props
 
-    <Input
-      onChangeText={ onChange }
-      value={ value }
+    return (
+      <Item stackedLabel>
+        <Label style={ estilos.label }>{ label.toUpperCase() }</Label>
 
-      multiline
-      keyboardType="default"
-      blurOnSubmit
+        <Input
+          style={ estilos.input }
+          onChangeText={ onChange }
+          value={ value }
+          ref={ inputRef }
 
-      { ...props }
-    />
-  </Item>
-)
+          { ...props }
+        />
+      </Item>
+    )
+  }
+}
 
 DatoDonante.propTypes = {
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  inputRef: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
-  returnKeyType: PropTypes.string
+  returnKeyType: PropTypes.string,
+  blurOnSubmit: PropTypes.bool
 }
 
+// blurOnSubmit oculta el teclado al apretar el botón de 'return', false por
+// default porque sólo lo queremos al pasar a un DatoTemporalDonante y en el
+// último input.
 DatoDonante.defaultProps = {
-  returnKeyType: 'next'
+  returnKeyType: 'next',
+  blurOnSubmit: false
 }
 
 export default DatoDonante

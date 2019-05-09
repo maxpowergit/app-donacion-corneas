@@ -13,12 +13,12 @@ const DatoTemporalDonante = ({ label, value, visible, onPress, onChange, onCance
 
     <Input style={ estilos.input } disabled value={ value } />
     <DateTimePicker
-      { ...props }
-      isVisible={ visible }
-      date={ new Date(value) }
-
       onConfirm={ onChange }
       onCancel={ onCancel }
+      date={ new Date(value) }
+      isVisible={ visible }
+
+      { ...props }
     />
   </Item>
 )
