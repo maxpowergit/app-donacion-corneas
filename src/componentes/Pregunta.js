@@ -7,7 +7,11 @@ import estilos from '../estilos/componentes/Pregunta'
 
 const Pregunta = ({ texto, marcar, desmarcar, marcada }) => (
   <Card transparent>
-    <CardItem style={ estilos.fondo }>
+    <CardItem
+      button
+      onPress={ () => (marcada ? desmarcar() : marcar()) }
+      style={ estilos.fondo }
+    >
       <Left style={ estilos.contenedorCheckBox }>
         <CheckBox
           onPress={ () => (marcada ? desmarcar() : marcar()) }
