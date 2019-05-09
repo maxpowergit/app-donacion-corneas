@@ -26,5 +26,20 @@ export default StyleSheet.create({
     color: colores.texto,
     fontSize: tamaño.titulo,
     textTransform: 'uppercase'
+  },
+  opcionMenu: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start'
+  },
+  iconoMenu: {
+    color: colores.primario
+  },
+  textoMenu: {
+    color: colores.primario
+  },
+  menu: {
+    backgroundColor: colores.terciario
   }
 })

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Header, Left, Body, Right, Button, Icon, Text } from 'native-base'
+import { Header, Left, Body, Right, Button, Icon, Text, View } from 'native-base'
 import { Menu, MenuOptions, MenuOption, MenuTrigger } from 'react-native-popup-menu'
 import { connect } from 'react-redux'
 
@@ -37,13 +37,21 @@ const HeaderDefault = ({ texto, navigation, acercaDeVisible, mostarAcercaDe }) =
               </Button>
             </MenuTrigger>
 
-            <MenuOptions>
+            <MenuOptions style={ estilos.menu }>
               <MenuOption onSelect={ () => navigate('telefono') }>
-                <Text>Cambiar teléfono</Text>
+                <View style={ estilos.opcionMenu }>
+                  <Icon name="call" style={ estilos.iconoMenu } />
+                  <Text style={ estilos.textoMenu }>    Cambiar télefono</Text>
+
+                </View>
               </MenuOption>
 
               <MenuOption onSelect={ () => mostarAcercaDe(true) }>
-                <Text>Acerca de...</Text>
+                <View style={ estilos.opcionMenu }>
+                  <Icon name="information-circle" style={ estilos.iconoMenu } />
+                  <Text style={ estilos.textoMenu }>    Acerca de...</Text>
+
+                </View>
               </MenuOption>
             </MenuOptions>
           </Menu>
