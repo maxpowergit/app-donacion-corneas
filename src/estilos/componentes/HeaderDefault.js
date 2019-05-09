@@ -20,7 +20,7 @@ export default StyleSheet.create({
   },
   iconoHeader: {
     color: colores.texto,
-    fontSize: tamaño.titulo
+    fontSize: 25
   },
   textoHeader: {
     color: colores.texto,
