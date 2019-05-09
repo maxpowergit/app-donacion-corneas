@@ -11,6 +11,8 @@ import Escena from '../componentes/Escena'
 import Pregunta from '../componentes/Pregunta'
 import BotonFooter from '../componentes/BotonFooter'
 
+import estilos from '../estilos/escenas/Contraindicacion'
+
 const Contraindicacion = ({ contraindicaciones, asignarContraindicacion, navigation }) => {
   const { llave } = navigation.state.params
   const { pregunta, opciones } = mapaContraindicaciones[llave]
@@ -34,7 +36,7 @@ const Contraindicacion = ({ contraindicaciones, asignarContraindicacion, navigat
 
   return (
     <Escena navigation={ navigation } footer={ botonFooter }>
-      <H2>{ pregunta }</H2>
+      <H2 style={ estilos.subtitulo }>{ pregunta }</H2>
 
       { preguntas }
     </Escena>
