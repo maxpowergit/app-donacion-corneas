@@ -25,7 +25,12 @@ const Telefono = ({ navigation, telefono, guardarTelefono }) => {
       estilosContent={ { backgroundColor: colores.terciario } }
     >
       <Form style={ estilos.centrado }>
-        <IngresarTelefono guardarTelefono={ guardarTelefono } autoFocus telefono={ telefono } />
+        <IngresarTelefono
+          guardarTelefono={ guardarTelefono }
+          telefono={ telefono }
+          floatingLabel={ false }
+          autoFocus
+        />
       </Form>
     </Escena>
   )

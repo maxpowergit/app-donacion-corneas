@@ -8,15 +8,18 @@ import { Item, Input, Label } from 'native-base'
 import estilos from '../estilos/componentes/IngresarTelefono'
 
 export default class IngresarTelefono extends Component {
+  // No estoy seguro de que esto haga algo.
   componentWillMount() {
     LayoutAnimation.easeInEaseOut()
   }
 
   render() {
-    const { guardarTelefono, autoFocus, telefono } = this.props
+    const { guardarTelefono, autoFocus, telefono, floatingLabel } = this.props
 
     return (
-      <Item floatingLabel style={ estilos.item }>
+      // Por default usamos floatingLabel (en el inicio) y si lo deshabilitamos
+      // usamos stackedLabel.
+      <Item floatingLabel={ floatingLabel } stackedLabel={ !floatingLabel } style={ estilos.item }>
         <Label style={ estilos.label }>TELÉFONO DEL COORDINADOR HOSPITALARIO</Label>
         <Input
           value={ telefono }
@@ -35,9 +38,11 @@ export default class IngresarTelefono extends Component {
 IngresarTelefono.propTypes = {
   guardarTelefono: PropTypes.func.isRequired,
   autoFocus: PropTypes.bool,
-  telefono: PropTypes.string.isRequired
+  telefono: PropTypes.string.isRequired,
+  floatingLabel: PropTypes.bool
 }
 
 IngresarTelefono.defaultProps = {
-  autoFocus: false
+  autoFocus: false,
+  floatingLabel: true
 }
