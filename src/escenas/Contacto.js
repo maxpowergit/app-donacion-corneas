@@ -104,7 +104,7 @@ class Contacto extends Component {
     )
 
     return (
-      <Escena navigation={ navigation } footer={ botonFooter }>
+      <Escena navigation={ navigation } footer={ botonFooter } header>
         <Form>
           <DatoDonante
             label="nombre"

@@ -25,7 +25,7 @@ const Indicaciones = ({ navigation }) => {
   ))
 
   return (
-    <Escena navigation={ navigation } footer={ botonFooter }>
+    <Escena navigation={ navigation } footer={ botonFooter } header>
       { listaIndicaciones }
     </Escena>
   )

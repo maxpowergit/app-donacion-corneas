@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { KeyboardAvoidingView } from 'react-native'
-import { Container, Content, Form } from 'native-base'
-import { Row, Grid } from 'react-native-easy-grid'
+import { Form } from 'native-base'
 import { connect } from 'react-redux'
 
 import LogoFadeIn from '../componentes/LogoFadeIn'
 import IngresarTelefono from '../componentes/IngresarTelefono'
-import ConfirmarTelefono from '../componentes/ConfirmarTelefono'
+import Escena from '../componentes/Escena'
+import BotonFooter from '../componentes/BotonFooter'
 
 import estilos from '../estilos/escenas/Ingreso'
 
@@ -22,17 +21,29 @@ class Ingreso extends Component {
     }
   }
 
+  botonFooter() {
+    const { navigation, telefono, tiempoTranscurrido } = this.props
+    const { navigate } = navigation
+
+    if (telefono && tiempoTranscurrido) {
+      return (
+        <BotonFooter
+          onPress={ () => navigate('requisitos') }
+          texto="Confirmar"
+        />
+      )
+    }
+    return null
+  }
+
   mostrarTelefono() {
     const {
-      telefono, guardarTelefono, tiempoTranscurrido, navigation
+      telefono, guardarTelefono, tiempoTranscurrido
     } = this.props
 
     if (tiempoTranscurrido) {
       return (
-        <>
-          <IngresarTelefono telefono={ telefono } guardarTelefono={ guardarTelefono } />
-          <ConfirmarTelefono telefono={ telefono } confirmar={ () => navigation.navigate('requisitos') } />
-        </>
+        <IngresarTelefono telefono={ telefono } guardarTelefono={ guardarTelefono } />
       )
     }
 
@@ -40,25 +51,24 @@ class Ingreso extends Component {
   }
 
   render() {
-    return (
-      <Container>
-        <Grid>
-          <KeyboardAvoidingView behavior="padding" flex={ 1 }>
-            <Row style={ estilos.centrado }>
-              <Content>
-                <Form style={ estilos.centrado }>
-                  <LogoFadeIn
-                    duracion={ 3500 }
-                    callback={ () => { this.navegarSiHayTelefono() } }
-                  />
+    const { navigation } = this.props
 
-                  { this.mostrarTelefono() }
-                </Form>
-              </Content>
-            </Row>
-          </KeyboardAvoidingView>
-        </Grid>
-      </Container>
+    return (
+
+      <Escena
+        navigation={ navigation }
+        contentContainerStyle={ estilos.centrado }
+        footer={ this.botonFooter() }
+      >
+        <Form style={ estilos.centrado }>
+          <LogoFadeIn
+            duracion={ 3500 }
+            callback={ () => { this.navegarSiHayTelefono() } }
+          />
+
+          { this.mostrarTelefono() }
+        </Form>
+      </Escena>
     )
   }
 }

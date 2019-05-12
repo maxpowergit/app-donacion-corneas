@@ -9,35 +9,43 @@ import HeaderDefault from './HeaderDefault'
 
 import estilos from '../estilos/componentes/Escena'
 
-const Escena = ({ children, navigation, footer, estilosContent }) => (
+const Escena = ({ children, navigation, footer, contentContainerStyle, header }) => (
   <Container>
     <KeyboardAvoidingView behavior="padding" flex={ 1 }>
-      <HeaderDefault texto={ navigation.state.routeName } navigation={ navigation } />
-
-      <Content style={ [estilos.contenido, estilosContent] }>
+      { header && <HeaderDefault texto={ navigation.state.routeName } navigation={ navigation } />
+  }
+      <Content
+        style={ estilos.contenido }
+        contentContainerStyle={ contentContainerStyle }
+      >
         { children }
       </Content>
 
+      { footer && (
       <Footer>
         <FooterTab>
           { footer }
         </FooterTab>
       </Footer>
+      ) }
     </KeyboardAvoidingView>
   </Container>
 )
 
 Escena.propTypes = {
   children: PropTypes.node.isRequired,
-  footer: PropTypes.node.isRequired,
-  estilosContent: PropTypes.shape(),
+  footer: PropTypes.node,
+  header: PropTypes.bool,
+  contentContainerStyle: PropTypes.shape(),
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired
   }).isRequired
 }
 
 Escena.defaultProps = {
-  estilosContent: null
+  footer: null,
+  header: null,
+  contentContainerStyle: null
 }
 
 export default Escena

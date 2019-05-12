@@ -22,7 +22,7 @@ const Telefono = ({ navigation, telefono, guardarTelefono }) => {
     <Escena
       navigation={ navigation }
       footer={ botonFooter }
-      estilosContent={ { backgroundColor: colores.terciario } }
+      contentContainerStyle={ { backgroundColor: colores.terciario, flex: 1 } }
     >
       <Form style={ estilos.centrado }>
         <IngresarTelefono
