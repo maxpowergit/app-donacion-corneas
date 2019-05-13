@@ -17,7 +17,7 @@ const DatoTemporalDonante = ({ label, value, visible, onPress, onChange, onCance
   ]).toDate()
 
   return (
-    <Item stackedLabel onPress={ onPress }>
+    <Item stackedLabel onPress={ onPress } style={ estilos.item }>
       <Label style={ estilos.label }>{ label.toUpperCase() }</Label>
 
       <Input style={ estilos.input } disabled value={ value } />

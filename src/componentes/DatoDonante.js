@@ -10,7 +10,7 @@ class DatoDonante extends Component {
     const { label, onChange, value, inputRef, ...props } = this.props
 
     return (
-      <Item stackedLabel>
+      <Item stackedLabel style={ estilos.item }>
         <Label style={ estilos.label }>{ label.toUpperCase() }</Label>
 
         <Input

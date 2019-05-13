@@ -24,6 +24,5 @@ export default StyleSheet.create({
     fontFamily: 'Roboto_medium',
     fontWeight: 'bold',
     textAlign: 'center'
-
   }
 })
