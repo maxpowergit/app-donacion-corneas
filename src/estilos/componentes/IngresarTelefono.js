@@ -20,6 +20,10 @@ export default StyleSheet.create({
     color: colores.primario,
     alignSelf: 'center',
     marginLeft: 8,
-    marginRight: 8
+    marginRight: 8,
+    fontFamily: 'Roboto_medium',
+    fontWeight: 'bold',
+    textAlign: 'center'
+
   }
 })
