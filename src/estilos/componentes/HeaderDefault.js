@@ -25,7 +25,9 @@ export default StyleSheet.create({
   textoHeader: {
     color: colores.texto,
     fontSize: tamaño.titulo,
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
+    fontFamily: 'Roboto_medium',
+    fontWeight: 'bold'
   },
   opcionMenu: {
     flex: 1,

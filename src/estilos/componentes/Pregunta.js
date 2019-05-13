@@ -17,6 +17,7 @@ export default StyleSheet.create({
     color: colores.texto,
     fontSize: tamaño.item,
     fontFamily: 'Roboto_medium',
+    fontWeight: 'bold',
     alignSelf: 'flex-start'
   },
   fondo: {
