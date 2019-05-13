@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, StatusBar } from 'react-native'
 
 import { colores } from '../Base'
 
@@ -7,6 +7,8 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: colores.terciario,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    margin: 8,
+    marginTop: StatusBar.currentHeight + 8
   }
 })
