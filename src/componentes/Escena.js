@@ -9,29 +9,36 @@ import HeaderDefault from './HeaderDefault'
 
 import estilos from '../estilos/componentes/Escena'
 
-const Escena = ({ children, navigation, footer, contentContainerStyle, ocultarHeader }) => (
-  <Container>
-    <KeyboardAvoidingView behavior="padding" flex={ 1 }>
-      { !ocultarHeader
-        && <HeaderDefault texto={ navigation.state.routeName } navigation={ navigation } />
-      }
-      <Content
-        style={ estilos.contenido }
-        contentContainerStyle={ contentContainerStyle }
-      >
-        { children }
-      </Content>
+const Escena = ({ children, navigation, footer, contentContainerStyle, ocultarHeader }) => {
+  const { routeName, params } = navigation.state
+  // Por default usamos la ruta como título del Header, a menos que pasemos uno
+  // al navegar a la escena.
+  const titulo = (params && params.titulo) || routeName
 
-      { footer && (
-      <Footer>
-        <FooterTab>
-          { footer }
-        </FooterTab>
-      </Footer>
-      ) }
-    </KeyboardAvoidingView>
-  </Container>
-)
+  return (
+    <Container>
+      <KeyboardAvoidingView behavior="padding" flex={ 1 }>
+        { !ocultarHeader
+          && <HeaderDefault texto={ titulo } navigation={ navigation } />
+        }
+        <Content
+          style={ estilos.contenido }
+          contentContainerStyle={ contentContainerStyle }
+        >
+          { children }
+        </Content>
+
+        { footer && (
+        <Footer>
+          <FooterTab>
+            { footer }
+          </FooterTab>
+        </Footer>
+        ) }
+      </KeyboardAvoidingView>
+    </Container>
+  )
+}
 
 Escena.propTypes = {
   children: PropTypes.node.isRequired,
@@ -39,13 +46,18 @@ Escena.propTypes = {
   ocultarHeader: PropTypes.bool,
   contentContainerStyle: PropTypes.shape(),
   navigation: PropTypes.shape({
-    navigate: PropTypes.func.isRequired
+    navigate: PropTypes.func.isRequired,
+    state: PropTypes.shape({
+      params: PropTypes.shape({
+        titulo: PropTypes.string
+      })
+    })
   }).isRequired
 }
 
 Escena.defaultProps = {
   footer: null,
-  ocultarHeader: null,
+  ocultarHeader: false,
   contentContainerStyle: null
 }
 

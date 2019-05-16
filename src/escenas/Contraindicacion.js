@@ -35,7 +35,7 @@ const Contraindicacion = ({ contraindicaciones, asignarContraindicacion, navigat
   )
 
   return (
-    <Escena navigation={ navigation } footer={ botonFooter } ocultarHeader>
+    <Escena navigation={ navigation } footer={ botonFooter }>
       <H2 style={ estilos.subtitulo }>{ pregunta }</H2>
 
       { preguntas }
@@ -49,7 +49,8 @@ Contraindicacion.propTypes = {
   navigation: PropTypes.shape({
     state: PropTypes.shape({
       params: PropTypes.shape({
-        llave: PropTypes.string.isRequired
+        llave: PropTypes.string.isRequired,
+        titulo: PropTypes.string.isRequired
       }).isRequired
     }).isRequired
   }).isRequired

@@ -9,13 +9,15 @@ import BotonFooter from '../componentes/BotonFooter'
 
 const Contraindicaciones = ({ contraindicaciones, sinContraindicaciones, navigation }) => {
   const { navigate } = navigation
+  // Para que la subpantalla mantenga el mismo título.
+  const titulo = navigation.state.routeName
 
   const preguntas = Object.keys(mapaContraindicaciones).map(llave => (
     <Pregunta
       key={ llave }
       texto={ mapaContraindicaciones[llave].pregunta }
-      marcar={ () => navigate('contraindicacion', { llave }) }
-      desmarcar={ () => navigate('contraindicacion', { llave }) }
+      marcar={ () => navigate('contraindicacion', { llave, titulo }) }
+      desmarcar={ () => navigate('contraindicacion', { llave, titulo }) }
       marcada={ contraindicaciones[llave] }
     />
   ))
