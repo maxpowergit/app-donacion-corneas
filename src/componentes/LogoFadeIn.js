@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Animated, Easing } from 'react-native'
-import { Icon } from 'native-base'
+import { Animated, Easing, Image } from 'react-native'
 
-import estilos from '../estilos/componentes/LogoFadeIn'
+// Requerir assets al principio del archivo.
+const logo = require('../assets/logo.png')
 
 export default class LogoFadeIn extends Component {
   constructor() {
@@ -37,20 +37,13 @@ export default class LogoFadeIn extends Component {
       outputRange: [0, 0, 1]
     })
 
-    const desdeArriba = this.valorAnimacion.interpolate({
-      inputRange: [0, 1],
-      outputRange: [-100, 0]
-    })
-
     return (
       <Animated.View style={ {
-        opacity,
-        marginTop: desdeArriba
+        opacity
       } }
       >
-        <Icon
-          name="home"
-          style={ estilos.icono }
+        <Image
+          source={ logo }
         />
       </Animated.View>
     )
