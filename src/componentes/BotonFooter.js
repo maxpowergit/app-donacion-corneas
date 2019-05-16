@@ -9,8 +9,9 @@ const BotonFooter = ({ onPress, texto, disabled }) => (
     full
     onPress={ onPress }
     disabled={ disabled }
+    style={ disabled ? estilos.botonDeshabilitado : estilos.boton }
   >
-    <Text style={ estilos.texto }>
+    <Text style={ disabled ? estilos.textoDeshabilitado : estilos.texto }>
       { texto.toUpperCase() }
     </Text>
   </Button>
