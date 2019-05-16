@@ -26,8 +26,9 @@ const Telefono = ({ navigation, telefono, guardarTelefono }) => {
     >
       <Form style={ estilos.centrado }>
         <Icon
-          name="call"
+          name="local-phone"
           style={ estilos.icono }
+          type="MaterialIcons"
         />
 
         <IngresarTelefono

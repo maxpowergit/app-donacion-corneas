@@ -40,7 +40,7 @@ const HeaderDefault = ({ texto, navigation, acercaDeVisible, mostarAcercaDe }) =
             <MenuOptions style={ estilos.menu }>
               <MenuOption onSelect={ () => navigate('telefono') }>
                 <View style={ estilos.opcionMenu }>
-                  <Icon name="call" style={ estilos.iconoMenu } />
+                  <Icon name="local-phone" style={ estilos.iconoMenu } type="MaterialIcons" />
                   <Text style={ estilos.textoMenu }>    Cambiar télefono</Text>
 
                 </View>
@@ -48,7 +48,7 @@ const HeaderDefault = ({ texto, navigation, acercaDeVisible, mostarAcercaDe }) =
 
               <MenuOption onSelect={ () => mostarAcercaDe(true) }>
                 <View style={ estilos.opcionMenu }>
-                  <Icon name="information-circle" style={ estilos.iconoMenu } />
+                  <Icon name="info" style={ estilos.iconoMenu } type="MaterialIcons" />
                   <Text style={ estilos.textoMenu }>    Acerca de...</Text>
 
                 </View>
