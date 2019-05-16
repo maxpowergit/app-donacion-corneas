@@ -43,7 +43,11 @@ class Ingreso extends Component {
 
     if (tiempoTranscurrido) {
       return (
-        <IngresarTelefono floatingLabel={ false } telefono={ telefono } guardarTelefono={ guardarTelefono } />
+        <IngresarTelefono
+          floatingLabel={ false }
+          telefono={ telefono }
+          guardarTelefono={ guardarTelefono }
+        />
       )
     }
 
