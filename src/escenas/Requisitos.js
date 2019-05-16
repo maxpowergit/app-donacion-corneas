@@ -42,7 +42,7 @@ const Requisitos = ({ cumplirRequisito, requisitos, requisitosCumplidos, navigat
 
   return (
     <AndroidBackHandler onBackPress={ onBackButtonPressAndroid }>
-      <Escena navigation={ navigation } footer={ botonFooter } header>
+      <Escena navigation={ navigation } footer={ botonFooter }>
         { preguntas }
       </Escena>
     </AndroidBackHandler>

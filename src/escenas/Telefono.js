@@ -22,6 +22,7 @@ const Telefono = ({ navigation, telefono, guardarTelefono }) => {
       navigation={ navigation }
       footer={ botonFooter }
       contentContainerStyle={ estilos.centrado }
+      ocultarHeader
     >
       <Form style={ estilos.centrado }>
         <Icon

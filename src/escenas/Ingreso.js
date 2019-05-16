@@ -63,6 +63,7 @@ class Ingreso extends Component {
         navigation={ navigation }
         contentContainerStyle={ estilos.centrado }
         footer={ this.botonFooter() }
+        ocultarHeader
       >
         <Form style={ estilos.centrado }>
           <LogoFadeIn

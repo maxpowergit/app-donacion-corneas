@@ -110,7 +110,6 @@ class Contacto extends Component {
         contentContainerStyle={ estilos.centrado }
         navigation={ navigation }
         footer={ botonFooter }
-        header
       >
         <Form>
           <DatoDonante

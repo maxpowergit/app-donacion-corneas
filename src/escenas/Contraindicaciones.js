@@ -34,7 +34,7 @@ const Contraindicaciones = ({ contraindicaciones, sinContraindicaciones, navigat
   )
 
   return (
-    <Escena navigation={ navigation } footer={ botonFooter } header>
+    <Escena navigation={ navigation } footer={ botonFooter }>
       { preguntas }
     </Escena>
   )

@@ -9,11 +9,12 @@ import HeaderDefault from './HeaderDefault'
 
 import estilos from '../estilos/componentes/Escena'
 
-const Escena = ({ children, navigation, footer, contentContainerStyle, header }) => (
+const Escena = ({ children, navigation, footer, contentContainerStyle, ocultarHeader }) => (
   <Container>
     <KeyboardAvoidingView behavior="padding" flex={ 1 }>
-      { header && <HeaderDefault texto={ navigation.state.routeName } navigation={ navigation } />
-  }
+      { !ocultarHeader
+        && <HeaderDefault texto={ navigation.state.routeName } navigation={ navigation } />
+      }
       <Content
         style={ estilos.contenido }
         contentContainerStyle={ contentContainerStyle }
@@ -35,7 +36,7 @@ const Escena = ({ children, navigation, footer, contentContainerStyle, header })
 Escena.propTypes = {
   children: PropTypes.node.isRequired,
   footer: PropTypes.node,
-  header: PropTypes.bool,
+  ocultarHeader: PropTypes.bool,
   contentContainerStyle: PropTypes.shape(),
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired
@@ -44,7 +45,7 @@ Escena.propTypes = {
 
 Escena.defaultProps = {
   footer: null,
-  header: null,
+  ocultarHeader: null,
   contentContainerStyle: null
 }
 
