@@ -7,7 +7,7 @@ export default StyleSheet.create({
     flex: 1
   },
   contenedorTexto: {
-    flex: 3
+    flex: 4
   },
   textoBoton: {
     color: colores.texto,
@@ -25,10 +25,14 @@ export default StyleSheet.create({
   },
   iconoMarcado: {
     color: colores.texto,
-    fontSize: 40
+    fontSize: 30,
+    marginLeft: 8,
+    marginRight: 8
   },
   iconoDesmarcado: {
     color: colores.secundario,
-    fontSize: 40
+    fontSize: 30,
+    marginLeft: 8,
+    marginRight: 8
   }
 })

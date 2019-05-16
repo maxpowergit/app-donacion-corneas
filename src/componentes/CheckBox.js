@@ -6,7 +6,6 @@ import estilos from '../estilos/componentes/CheckBox'
 
 const CheckBox = ({ onPress, estilo }) => (
   <Button
-    bordered
     style={ estilos.boton }
     onPress={ onPress }
   >
