@@ -39,25 +39,13 @@ class Contacto extends Component {
     this.inputs = {}
   }
 
-  // Según el tipo de input, enfocarlo puede ser abrir el DatePicker
-  // correspondiente, o hacer foco en el TextInput.
+  // Hace foco en el Text Input especificado, permitiendo la edición continua
+  // entre los inputs.
   enfocarInput(id) {
-    switch (id) {
-      case 'fechaNacimiento':
-        this.setState({ fechaNacimientoVisible: true })
-        break
-      case 'fechaIngreso':
-        this.setState({ fechaIngresoVisible: true })
-        break
-      case 'fechaHoraPCR':
-        this.setState({ fechaHoraPCRVisible: true })
-        break
-      default:
-        // _root es definido por native-base para acceder al componente raíz
-        // adentro de sus componentes decorados.
-        // eslint-disable-next-line no-underscore-dangle
-        this.inputs[id]._root.focus()
-    }
+    // _root es definido por native-base para acceder al componente raíz
+    // adentro de sus componentes decorados.
+    // eslint-disable-next-line no-underscore-dangle
+    this.inputs[id]._root.focus()
   }
 
   async enviarSMS(telefono, mensaje) {
@@ -133,51 +121,11 @@ class Contacto extends Component {
           <DatoDonante
             label="tipo y nro de documento"
             inputRef={ (input) => { this.inputs.dni = input } }
-            onSubmitEditing={ () => { this.enfocarInput('fechaNacimiento') } }
+            onSubmitEditing={ () => { this.enfocarInput('causaMuerte') } }
             blurOnSubmit
 
             value={ dni }
             onChange={ text => this.setState({ dni: text }) }
-          />
-
-          <DatoTemporalDonante
-            label="fecha de nacimiento"
-
-            value={ fechaNacimiento }
-            visible={ fechaNacimientoVisible }
-            onPress={ () => this.setState({ fechaNacimientoVisible: true }) }
-            onChange={ (date) => {
-              this.setState({ fechaNacimiento: moment(date).format('LL'), fechaNacimientoVisible: false })
-              this.enfocarInput('fechaIngreso')
-            } }
-            onCancel={ () => this.setState({ fechaNacimientoVisible: false }) }
-          />
-
-          <DatoTemporalDonante
-            label="fecha de ingreso"
-
-            value={ fechaIngreso }
-            visible={ fechaIngresoVisible }
-            onPress={ () => this.setState({ fechaIngresoVisible: true }) }
-            onChange={ (date) => {
-              this.setState({ fechaIngreso: moment(date).format('LL'), fechaIngresoVisible: false })
-              this.enfocarInput('fechaHoraPCR')
-            } }
-            onCancel={ () => this.setState({ fechaIngresoVisible: false }) }
-          />
-
-          <DatoTemporalDonante
-            label="fecha y hora del pcr"
-
-            value={ fechaHoraPCR }
-            visible={ fechaHoraPCRVisible }
-            mode="datetime"
-            onPress={ () => this.setState({ fechaHoraPCRVisible: true }) }
-            onChange={ (date) => {
-              this.setState({ fechaHoraPCR: moment(date).format('LLL'), fechaHoraPCRVisible: false })
-              this.enfocarInput('causaMuerte')
-            } }
-            onCancel={ () => this.setState({ fechaHoraPCRVisible: false }) }
           />
 
           <DatoDonante
@@ -197,6 +145,44 @@ class Contacto extends Component {
             value={ servicio }
             returnKeyType="done"
             onChange={ text => this.setState({ servicio: text }) }
+          />
+
+          { /* Datos temporales al final todos juntos */ }
+          <DatoTemporalDonante
+            label="fecha de nacimiento"
+
+            value={ fechaNacimiento }
+            visible={ fechaNacimientoVisible }
+            onPress={ () => this.setState({ fechaNacimientoVisible: true }) }
+            onChange={ (date) => {
+              this.setState({ fechaNacimiento: moment(date).format('LL'), fechaNacimientoVisible: false })
+            } }
+            onCancel={ () => this.setState({ fechaNacimientoVisible: false }) }
+          />
+
+          <DatoTemporalDonante
+            label="fecha de ingreso"
+
+            value={ fechaIngreso }
+            visible={ fechaIngresoVisible }
+            onPress={ () => this.setState({ fechaIngresoVisible: true }) }
+            onChange={ (date) => {
+              this.setState({ fechaIngreso: moment(date).format('LL'), fechaIngresoVisible: false })
+            } }
+            onCancel={ () => this.setState({ fechaIngresoVisible: false }) }
+          />
+
+          <DatoTemporalDonante
+            label="fecha y hora del pcr"
+
+            value={ fechaHoraPCR }
+            visible={ fechaHoraPCRVisible }
+            mode="datetime"
+            onPress={ () => this.setState({ fechaHoraPCRVisible: true }) }
+            onChange={ (date) => {
+              this.setState({ fechaHoraPCR: moment(date).format('LLL'), fechaHoraPCRVisible: false })
+            } }
+            onCancel={ () => this.setState({ fechaHoraPCRVisible: false }) }
           />
         </Form>
       </Escena>
