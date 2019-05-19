@@ -3,6 +3,13 @@ import { StyleSheet } from 'react-native'
 import { colores, tamaño } from '../Base'
 
 export default StyleSheet.create({
+  boton: {
+    backgroundColor: colores.primario
+  },
+  botonDeshabilitado: {
+    backgroundColor: colores.terciario
+  },
+
   texto: {
     color: colores.texto,
     fontSize: tamaño.item,
@@ -12,12 +19,5 @@ export default StyleSheet.create({
     color: colores.primario,
     fontSize: tamaño.item,
     fontWeight: 'bold'
-  },
-
-  boton: {
-    backgroundColor: colores.primario
-  },
-  botonDeshabilitado: {
-    backgroundColor: colores.terciario
   }
 })

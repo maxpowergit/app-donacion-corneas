@@ -3,12 +3,12 @@ import { StyleSheet } from 'react-native'
 import { colores, tamaño } from '../Base'
 
 export default StyleSheet.create({
-  modal: {
-    flex: 1,
-    backgroundColor: colores.secundario
-  },
   boton: {
     alignSelf: 'center'
+  },
+  modal: {
+    backgroundColor: colores.secundario,
+    flex: 1
   },
   textoBoton: {
     color: colores.texto

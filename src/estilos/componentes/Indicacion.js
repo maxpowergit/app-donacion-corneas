@@ -8,7 +8,7 @@ export default StyleSheet.create({
   },
   texto: {
     color: colores.texto,
-    fontSize: tamaño.texto,
-    fontFamily: 'Roboto_medium'
+    fontFamily: 'Roboto_medium',
+    fontSize: tamaño.texto
   }
 })

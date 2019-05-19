@@ -9,7 +9,7 @@ import Navegador from './Navegador'
 // Navegador es nuestro navegador principal.
 class DonacionApp extends Component {
   render() {
-    return (  
+    return (
       <MenuProvider>
         <StatusBar translucent backgroundColor={ colores.transparencia } />
         <Navegador />

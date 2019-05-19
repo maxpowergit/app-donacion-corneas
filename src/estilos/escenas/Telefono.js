@@ -4,16 +4,16 @@ import { colores } from '../Base'
 
 export default StyleSheet.create({
   centrado: {
-    flex: 1,
     alignItems: 'center',
     backgroundColor: colores.terciario,
+    flex: 1,
     justifyContent: 'center',
     margin: 8,
     marginTop: StatusBar.currentHeight + 8
   },
   icono: {
-    padding: '10%',
+    color: colores.secundario,
     fontSize: 150,
-    color: colores.secundario
+    padding: '10%'
   }
 })

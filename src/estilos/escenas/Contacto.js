@@ -4,9 +4,9 @@ import { colores } from '../Base'
 
 export default StyleSheet.create({
   centrado: {
-    flex: 1,
     alignItems: 'center',
     backgroundColor: colores.terciario,
+    flex: 1,
     justifyContent: 'center',
     margin: 8
   }

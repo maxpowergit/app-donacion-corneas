@@ -6,21 +6,21 @@ export default StyleSheet.create({
   contenedor: {
     alignItems: 'center'
   },
-  item: {
-    borderColor: colores.primario,
-    borderBottomWidth: 1.5
-  },
-  label: {
+  input: {
+    alignSelf: 'center',
     color: colores.primario,
     fontFamily: 'Roboto_medium',
     fontWeight: 'bold',
-    textAlign: 'center'
-  },
-  input: {
-    color: colores.primario,
-    alignSelf: 'center',
     marginLeft: 8,
     marginRight: 8,
+    textAlign: 'center'
+  },
+  item: {
+    borderBottomWidth: 1.5,
+    borderColor: colores.primario
+  },
+  label: {
+    color: colores.primario,
     fontFamily: 'Roboto_medium',
     fontWeight: 'bold',
     textAlign: 'center'

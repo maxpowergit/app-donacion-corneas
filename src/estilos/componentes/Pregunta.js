@@ -9,19 +9,14 @@ export default StyleSheet.create({
   contenedorTexto: {
     flex: 4
   },
-  textoBoton: {
-    color: colores.texto,
-    fontSize: tamaño.item
-  },
-  textoPregunta: {
-    color: colores.texto,
-    fontSize: tamaño.item,
-    fontFamily: 'Roboto_medium',
-    fontWeight: 'bold',
-    alignSelf: 'flex-start'
-  },
   fondo: {
     backgroundColor: colores.secundario
+  },
+  iconoDesmarcado: {
+    color: colores.secundario,
+    fontSize: 30,
+    marginLeft: 8,
+    marginRight: 8
   },
   iconoMarcado: {
     color: colores.texto,
@@ -29,10 +24,15 @@ export default StyleSheet.create({
     marginLeft: 8,
     marginRight: 8
   },
-  iconoDesmarcado: {
-    color: colores.secundario,
-    fontSize: 30,
-    marginLeft: 8,
-    marginRight: 8
+  textoBoton: {
+    color: colores.texto,
+    fontSize: tamaño.item
+  },
+  textoPregunta: {
+    alignSelf: 'flex-start',
+    color: colores.texto,
+    fontFamily: 'Roboto_medium',
+    fontSize: tamaño.item,
+    fontWeight: 'bold'
   }
 })

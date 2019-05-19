@@ -6,7 +6,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'native-base'
 import { connect } from 'react-redux'
-//import { SMS } from 'expo'
+// import { SMS } from 'expo'
 import moment from 'moment'
 import 'moment/locale/es'
 
@@ -50,7 +50,7 @@ class Contacto extends Component {
 
   async enviarSMS(telefono, mensaje) {
     const { navigation } = this.props
-  //  const { result } = await SMS.sendSMSAsync(telefono, mensaje)
+    //  const { result } = await SMS.sendSMSAsync(telefono, mensaje)
 
     // Cuando terminamos de esperar, en Android result es 'unknown' debido a
     // políticas de Google Play. En iOS puede ser 'sent' o 'cancelled'.

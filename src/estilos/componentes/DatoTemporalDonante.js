@@ -3,21 +3,21 @@ import { colores } from '../Base'
 
 export default StyleSheet.create({
   label: {
-    textTransform: 'uppercase',
     color: colores.primario,
     fontFamily: 'Roboto_medium',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textTransform: 'uppercase'
   },
   // Ajustar inputs a la altura del texto.
   input: {
-    height: 0,
     color: colores.primario,
     fontFamily: 'Roboto_medium',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    height: 0
   },
   item: {
-    borderColor: colores.primario,
     borderBottomWidth: 1.5,
+    borderColor: colores.primario,
     marginLeft: 8,
     marginRight: 8
   }
