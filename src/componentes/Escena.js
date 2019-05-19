@@ -17,7 +17,7 @@ const Escena = ({ children, navigation, footer, contentContainerStyle, ocultarHe
 
   return (
     <Container>
-      <KeyboardAvoidingView behavior="padding" flex={ 1 }>
+      <KeyboardAvoidingView flex={ 1 }>
         { !ocultarHeader
           && <HeaderDefault texto={ titulo } navigation={ navigation } />
         }
