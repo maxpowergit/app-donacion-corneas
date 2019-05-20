@@ -1,8 +1,12 @@
-node_modules/**/*
-.expo/*
+node_modules/
+.expo/
 npm-debug.*
 *.jks
 *.p12
 *.key
 *.mobileprovision
 yarn-error.log
+
+# build
+android/app/build/*
+android/.gradle*
