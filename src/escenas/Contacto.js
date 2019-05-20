@@ -6,7 +6,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'native-base'
 import { connect } from 'react-redux'
-// import { SMS } from 'expo'
+import SendSMS from 'react-native-sms'
 import moment from 'moment'
 import 'moment/locale/es'
 
@@ -48,16 +48,25 @@ class Contacto extends Component {
     this.inputs[id]._root.focus()
   }
 
-  async enviarSMS(telefono, mensaje) {
+  enviarSMS(telefono, mensaje) {
     const { navigation } = this.props
-    //  const { result } = await SMS.sendSMSAsync(telefono, mensaje)
 
-    // Cuando terminamos de esperar, en Android result es 'unknown' debido a
-    // políticas de Google Play. En iOS puede ser 'sent' o 'cancelled'.
-    if (result && result !== 'cancelled') {
-      // Podemos asumir que al volver del async/await el mensaje fue enviado.
-      navigation.navigate('indicaciones')
+    const opcionesSms = {
+      body: mensaje,
+      recipients: [telefono],
+      successTypes: ['all'],
+      allowAndroidSendWithoutReadPermission: true
     }
+
+    // Cuando terminamos de hacer la solicitud, el callback debería recibir 3
+    // valores booleanos (`completed`, `cancelled` o `error`). Debido a
+    // políticas de Google Play respecto de aplicaciones que requieren el
+    // permiso `READ_SMS`, no podemos garantizar que los valores de respuesta
+    // sean correctos, por lo tanto navegamos independientemente del resultado
+    // (esto está relacionado con successTypes: ['all'])
+    SendSMS.send(opcionesSms, (completed, cancelled, error) => {
+      navigation.navigate('indicaciones')
+    })
   }
 
   mensaje() {
