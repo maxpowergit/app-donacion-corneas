@@ -10,3 +10,6 @@ yarn-error.log
 # build
 android/app/build/*
 android/.gradle*
+
+# entorno
+.envrc
