@@ -14,7 +14,10 @@ const DatoTemporalDonante = ({ label, value, visible, onPress, onChange, onCance
   const parsedDate = moment(value, [
     moment.localeData().longDateFormat('LL'),
     moment.localeData().longDateFormat('LLL')
-  ]).toDate()
+  ])
+
+  // Sólo usamos fechas válidas.
+  const validDate = parsedDate.isValid() ? parsedDate.toDate() : new Date()
 
   return (
     <Item stackedLabel onPress={ onPress } style={ estilos.item }>
@@ -24,7 +27,7 @@ const DatoTemporalDonante = ({ label, value, visible, onPress, onChange, onCance
       <DateTimePicker
         onConfirm={ onChange }
         onCancel={ onCancel }
-        date={ parsedDate }
+        date={ validDate }
         isVisible={ visible }
 
         { ...props }
