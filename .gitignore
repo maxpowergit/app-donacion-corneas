@@ -8,6 +8,8 @@ npm-debug.*
 yarn-error.log
 
 # build
+android/build/*
+android/app/muadev.keystore
 android/app/build/*
 android/.gradle*
 
