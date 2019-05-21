@@ -5,9 +5,8 @@ import { colores } from '../Base'
 export default StyleSheet.create({
   centrado: {
     alignItems: 'center',
-    backgroundColor: colores.terciario,
+    backgroundColor: colores.secundario,
     flex: 1,
-    justifyContent: 'center',
-    margin: 8
+    justifyContent: 'center'
   }
 })
