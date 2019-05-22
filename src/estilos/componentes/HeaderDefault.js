@@ -7,6 +7,9 @@ export default StyleSheet.create({
     alignItems: 'center',
     flex: 3
   },
+  contenedorIconoHeader: {
+    backgroundColor: colores.primario
+  },
   header: {
     backgroundColor: colores.primario,
     height: StatusBar.currentHeight + 56,

@@ -32,7 +32,7 @@ const HeaderDefault = ({ texto, navigation, acercaDeVisible, mostarAcercaDe }) =
           <Menu>
             <MenuTrigger>
               { /* Botón deshabilitado porque el manejo del touch lo hace MenuTrigger */ }
-              <Button transparent disabled>
+              <Button disabled style={ estilos.contenedorIconoHeader }>
                 <Icon name="more" style={ estilos.iconoHeader } />
               </Button>
             </MenuTrigger>
