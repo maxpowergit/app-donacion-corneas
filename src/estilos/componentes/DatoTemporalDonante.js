@@ -2,12 +2,6 @@ import { StyleSheet } from 'react-native'
 import { colores } from '../Base'
 
 export default StyleSheet.create({
-  label: {
-    color: colores.texto,
-    fontFamily: 'Roboto_medium',
-    fontWeight: 'bold',
-    textTransform: 'uppercase'
-  },
   // Ajustar inputs a la altura del texto.
   input: {
     color: colores.texto,
@@ -20,5 +14,11 @@ export default StyleSheet.create({
     borderColor: colores.texto,
     marginLeft: 8,
     marginRight: 8
+  },
+  label: {
+    color: colores.texto,
+    fontFamily: 'Roboto_medium',
+    fontWeight: 'bold',
+    textTransform: 'uppercase'
   }
 })
