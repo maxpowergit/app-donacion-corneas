@@ -1,8 +1,8 @@
 import React from 'react'
-import { BackHandler } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { AndroidBackHandler } from 'react-navigation-backhandler'
+import RNExitApp from 'react-native-exit-app'
 
 import mapaRequisitos from '../lib/mapaRequisitos'
 import Escena from '../componentes/Escena'
@@ -13,8 +13,7 @@ const Requisitos = ({ cumplirRequisito, requisitos, requisitosCumplidos, navigat
   const { navigate } = navigation
 
   const onBackButtonPressAndroid = () => {
-    BackHandler.exitApp()
-    return true
+    RNExitApp.exitApp()
   }
 
   const preguntas = Object.keys(mapaRequisitos).map(llave => (
