@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import AcercaDe from './AcercaDe'
 
 import estilos from '../estilos/componentes/HeaderDefault'
+import { colores } from '../estilos/Base'
 
 // TODO Cuando actualizemos a react-native >= 0.59, hay que sacar .toUpperCase
 const HeaderDefault = ({ texto, navigation, acercaDeVisible, mostarAcercaDe }) => {
@@ -19,7 +20,10 @@ const HeaderDefault = ({ texto, navigation, acercaDeVisible, mostarAcercaDe }) =
         onRequestClose={ () => { mostarAcercaDe(false) } }
       />
 
-      <Header style={ estilos.header }>
+      <Header
+        androidStatusBarColor={ colores.transparencia }
+        style={ estilos.header }
+      >
         <Left style={ estilos.left } />
 
         <Body style={ estilos.body }>
