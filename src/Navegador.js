@@ -8,6 +8,7 @@ import Contraindicacion from './escenas/Contraindicacion'
 import Contacto from './escenas/Contacto'
 import Indicaciones from './escenas/Indicaciones'
 import Telefono from './escenas/Telefono'
+import AcercaDe from './escenas/AcercaDe'
 
 const Navegador = createStackNavigator({
   ingreso: { screen: Ingreso },
@@ -16,7 +17,8 @@ const Navegador = createStackNavigator({
   contraindicacion: { screen: Contraindicacion },
   contacto: { screen: Contacto },
   indicaciones: { screen: Indicaciones },
-  telefono: { screen: Telefono }
+  telefono: { screen: Telefono },
+  acerca: { screen: AcercaDe }
 }, {
   initialRouteName: 'ingreso',
   defaultNavigationOptions: {
