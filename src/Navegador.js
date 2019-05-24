@@ -10,8 +10,7 @@ import Indicaciones from './escenas/Indicaciones'
 import Telefono from './escenas/Telefono'
 import AcercaDe from './escenas/AcercaDe'
 
-
-const NavegadorTabs = createMaterialTopTabNavigator({
+const NavegadorPrincipal = createMaterialTopTabNavigator({
   ingreso: { screen: Ingreso },
   requisitos: { screen: Requisitos },
   contraindicaciones: { screen: Contraindicaciones },
@@ -27,15 +26,14 @@ const NavegadorTabs = createMaterialTopTabNavigator({
   }
 })
 
-// un stack que tiene los tabs como primer escena.
-
+// Stack con las escenas principales en tabs, como primer escena.
 const NavegadorInicial = createStackNavigator({
-  tabs: { screen: NavegadorTabs },
+  principal: { screen: NavegadorPrincipal },
   contraindicacion: { screen: Contraindicacion },
   telefono: { screen: Telefono },
   acerca: { screen: AcercaDe }
 }, {
-  initialRouteName: 'tabs',
+  initialRouteName: 'principal',
   defaultNavigationOptions: {
     header: null
   }
