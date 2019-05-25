@@ -17,7 +17,7 @@ export default class IngresarTelefono extends Component {
 
     return (
       <View style={ estilos.contenedor }>
-        <Text style={ estilos.label }>INGRESE EL TELÉFONO DE SU COORDINADOR HOSPITALARIO</Text>
+        <Text style={ estilos.label }>Ingrese el teléfono de su coordinador hospitalario</Text>
         <Item style={ estilos.item }>
           <Input
             value={ telefono }

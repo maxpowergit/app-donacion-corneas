@@ -4,14 +4,13 @@ import { Item, Label, Input } from 'native-base'
 
 import estilos from '../estilos/componentes/DatoDonante'
 
-// TODO Cuando actualizemos a react-native >= 0.59, hay que sacar .toUpperCase
 class DatoDonante extends Component {
   render() {
     const { label, onChange, value, inputRef, ...props } = this.props
 
     return (
       <Item stackedLabel style={ estilos.item }>
-        <Label style={ estilos.label }>{ label.toUpperCase() }</Label>
+        <Label style={ estilos.label }>{ label }</Label>
 
         <Input
           style={ estilos.input }

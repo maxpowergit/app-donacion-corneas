@@ -6,7 +6,6 @@ import { Menu, MenuOptions, MenuOption, MenuTrigger } from 'react-native-popup-m
 import estilos from '../estilos/componentes/HeaderDefault'
 import { colores } from '../estilos/Base'
 
-// TODO Cuando actualizemos a react-native >= 0.59, hay que sacar .toUpperCase
 const HeaderDefault = ({ texto, navigation }) => {
   const { navigate } = navigation
 
@@ -19,7 +18,7 @@ const HeaderDefault = ({ texto, navigation }) => {
 
       <Body style={ estilos.body }>
         <Text style={ estilos.textoHeader }>
-          { texto.toUpperCase() }
+          { texto }
         </Text>
       </Body>
 

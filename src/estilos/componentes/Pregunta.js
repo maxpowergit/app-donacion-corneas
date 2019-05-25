@@ -33,6 +33,7 @@ export default StyleSheet.create({
     color: colores.texto,
     fontFamily: 'Roboto_medium',
     fontSize: tamaño.item,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textTransform: 'uppercase'
   }
 })

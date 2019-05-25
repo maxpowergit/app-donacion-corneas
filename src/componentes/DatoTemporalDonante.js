@@ -7,7 +7,6 @@ import 'moment/locale/es'
 
 import estilos from '../estilos/componentes/DatoTemporalDonante'
 
-// TODO Cuando actualizemos a react-native >= 0.59, hay que sacar .toUpperCase
 // deshabilitar keyboard onPress
 const DatoTemporalDonante = ({ label, value, visible, onPress, onChange, onCancel, ...props }) => {
   // Parseamos la fecha según los posibles formatos.
@@ -21,7 +20,7 @@ const DatoTemporalDonante = ({ label, value, visible, onPress, onChange, onCance
 
   return (
     <Item stackedLabel onPress={ onPress } style={ estilos.item }>
-      <Label style={ estilos.label }>{ label.toUpperCase() }</Label>
+      <Label style={ estilos.label }>{ label }</Label>
 
       <Input style={ estilos.input } disabled value={ value } />
       <DateTimePicker

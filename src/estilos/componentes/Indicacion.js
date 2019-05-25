@@ -9,6 +9,7 @@ export default StyleSheet.create({
   texto: {
     color: colores.texto,
     fontFamily: 'Roboto_medium',
-    fontSize: tamaño.texto
+    fontSize: tamaño.texto,
+    textTransform: 'uppercase'
   }
 })

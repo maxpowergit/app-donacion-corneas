@@ -23,6 +23,7 @@ export default StyleSheet.create({
     color: colores.primario,
     fontFamily: 'Roboto_medium',
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    textTransform: 'uppercase'
   }
 })

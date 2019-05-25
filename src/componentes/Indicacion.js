@@ -9,7 +9,7 @@ const Indicacion = ({ children }) => (
     <CardItem style={ estilos.fondo }>
       <Body>
         <Text style={ estilos.texto }>
-          { children.toUpperCase() }
+          { children }
         </Text>
       </Body>
     </CardItem>
