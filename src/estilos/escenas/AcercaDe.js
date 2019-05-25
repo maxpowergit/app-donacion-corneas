@@ -4,17 +4,28 @@ import { colores, tamaño } from '../Base'
 
 export default StyleSheet.create({
   centrado: {
-    alignItems: 'center',
+    alignItems: 'center'
+  },
+  escena: {
     backgroundColor: colores.terciario,
     flex: 1,
-    justifyContent: 'space-evenly',
     margin: 8,
     marginTop: StatusBar.currentHeight + 8
   },
-  icono: {
-    color: colores.secundario,
-    fontSize: 120,
+  flexChico: {
+    flex: 1
+  },
+  flexMedio: {
+    flex: 2
+  },
+  iconoCentral: {
+    color: colores.primario,
+    fontSize: 110,
     padding: '10%'
+  },
+  iconoSecundario: {
+    color: colores.primario,
+    fontSize: 40
   },
   texto: {
     color: colores.primario,
@@ -22,16 +33,7 @@ export default StyleSheet.create({
     fontSize: tamaño.texto,
     fontWeight: 'bold',
     textAlign: 'center',
-    textTransform: 'uppercase'
-  },
-  textoVersion: {
-    color: colores.primario,
-    fontFamily: 'Roboto_medium',
-    fontSize: tamaño.texto,
-    fontWeight: 'bold',
-    justifyContent: 'flex-end',
-    textAlign: 'center',
+    textAlignVertical: 'center',
     textTransform: 'uppercase'
   }
-
 })
