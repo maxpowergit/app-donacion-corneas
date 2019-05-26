@@ -2,6 +2,8 @@
   package="com.proccorn">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Para elegir el teléfono del coordinador entre tus contactos -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
       android:name=".MainApplication"
