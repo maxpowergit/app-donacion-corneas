@@ -15,7 +15,7 @@ const NavegadorPrincipal = createMaterialTopTabNavigator({
   requisitos: { screen: Requisitos },
   contraindicaciones: { screen: Contraindicaciones },
   contacto: { screen: Contacto },
-  indicaciones: { screen: Indicaciones },
+  indicaciones: { screen: Indicaciones }
 }, {
   initialRouteName: 'ingreso',
   swipeEnabled: false,

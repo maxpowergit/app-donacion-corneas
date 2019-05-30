@@ -64,7 +64,7 @@ class Contacto extends Component {
     // permiso `READ_SMS`, no podemos garantizar que los valores de respuesta
     // sean correctos, por lo tanto navegamos independientemente del resultado
     // (esto está relacionado con successTypes: ['all'])
-    SendSMS.send(opcionesSms, (completed, cancelled, error) => {
+    SendSMS.send(opcionesSms, () => {
       navigation.navigate('indicaciones')
     })
   }
