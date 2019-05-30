@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Form, Icon } from 'native-base'
 import { connect } from 'react-redux'
 
+import { buscarEnAgenda } from '../lib/contactos'
 import IngresarTelefono from '../componentes/IngresarTelefono'
 import Escena from '../componentes/Escena'
 import BotonFooter from '../componentes/BotonFooter'
@@ -11,10 +12,22 @@ import estilos from '../estilos/escenas/Telefono'
 
 const Telefono = ({ navigation, telefono, guardarTelefono }) => {
   const botonFooter = (
-    <BotonFooter
-      texto="Confirmar"
-      onPress={ () => navigation.goBack() }
-    />
+    <>
+      <BotonFooter
+        onPress={ () => buscarEnAgenda(guardarTelefono) }
+        texto="Buscar en Agenda"
+      />
+
+      { telefono
+        ? (
+          <BotonFooter
+            onPress={ () => navigation.goBack() }
+            texto="Confirmar"
+          />
+        )
+        : null
+      }
+    </>
   )
 
   return (

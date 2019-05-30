@@ -1,4 +1,5 @@
 import { PermissionsAndroid } from 'react-native'
+import Contacts from 'react-native-unified-contacts'
 
 const permisoContactos = async () => {
   try {
@@ -32,4 +33,16 @@ const telefonoDe = ({ phoneNumbers }) => {
   return ''
 }
 
-export { permisoContactos, telefonoDe }
+const buscarEnAgenda = async (guardarTelefono) => {
+  const permitido = await permisoContactos()
+
+  if (permitido) {
+    Contacts.selectContact((error, contacto) => {
+      if (!error) {
+        guardarTelefono(telefonoDe(contacto))
+      }
+    })
+  }
+}
+
+export { permisoContactos, telefonoDe, buscarEnAgenda }

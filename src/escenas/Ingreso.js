@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'native-base'
 import { connect } from 'react-redux'
-import Contacts from 'react-native-unified-contacts'
 
-import { permisoContactos, telefonoDe } from '../lib/contactos'
+import { buscarEnAgenda } from '../lib/contactos'
 import LogoFadeIn from '../componentes/LogoFadeIn'
 import IngresarTelefono from '../componentes/IngresarTelefono'
 import Escena from '../componentes/Escena'
@@ -23,29 +22,15 @@ class Ingreso extends Component {
     }
   }
 
-  async buscarEnAgenda() {
-    const { guardarTelefono } = this.props
-
-    const permitido = await permisoContactos()
-
-    if (permitido) {
-      Contacts.selectContact((error, contacto) => {
-        if (!error) {
-          guardarTelefono(telefonoDe(contacto))
-        }
-      })
-    }
-  }
-
   botonFooter() {
-    const { navigation, telefono, tiempoTranscurrido } = this.props
+    const { navigation, telefono, guardarTelefono, tiempoTranscurrido } = this.props
     const { navigate } = navigation
 
     if (tiempoTranscurrido) {
       return (
         <>
           <BotonFooter
-            onPress={ () => this.buscarEnAgenda() }
+            onPress={ () => buscarEnAgenda(guardarTelefono) }
             texto="Buscar en Agenda"
           />
 
