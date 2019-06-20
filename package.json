@@ -1,7 +1,13 @@
 {
   "name": "ProcCorn",
   "version": "0.1",
+  "license": "GPL-3.0-or-later",
+  "bugs": "https://github.com/muadev/proccorn/issues",
   "private": true,
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/muadev/proccorn.git"
+  },
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
