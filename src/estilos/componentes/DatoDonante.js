@@ -11,7 +11,6 @@ export default StyleSheet.create({
   },
   item: {
     borderBottomWidth: 1.5,
-    color: colores.texto,
     marginBottom: 8,
     marginLeft: 16,
     marginRight: 64

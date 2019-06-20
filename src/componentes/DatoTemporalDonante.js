@@ -5,7 +5,7 @@ import DateTimePicker from 'react-native-modal-datetime-picker'
 import moment from 'moment'
 import 'moment/locale/es'
 
-import estilos from '../estilos/componentes/DatoTemporalDonante'
+import estilos from '../estilos/componentes/DatoDonante'
 
 // deshabilitar keyboard onPress
 const DatoTemporalDonante = ({ label, value, visible, onPress, onChange, onCancel, ...props }) => {
