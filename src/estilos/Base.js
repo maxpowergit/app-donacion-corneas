@@ -1,3 +1,5 @@
+import { Dimensions } from 'react-native'
+
 export const colores = {
   primario: '#08263C',
   secundario: '#0C3763',
@@ -9,4 +11,9 @@ export const colores = {
 export const tamaño = {
   titulo: 20,
   item: 16
+}
+
+export const pantalla = {
+  ancho: Dimensions.get('window').width,
+  altura: Dimensions.get('window').height
 }

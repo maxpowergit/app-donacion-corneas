@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated, Easing, Image } from 'react-native'
 
+import estilos from '../estilos/componentes/LogoFadeIn'
+
+
 // Requerir assets al principio del archivo.
 const logo = require('../assets/logo.png')
 
@@ -44,6 +47,7 @@ export default class LogoFadeIn extends Component {
       >
         <Image
           source={ logo }
+          style={ estilos.imagen }
         />
       </Animated.View>
     )
