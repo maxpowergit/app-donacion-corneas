@@ -72,7 +72,7 @@ const AcercaDe = ({ navigation }) => {
                 onPress={ () => { Linking.openURL('https://www.behance.net/vronoise') } }
               />
 
-              <Text style={ estilos.texto }>Diseño por Verónica Reggiani</Text>
+              <Text style={ estilos.texto }>Diseño por Vro Noise</Text>
             </Button>
           </Row>
 
