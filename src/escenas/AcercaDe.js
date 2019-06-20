@@ -28,41 +28,58 @@ const AcercaDe = ({ navigation }) => {
       <Grid>
         <Col style={ estilos.centrado }>
           <Row style={ estilos.flexChico } />
+
           <Icon
             name="info"
             style={ estilos.iconoCentral }
             type="MaterialIcons"
           />
-          <Text style={ [estilos.texto, estilos.flexMedio] }>
-            {
-          'ProcCorn es un desarrollo de MuaDev en colaboración con la Unidad de Procuración de Órganos y Tejidos - Hospital César Milstein'
-        }
-          </Text>
-          <Text style={ [estilos.texto, estilos.flexChico] }>
-          Versión
-            {' '}
-            { paquete.version }
-          </Text>
+
           <Row>
-            <Button
-              iconLeft
-              transparent
-              onPress={ () => { Linking.openURL('https://github.com/muadev/proccorn') } }
-            >
+            <Text style={ [estilos.texto, estilos.flexMedio] }>
+              ProcCorn es un desarrollo de MuaDev en colaboración con la Unidad
+              de Procuración de Órganos y Tejidos - Hospital César Milstein
+            </Text>
+          </Row>
+
+          <Row>
+            <Button iconLeft transparent>
               <Icon
                 name="logo-github"
                 style={ estilos.iconoSecundario }
+                onPress={ () => { Linking.openURL('https://github.com/muadev/proccorn') } }
               />
+
               <Text style={ estilos.texto }>GitHub</Text>
             </Button>
+
             <Button iconLeft transparent>
               <Icon
                 name="mail"
                 style={ estilos.iconoSecundario }
                 onPress={ () => { Linking.openURL('mailto:muadev@riseup.net') } }
               />
-              <Text style={ estilos.texto }>Contactanos</Text>
+
+              <Text style={ estilos.texto }>Contacto</Text>
             </Button>
+          </Row>
+
+          <Row>
+            <Button iconLeft transparent>
+              <Icon
+                name="color-palette"
+                style={ estilos.iconoSecundario }
+                onPress={ () => { Linking.openURL('https://www.behance.net/vronoise') } }
+              />
+
+              <Text style={ estilos.texto }>Diseño por Verónica Reggiani</Text>
+            </Button>
+          </Row>
+
+          <Row>
+            <Text style={ [estilos.texto, estilos.flexChico] }>
+              { `Versión ${paquete.version}` }
+            </Text>
           </Row>
         </Col>
       </Grid>
