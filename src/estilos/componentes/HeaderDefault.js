@@ -1,6 +1,6 @@
 import { StatusBar, StyleSheet } from 'react-native'
 
-import { colores, tamaño } from '../Base'
+import { colores, tamaño, estilos } from '../Base'
 
 export default StyleSheet.create({
   body: {
@@ -39,11 +39,9 @@ export default StyleSheet.create({
     flex: 1
   },
   textoHeader: {
-    color: colores.texto,
-    fontFamily: 'Roboto_medium',
+    ...estilos.fuente,
     fontSize: tamaño.titulo,
-    fontWeight: 'bold',
-    textTransform: 'uppercase'
+    fontWeight: 'bold'
   },
   textoMenu: {
     color: colores.primario

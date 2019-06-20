@@ -30,5 +30,11 @@ export const estilos = StyleSheet.create({
     margin: 8,
     padding: 8,
     marginTop: StatusBar.currentHeight + 8
+  },
+  fuente: {
+    color: colores.texto,
+    fontFamily: 'Roboto_medium',
+    fontSize: tamaño.texto,
+    textTransform: 'uppercase'
   }
 })

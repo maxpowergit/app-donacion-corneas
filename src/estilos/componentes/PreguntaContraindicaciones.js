@@ -9,10 +9,6 @@ export default StyleSheet.create({
     paddingRight: 0,
     paddingTop: 0
   },
-  textoBoton: {
-    color: colores.texto,
-    fontSize: tamaño.item
-  },
   textoPregunta: {
     color: colores.texto,
     fontSize: tamaño.item

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { colores, tamaño } from '../Base'
+import { colores, tamaño, estilos } from '../Base'
 
 export default StyleSheet.create({
   contenedorCheckBox: {
@@ -24,16 +24,9 @@ export default StyleSheet.create({
     marginLeft: 8,
     marginRight: 8
   },
-  textoBoton: {
-    color: colores.texto,
-    fontSize: tamaño.item
-  },
   textoPregunta: {
+    ...estilos.fuente,
     alignSelf: 'flex-start',
-    color: colores.texto,
-    fontFamily: 'Roboto_medium',
-    fontSize: tamaño.item,
-    fontWeight: 'bold',
-    textTransform: 'uppercase'
+    fontSize: tamaño.item
   }
 })

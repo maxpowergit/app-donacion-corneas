@@ -1,11 +1,11 @@
 import { StyleSheet } from 'react-native'
 
-import { colores } from '../Base'
+import { colores, estilos } from '../Base'
 
 export default StyleSheet.create({
   subtitulo: {
+    ...estilos.fuente,
     alignSelf: 'center',
-    color: colores.texto,
     padding: 16
   }
 })

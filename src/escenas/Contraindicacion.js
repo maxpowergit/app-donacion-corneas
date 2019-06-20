@@ -4,7 +4,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { H2 } from 'native-base'
+import { H3 } from 'native-base'
 
 import mapaContraindicaciones from '../lib/mapaContraindicaciones'
 import Escena from '../componentes/Escena'
@@ -36,7 +36,7 @@ const Contraindicacion = ({ contraindicaciones, asignarContraindicacion, navigat
 
   return (
     <Escena navigation={ navigation } footer={ botonFooter }>
-      <H2 style={ estilos.subtitulo }>{ pregunta }</H2>
+      <H3 style={ estilos.subtitulo }>{ pregunta }</H3>
 
       { preguntas }
     </Escena>

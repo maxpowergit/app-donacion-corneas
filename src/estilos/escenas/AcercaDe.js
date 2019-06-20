@@ -23,12 +23,9 @@ export default StyleSheet.create({
     fontSize: 40
   },
   texto: {
+    ...estilos.fuente,
     color: colores.primario,
-    fontFamily: 'Roboto_medium',
-    fontSize: tamaño.texto,
-    fontWeight: 'bold',
     textAlign: 'center',
-    textAlignVertical: 'center',
-    textTransform: 'uppercase'
+    textAlignVertical: 'center'
   }
 })

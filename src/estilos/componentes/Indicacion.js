@@ -1,15 +1,13 @@
 import { StyleSheet } from 'react-native'
 
-import { colores, tamaño } from '../Base'
+import { colores, tamaño, estilos } from '../Base'
 
 export default StyleSheet.create({
   fondo: {
     backgroundColor: colores.secundario
   },
   texto: {
-    color: colores.texto,
-    fontFamily: 'Roboto_medium',
-    fontSize: tamaño.texto,
-    textTransform: 'uppercase'
+    ...estilos.fuente,
+    fontWeight: 'normal'
   }
 })

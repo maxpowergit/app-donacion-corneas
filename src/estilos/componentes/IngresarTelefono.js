@@ -1,16 +1,15 @@
 import { StyleSheet } from 'react-native'
 
-import { colores } from '../Base'
+import { colores, estilos } from '../Base'
 
 export default StyleSheet.create({
   contenedor: {
     alignItems: 'center'
   },
   input: {
+    ...estilos.fuente,
     alignSelf: 'center',
     color: colores.primario,
-    fontFamily: 'Roboto_medium',
-    fontWeight: 'bold',
     marginLeft: 8,
     marginRight: 8,
     textAlign: 'center'
@@ -20,10 +19,8 @@ export default StyleSheet.create({
     borderColor: colores.primario
   },
   label: {
+    ...estilos.fuente,
     color: colores.primario,
-    fontFamily: 'Roboto_medium',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    textTransform: 'uppercase'
+    textAlign: 'center'
   }
 })
