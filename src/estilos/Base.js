@@ -1,4 +1,4 @@
-import { Dimensions } from 'react-native'
+import { StyleSheet, StatusBar, Dimensions } from 'react-native'
 
 export const colores = {
   primario: '#08263C',
@@ -17,3 +17,18 @@ export const pantalla = {
   ancho: Dimensions.get('window').width,
   altura: Dimensions.get('window').height
 }
+
+export const logoGrande = pantalla.altura / 3
+export const logoChico = pantalla.altura / 5
+
+export const estilos = StyleSheet.create({
+  escenaPopup: {
+    alignItems: 'center',
+    backgroundColor: colores.terciario,
+    flex: 1,
+    justifyContent: 'center',
+    margin: 8,
+    padding: 8,
+    marginTop: StatusBar.currentHeight + 8
+  }
+})

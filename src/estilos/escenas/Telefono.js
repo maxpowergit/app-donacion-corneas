@@ -1,16 +1,9 @@
-import { StyleSheet, StatusBar } from 'react-native'
+import { StyleSheet } from 'react-native'
 
-import { colores } from '../Base'
+import { colores, estilos } from '../Base'
 
 export default StyleSheet.create({
-  centrado: {
-    alignItems: 'center',
-    backgroundColor: colores.terciario,
-    flex: 1,
-    justifyContent: 'center',
-    marginTop: StatusBar.currentHeight,
-    padding: 8
-  },
+  escena: estilos.escenaPopup,
   icono: {
     color: colores.secundario,
     padding: '10%'

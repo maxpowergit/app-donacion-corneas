@@ -78,10 +78,10 @@ class Telefono extends Component {
       <Escena
         navigation={ navigation }
         footer={ botonFooter }
-        contentContainerStyle={ estilos.centrado }
+        contentContainerStyle={ estilos.escena }
         ocultarHeader
       >
-        <Form style={ estilos.centrado }>
+        <Form style={ estilos.escena }>
           <AnimatedIcon
             name="local-phone"
             style={ [estilos.icono, { fontSize: this.alturaIcono }] }

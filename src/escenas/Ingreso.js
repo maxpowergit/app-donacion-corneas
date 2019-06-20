@@ -10,8 +10,9 @@ import IngresarTelefono from '../componentes/IngresarTelefono'
 import Escena from '../componentes/Escena'
 import BotonFooter from '../componentes/BotonFooter'
 
-import estilos, { logoChico, logoGrande } from '../estilos/escenas/Ingreso'
+import { estilos, logoChico, logoGrande} from '../estilos/Base'
 
+// FIXME Tiene que estar acá afuera?
 const AnimatedLogoFadeIn = Animated.createAnimatedComponent(LogoFadeIn)
 
 class Ingreso extends Component {
@@ -115,11 +116,11 @@ class Ingreso extends Component {
 
       <Escena
         navigation={ navigation }
-        contentContainerStyle={ estilos.centrado }
+        contentContainerStyle={ estilos.escenaPopup }
         footer={ this.botonFooter() }
         ocultarHeader
       >
-        <Form style={ estilos.centrado }>
+        <Form style={ estilos.escenaPopup }>
           <AnimatedLogoFadeIn
             duracion={ 3500 }
             dimension={ this.alturaLogo }
