@@ -5,11 +5,12 @@
   "bugs": "https://github.com/muadev/proccorn/issues",
   "private": true,
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/muadev/proccorn.git"
+    "type": "git",
+    "url": "https://github.com/muadev/proccorn.git"
   },
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "release": "cd android && ./gradlew assembleRelease",
     "test": "jest"
   },
   "dependencies": {
@@ -19,7 +20,7 @@
     "react": "16.8.3",
     "react-native": "0.59.8",
     "react-native-easy-grid": "^0.2.1",
-    "react-native-exit-app": "^1.0.0",
+    "react-native-exit-app": "https://github.com/muadev/react-native-exit-app.git",
     "react-native-gesture-handler": "^1.2.1",
     "react-native-modal-datetime-picker": "^7.4.2",
     "react-native-popup-menu": "^0.15.6",
