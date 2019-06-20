@@ -17,7 +17,8 @@ export default StyleSheet.create({
   },
   iconoHeader: {
     color: colores.texto,
-    fontSize: 25
+    fontSize: 25,
+    elevation: 0
   },
   iconoMenu: {
     color: colores.primario
