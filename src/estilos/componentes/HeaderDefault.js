@@ -5,7 +5,7 @@ import { colores, tamaño } from '../Base'
 export default StyleSheet.create({
   body: {
     alignItems: 'center',
-    flex: 3
+    flex: 4
   },
   contenedorIconoHeader: {
     backgroundColor: colores.primario
@@ -42,7 +42,7 @@ export default StyleSheet.create({
     fontFamily: 'Roboto_medium',
     fontSize: tamaño.titulo,
     fontWeight: 'bold',
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
   },
   textoMenu: {
     color: colores.primario
