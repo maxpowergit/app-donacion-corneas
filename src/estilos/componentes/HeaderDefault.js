@@ -17,8 +17,8 @@ export default StyleSheet.create({
   },
   iconoHeader: {
     color: colores.texto,
-    fontSize: 25,
-    elevation: 0
+    elevation: 0,
+    fontSize: 25
   },
   iconoMenu: {
     color: colores.primario
@@ -43,7 +43,7 @@ export default StyleSheet.create({
     fontFamily: 'Roboto_medium',
     fontSize: tamaño.titulo,
     fontWeight: 'bold',
-    textTransform: 'uppercase',
+    textTransform: 'uppercase'
   },
   textoMenu: {
     color: colores.primario

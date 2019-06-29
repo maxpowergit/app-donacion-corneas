@@ -8,6 +8,7 @@ export default StyleSheet.create({
     backgroundColor: colores.terciario,
     flex: 1,
     justifyContent: 'center',
-    marginTop: StatusBar.currentHeight
+    marginTop: StatusBar.currentHeight,
+    padding: 8
   }
 })

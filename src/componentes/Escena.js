@@ -30,7 +30,7 @@ const Escena = ({ children, navigation, footer, contentContainerStyle, ocultarHe
 
         { footer && (
         <Footer>
-          <FooterTab>
+          <FooterTab style={ estilos.footerTab }>
             { footer }
           </FooterTab>
         </Footer>

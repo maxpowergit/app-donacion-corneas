@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { LayoutAnimation } from 'react-native'
 import PropTypes from 'prop-types'
 import { Form } from 'native-base'
 import { connect } from 'react-redux'
@@ -12,6 +13,13 @@ import BotonFooter from '../componentes/BotonFooter'
 import estilos from '../estilos/escenas/Ingreso'
 
 class Ingreso extends Component {
+  componentDidUpdate(prevProps) {
+    const { telefono } = this.props
+    if (Boolean(prevProps.telefono) !== Boolean(telefono)) {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.spring)
+    }
+  }
+
   navegarSiHayTelefono() {
     const { telefono, cambiarTiempoTranscurrido, navigation } = this.props
 

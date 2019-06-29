@@ -5,5 +5,8 @@ import { colores } from '../Base'
 export default StyleSheet.create({
   contenido: {
     backgroundColor: colores.secundario
+  },
+  footerTab: {
+    backgroundColor: colores.primario
   }
 })
