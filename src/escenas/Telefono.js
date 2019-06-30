@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { LayoutAnimation } from 'react-native'
+import { LayoutAnimation, Animated, Easing, Keyboard } from 'react-native'
 import PropTypes from 'prop-types'
 import { Form, Icon } from 'native-base'
 import { connect } from 'react-redux'
@@ -11,12 +11,45 @@ import BotonFooter from '../componentes/BotonFooter'
 
 import estilos from '../estilos/escenas/Telefono'
 
+const AnimatedIcon = Animated.createAnimatedComponent(Icon)
+
 class Telefono extends Component {
+  constructor(props) {
+    super(props)
+    this.alturaIcono = new Animated.Value(100)
+  }
+
+  componentDidMount() {
+    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.seMuestra.bind(this))
+    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.seEsconde.bind(this))
+  }
+
   componentDidUpdate(prevProps) {
     const { telefono } = this.props
     if (Boolean(prevProps.telefono) !== Boolean(telefono)) {
       LayoutAnimation.configureNext(LayoutAnimation.Presets.spring)
     }
+  }
+
+  componentWillUnmount() {
+    this.keyboardDidShowListener.remove()
+    this.keyboardDidHideListener.remove()
+  }
+
+  seMuestra() {
+    Animated.timing(this.alturaIcono, {
+      duration: 200,
+      easing: Easing.elastic(1.5),
+      toValue: 100
+    }).start()
+  }
+
+  seEsconde() {
+    Animated.timing(this.alturaIcono, {
+      duration: 200,
+      easing: Easing.elastic(1.5),
+      toValue: 150
+    }).start()
   }
 
   render() {
@@ -49,9 +82,9 @@ class Telefono extends Component {
         ocultarHeader
       >
         <Form style={ estilos.centrado }>
-          <Icon
+          <AnimatedIcon
             name="local-phone"
-            style={ estilos.icono }
+            style={ [estilos.icono, { fontSize: this.alturaIcono }] }
             type="MaterialIcons"
           />
 

@@ -13,7 +13,6 @@ export default StyleSheet.create({
   },
   icono: {
     color: colores.secundario,
-    fontSize: 150,
     padding: '10%'
   }
 })
