@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { LayoutAnimation } from 'react-native'
+import { LayoutAnimation, Animated, Easing, Keyboard } from 'react-native'
 import PropTypes from 'prop-types'
 import { Form } from 'native-base'
 import { connect } from 'react-redux'
@@ -10,14 +10,47 @@ import IngresarTelefono from '../componentes/IngresarTelefono'
 import Escena from '../componentes/Escena'
 import BotonFooter from '../componentes/BotonFooter'
 
-import estilos from '../estilos/escenas/Ingreso'
+import estilos, { logoChico, logoGrande } from '../estilos/escenas/Ingreso'
+
+const AnimatedLogoFadeIn = Animated.createAnimatedComponent(LogoFadeIn)
 
 class Ingreso extends Component {
+  constructor(props) {
+    super(props)
+    this.alturaLogo = new Animated.Value(logoGrande)
+  }
+
+  componentDidMount() {
+    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.seMuestra.bind(this))
+    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.seEsconde.bind(this))
+  }
+
   componentDidUpdate(prevProps) {
     const { telefono } = this.props
     if (Boolean(prevProps.telefono) !== Boolean(telefono)) {
       LayoutAnimation.configureNext(LayoutAnimation.Presets.spring)
     }
+  }
+
+  componentWillUnmount() {
+    this.keyboardDidShowListener.remove()
+    this.keyboardDidHideListener.remove()
+  }
+
+  seMuestra() {
+    Animated.timing(this.alturaLogo, {
+      duration: 250,
+      easing: Easing.elastic(1.5),
+      toValue: logoChico
+    }).start()
+  }
+
+  seEsconde() {
+    Animated.timing(this.alturaLogo, {
+      duration: 250,
+      easing: Easing.elastic(1.5),
+      toValue: logoGrande
+    }).start()
   }
 
   navegarSiHayTelefono() {
@@ -87,8 +120,9 @@ class Ingreso extends Component {
         ocultarHeader
       >
         <Form style={ estilos.centrado }>
-          <LogoFadeIn
+          <AnimatedLogoFadeIn
             duracion={ 3500 }
+            dimension={ this.alturaLogo }
             callback={ () => { this.navegarSiHayTelefono() } }
           />
 

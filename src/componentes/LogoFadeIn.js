@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Animated, Easing, Image } from 'react-native'
 
-import estilos from '../estilos/componentes/LogoFadeIn'
-
-
 // Requerir assets al principio del archivo.
 const logo = require('../assets/logo.png')
 
@@ -35,6 +32,8 @@ export default class LogoFadeIn extends Component {
   }
 
   render() {
+    const { dimension } = this.props
+
     const opacity = this.valorAnimacion.interpolate({
       inputRange: [0, 0.25, 1],
       outputRange: [0, 0, 1]
@@ -47,7 +46,7 @@ export default class LogoFadeIn extends Component {
       >
         <Image
           source={ logo }
-          style={ estilos.imagen }
+          style={ { width: dimension, height: dimension } }
         />
       </Animated.View>
     )
@@ -56,5 +55,6 @@ export default class LogoFadeIn extends Component {
 
 LogoFadeIn.propTypes = {
   duracion: PropTypes.number.isRequired,
-  callback: PropTypes.func.isRequired
+  callback: PropTypes.func.isRequired,
+  dimension: PropTypes.number.isRequired
 }

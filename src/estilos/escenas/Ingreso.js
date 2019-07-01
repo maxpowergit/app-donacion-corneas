@@ -1,6 +1,7 @@
 import { StyleSheet, StatusBar } from 'react-native'
 
-import { colores } from '../Base'
+import { colores, pantalla } from '../Base'
+
 
 export default StyleSheet.create({
   centrado: {
@@ -12,3 +13,6 @@ export default StyleSheet.create({
     padding: 8
   }
 })
+
+export const logoGrande = pantalla.altura / 3
+export const logoChico = pantalla.altura / 5
