@@ -38,16 +38,16 @@ class Telefono extends Component {
 
   seMuestra() {
     Animated.timing(this.alturaIcono, {
-      duration: 200,
-      easing: Easing.elastic(1.5),
+      duration: 250,
+      easing: Easing.elastic(1),
       toValue: 100
     }).start()
   }
 
   seEsconde() {
     Animated.timing(this.alturaIcono, {
-      duration: 200,
-      easing: Easing.elastic(1.5),
+      duration: 250,
+      easing: Easing.elastic(1),
       toValue: 150
     }).start()
   }

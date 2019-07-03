@@ -6,6 +6,6 @@ export default StyleSheet.create({
   subtitulo: {
     alignSelf: 'center',
     color: colores.texto,
-    padding: 20
+    padding: 16
   }
 })

@@ -40,7 +40,7 @@ class Ingreso extends Component {
   seMuestra() {
     Animated.timing(this.alturaLogo, {
       duration: 250,
-      easing: Easing.elastic(1.5),
+      easing: Easing.elastic(1),
       toValue: logoChico
     }).start()
   }
@@ -48,7 +48,7 @@ class Ingreso extends Component {
   seEsconde() {
     Animated.timing(this.alturaLogo, {
       duration: 250,
-      easing: Easing.elastic(1.5),
+      easing: Easing.elastic(1),
       toValue: logoGrande
     }).start()
   }
