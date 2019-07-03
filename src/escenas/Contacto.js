@@ -15,8 +15,6 @@ import DatoDonante from '../componentes/DatoDonante'
 import DatoTemporalDonante from '../componentes/DatoTemporalDonante'
 import BotonFooter from '../componentes/BotonFooter'
 
-import estilos from '../estilos/escenas/Contacto'
-
 class Contacto extends Component {
   constructor(props) {
     super(props)
@@ -104,7 +102,6 @@ class Contacto extends Component {
 
     return (
       <Escena
-        contentContainerStyle={ estilos.centrado }
         navigation={ navigation }
         footer={ botonFooter }
       >
