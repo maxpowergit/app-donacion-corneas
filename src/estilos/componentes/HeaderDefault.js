@@ -8,7 +8,8 @@ export default StyleSheet.create({
     flex: 4
   },
   contenedorIconoHeader: {
-    backgroundColor: colores.primario
+    backgroundColor: colores.primario,
+    elevation: 0
   },
   header: {
     backgroundColor: colores.primario,
