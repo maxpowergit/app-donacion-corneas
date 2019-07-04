@@ -1,12 +1,12 @@
-import { StyleSheet, StatusBar } from 'react-native'
+import { StyleSheet } from 'react-native'
 
-import { colores, tamaño, estilos } from '../Base'
+import { colores, estilos } from '../Base'
 
 export default StyleSheet.create({
-  escena: estilos.escenaPopup,
   centrado: {
     alignItems: 'center'
   },
+  escena: estilos.escenaPopup,
   flexChico: {
     flex: 1
   },

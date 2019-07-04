@@ -6,6 +6,18 @@ module.exports = {
     "jsx-a11y",
     "import"
   ],
+  "settings": {
+    // Detectar extensiones según plataforma
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".android.js",
+          ".ios.js"
+        ]
+      }
+    }
+  },
   // Usar babel del futuro como parser
   "parser": "babel-eslint",
   // Reglas que cambian los defaults

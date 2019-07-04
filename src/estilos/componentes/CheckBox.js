@@ -4,7 +4,7 @@ import { colores } from '../Base'
 
 export default StyleSheet.create({
   boton: {
-    backgroundColor: 'transparent',
+    backgroundColor: colores.transparente,
     borderColor: colores.texto,
     borderRadius: 5,
     borderWidth: 2,

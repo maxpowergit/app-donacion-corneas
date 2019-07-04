@@ -11,7 +11,7 @@ const HeaderDefault = ({ texto, navigation }) => {
 
   return (
     <Header
-      androidStatusBarColor={ colores.transparencia }
+      androidStatusBarColor={ colores.translucido }
       style={ estilos.header }
     >
       <Left style={ estilos.left } />

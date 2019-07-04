@@ -10,7 +10,7 @@ import IngresarTelefono from '../componentes/IngresarTelefono'
 import Escena from '../componentes/Escena'
 import BotonFooter from '../componentes/BotonFooter'
 
-import { estilos, logoChico, logoGrande} from '../estilos/Base'
+import { estilos, logoChico, logoGrande } from '../estilos/Base'
 
 // FIXME Tiene que estar acá afuera?
 const AnimatedLogoFadeIn = Animated.createAnimatedComponent(LogoFadeIn)

@@ -9,7 +9,7 @@ import Navegador from './Navegador'
 // Navegador es nuestro navegador principal.
 const DonacionApp = () => (
   <MenuProvider>
-    <StatusBar translucent backgroundColor={ colores.transparencia } />
+    <StatusBar translucent backgroundColor={ colores.translucido } />
     <Navegador />
   </MenuProvider>
 )

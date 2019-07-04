@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { colores, tamaño, estilos } from '../Base'
+import { colores, estilos } from '../Base'
 
 export default StyleSheet.create({
   fondo: {

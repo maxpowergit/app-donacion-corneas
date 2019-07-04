@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { colores, estilos } from '../Base'
+import { estilos } from '../Base'
 
 export default StyleSheet.create({
   // Ajustar inputs a la altura del texto.

@@ -5,7 +5,8 @@ export const colores = {
   secundario: '#0C3763',
   terciario: '#D3D1D1',
   texto: '#FFFFFF',
-  transparencia: 'rgba(0, 0, 0, 0.20)'
+  translucido: 'rgba(0, 0, 0, 0.20)',
+  transparente: 'rgba(0, 0, 0, 0)'
 }
 
 export const tamaño = {
@@ -28,8 +29,8 @@ export const estilos = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     margin: 8,
-    padding: 8,
-    marginTop: StatusBar.currentHeight + 8
+    marginTop: StatusBar.currentHeight + 8,
+    padding: 8
   },
   fuente: {
     color: colores.texto,
