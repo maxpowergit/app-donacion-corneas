@@ -28,8 +28,7 @@ export const estilos = StyleSheet.create({
     backgroundColor: colores.terciario,
     flex: 1,
     justifyContent: 'center',
-    margin: 8,
-    marginTop: StatusBar.currentHeight + 8,
+    marginTop: StatusBar.currentHeight,
     padding: 8
   },
   fuente: {
